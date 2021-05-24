@@ -9,29 +9,22 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-      .container-fluid
-        %a.navbar-brand{:href => "#"} Navbar
-        %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
-          %span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse
-          %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+    %nav.navbar.navbar-expand-lg.navbar-light.bg-light.py-4
+      %a.navbar-brand{:href => "#"} Event
+      %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item
+            %a.nav-link{:href => "#"} イベントを探す
+          %li.nav-item
+            %a.nav-link{:href => "#"} イベントを作成する
+        - if user_signed_in?
+          %ul.navbar-nav
             %li.nav-item
-              %a.nav-link.active{"aria-current" => "page", :href => "#"} Home
+              %a.nav-link{:href => "#"} マイページ
             %li.nav-item
-              %a.nav-link{:href => "#"} Link
-            %li.nav-item.dropdown
-              %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
-                Dropdown
-              %ul.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-                %li
-                  %a.dropdown-item{:href => "#"} Action
-                %li
-                  %a.dropdown-item{:href => "#"} Another action
-                %li
-                  %hr.dropdown-divider/
-                %li
-                  %a.dropdown-item{:href => "#"} Something else here
-            %li.nav-item
-              %a.nav-link.disabled{"aria-disabled" => "true", :href => "#", :tabindex => "-1"} Disabled
+              = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }, class: "nav-link"
+        - else
+          = link_to 'ログイン', new_user_session_path, class: 'btn btn-danger'
     = yield
