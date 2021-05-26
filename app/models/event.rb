@@ -16,4 +16,5 @@
 #  index_events_on_user_id  (user_id)
 #
 class Event < ApplicationRecord
+  belongs_to :user
 end
