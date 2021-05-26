@@ -1,1 +1,21 @@
-new
+.container
+  %ul
+    - @event.errors.full_messages.each do |message|
+      %li= message
+  = form_with(model: @event, local: true) do |f|
+    %div
+      = f.label :name, 'イベント名(必須)'
+    %div
+      = f.text_field :name, class: 'form-control'
+    %div
+      = f.label :text, 'イベント詳細(必須)' 
+    %div
+      = f.text_area :text, class: 'form-control'
+    %div
+      = f.label :store, '店舗名'
+    %div
+      = f.text_field :store, class: 'form-control'
+    .form-group
+      = f.label :date, '開催日', class: 'control-label'
+      = f.date_field :date, class: 'form-control'
+    = f.submit '作成', class: 'btn btn-success w-100'
