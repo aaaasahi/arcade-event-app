@@ -18,4 +18,8 @@
     .form-group
       = f.label :date, '開催日', class: 'control-label'
       = f.date_field :date, class: 'form-control'
+    %div
+      = f.label :eyecatch, 'アイキャッチ'
+    %div
+      = f.file_field :eyecatch
     = f.submit '作成', class: 'btn btn-success w-100'

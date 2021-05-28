@@ -6,10 +6,10 @@
       .card-container.col-12.col-md-6.col-lg-3
         = link_to event_path(event) do
           .card
-            %svg.bd-placeholder-img.card-img-top{"aria-label" => "Placeholder: Image cap", :focusable => "false", :height => "180", :preserveaspectratio => "xMidYMid slice", :role => "img", :width => "100%", :xmlns => "http://www.w3.org/2000/svg"}
-              %title Placeholder
-              %rect{:fill => "#868e96", :height => "100%", :width => "100%"}
-              %text{:dy => ".3em", :fill => "#dee2e6", :x => "50%", :y => "50%"} Image cap
+            - if event.eyecatch.attached?
+              = image_tag event.eyecatch, class: 'card-image-top card_image'
+            - else
+              = image_tag 'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image',class: 'card-image-top card_image'
             .card-body
               %h5.card-title 
                 = event.name
