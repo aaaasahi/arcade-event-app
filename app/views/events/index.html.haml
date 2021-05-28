@@ -4,13 +4,14 @@
   .row 
     - @events.each do |event|
       .card-container.col-12.col-md-6.col-lg-3
-        .card
-          %svg.bd-placeholder-img.card-img-top{"aria-label" => "Placeholder: Image cap", :focusable => "false", :height => "180", :preserveaspectratio => "xMidYMid slice", :role => "img", :width => "100%", :xmlns => "http://www.w3.org/2000/svg"}
-            %title Placeholder
-            %rect{:fill => "#868e96", :height => "100%", :width => "100%"}
-            %text{:dy => ".3em", :fill => "#dee2e6", :x => "50%", :y => "50%"} Image cap
-          .card-body
-            %h5.card-title 
-              = event.name
-            %p.card-text 
-              = event.text
+        = link_to event_path(event) do
+          .card
+            %svg.bd-placeholder-img.card-img-top{"aria-label" => "Placeholder: Image cap", :focusable => "false", :height => "180", :preserveaspectratio => "xMidYMid slice", :role => "img", :width => "100%", :xmlns => "http://www.w3.org/2000/svg"}
+              %title Placeholder
+              %rect{:fill => "#868e96", :height => "100%", :width => "100%"}
+              %text{:dy => ".3em", :fill => "#dee2e6", :x => "50%", :y => "50%"} Image cap
+            .card-body
+              %h5.card-title 
+                = event.name
+              %p.card-text 
+                = event.text

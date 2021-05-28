@@ -4,6 +4,15 @@
 @import 'flash';
 @import 'card';
 
+a {
+  text-decoration: none !important;
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
+
 .login {
   margin-top: 100px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
