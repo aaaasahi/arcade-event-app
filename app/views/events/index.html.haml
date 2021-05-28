@@ -6,10 +6,7 @@
       .card-container.col-12.col-md-6.col-lg-3
         = link_to event_path(event) do
           .card
-            - if event.eyecatch.attached?
-              = image_tag event.eyecatch, class: 'card-image-top card_image'
-            - else
-              = image_tag 'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image',class: 'card-image-top card_image'
+            = image_tag event.eyecatch_image, class: 'card-image-top card_image'
             .card-body
               %h5.card-title 
                 = event.name

@@ -21,4 +21,12 @@ class Event < ApplicationRecord
 
   validates :name, presence: true
   validates :text, presence: true
+
+  def eyecatch_image
+    if eyecatch.attached?
+      eyecatch
+    else
+      'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image'
+    end
+  end
 end
