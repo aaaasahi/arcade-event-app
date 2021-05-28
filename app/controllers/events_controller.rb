@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
+    @events = Event.all
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -22,6 +27,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :text, :store, :date)
+    params.require(:event).permit(:name, :text, :store, :date, :eyecatch)
   end
 end

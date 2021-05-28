@@ -2,6 +2,16 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import 'flash';
+@import 'card';
+
+a {
+  text-decoration: none !important;
+  color: black;
+}
+
+a:hover {
+  color: black;
+}
 
 .login {
   margin-top: 100px;
@@ -19,4 +29,9 @@
 .login-button {
   padding: 10px;
   margin-top: 10px;
+}
+
+.search-title {
+  text-align: center;
+  padding: 60px;
 }
