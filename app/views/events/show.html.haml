@@ -1,1 +1,28 @@
-showページ
+.container 
+  .row 
+    .right-card.col-9.mt-5
+      .card
+        .card-body
+          .main-image
+            = image_tag @event.eyecatch_image, class: 'event-image'
+          .event-title 
+            = @event.name
+          .text-title イベント詳細
+          .card-text 
+            = @event.text
+          %button.btn.btn-success.btn-lg.join-button{:type => "button"} 参加する
+          
+
+    .left-card.col-3.mt-5
+      .card
+        .card-body
+          .second-title 日程
+          .event-date 
+            = @event.date
+          %hr
+          .second-title 参加者
+          .event-entry 10人
+          %hr
+          .second-title 開催店舗
+          .event-store 
+            = @event.store

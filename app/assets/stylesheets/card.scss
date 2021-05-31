@@ -1,11 +1,11 @@
-.card {
+.card-main {
   margin-bottom: 30px;
   max-width: 18rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-
-  &_image {
-    width: 100%;
-    height: 180px;
   }
+
+.card-image {
+  width: 100%;
+  height: 180px;
 }
 

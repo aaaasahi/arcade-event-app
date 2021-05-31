@@ -3,6 +3,7 @@
 @import "font-awesome";
 @import 'flash';
 @import 'card';
+@import 'event';
 
 a {
   text-decoration: none !important;
@@ -31,7 +32,7 @@ a:hover {
   margin-top: 10px;
 }
 
-.search-title {
+.title {
   text-align: center;
   padding: 60px;
 }
