@@ -1,12 +1,12 @@
 .container
-  .search-title
+  .title
     %h2 イベントを探す
   .row 
     - @events.each do |event|
       .card-container.col-12.col-md-6.col-lg-3
         = link_to event_path(event) do
-          .card
-            = image_tag event.eyecatch_image, class: 'card-image-top card_image'
+          .card.card-main
+            = image_tag event.eyecatch_image, class: 'card-image-top card-image'
             .card-body
               %h5.card-title 
                 = event.name
