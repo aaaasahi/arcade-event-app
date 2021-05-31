@@ -26,6 +26,7 @@
           .second-title 開催店舗
           .event-store 
             = @event.store
-      .option
-        = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
-        = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
+      - if user_signed_in? && current_user.has_written?(@event)
+        .option
+          = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
+          = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
