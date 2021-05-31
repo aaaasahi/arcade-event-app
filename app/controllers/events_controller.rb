@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   def destroy
     event = current_user.events.find(params[:id])
     event.destroy!
-    redirect_to event_path, notice: '削除しました'
+    redirect_to events_path, notice: '削除しました'
   end
 
 
