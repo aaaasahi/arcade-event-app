@@ -24,4 +24,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :events
+
+  def has_written?(event)
+    events.exists?(id: event.id)
+  end
 end
