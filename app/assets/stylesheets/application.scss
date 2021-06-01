@@ -5,6 +5,30 @@
 @import 'card';
 @import 'event';
 
+html {
+  min-height: 100vh; 
+  position: relative;
+  padding-bottom: 60px; 
+  box-sizing: border-box;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  background-color: gray;
+}
+
+.footer-container {
+  width: auto;
+  margin: 10px 0;
+}
+.footer-text {
+  color: white;
+  text-align: center;
+}
+
 a {
   text-decoration: none !important;
   color: black;
