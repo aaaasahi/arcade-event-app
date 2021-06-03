@@ -1,7 +1,5 @@
-.container
-  .title
-    %h2 イベントを探す
-  = render 'commons/search_form'
+.container 
+  %h2 検索結果
   .row 
     - @events.each do |event|
       .card-container.col-12.col-md-6.col-lg-3

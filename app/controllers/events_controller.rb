@@ -44,11 +44,10 @@ class EventsController < ApplicationController
     redirect_to events_path, notice: '削除しました'
   end
 
-  def search 
-    @q = Post.search(search_params)
-    @posts = @q.result(distinct: true)
+  def search
+    @q = Event.search(search_params)
+    @events = @q.result(distinct: true)
   end
-
 
   private
 
@@ -57,6 +56,6 @@ class EventsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit!
+    params.require(:q).permit(:name_cont, :prefecture_id_eq,:category_id_eq)
   end
 end
