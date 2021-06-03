@@ -26,6 +26,8 @@ gem 'annotate'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'font-awesome-sass'
+gem 'active_hash'
+gem 'ransack'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
