@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @events = Event.all
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true)
   end
 
   def show
@@ -43,10 +44,19 @@ class EventsController < ApplicationController
     redirect_to events_path, notice: '削除しました'
   end
 
+  def search 
+    @q = Post.search(search_params)
+    @posts = @q.result(distinct: true)
+  end
+
 
   private
 
   def event_params
     params.require(:event).permit(:name, :text, :store, :date, :eyecatch, :prefecture_id, :category_id)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end
