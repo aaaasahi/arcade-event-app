@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-
+  before_action :set_search, only: [:search]
   def index
     @events = Event.all
     
@@ -48,13 +48,21 @@ class EventsController < ApplicationController
 
   def search
     @tag_lists = Tag.all
-    @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true)
+
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @events = @tag.events.order(created_at: :desc).all
+    end
   end
 
   private
 
   def event_params
     params.require(:event).permit(:name, :text, :store, :date, :eyecatch, :prefecture_id, :category_id)
+  end
+
+  def set_search
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true)
   end
 end

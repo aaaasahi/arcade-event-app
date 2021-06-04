@@ -3,12 +3,12 @@
     %h2 イベントを探す
   .tag
     - @tag_lists.each do |list|
-      = link_to list.tag_name, root_path
+      = link_to list.tag_name, events_search_path(tag_id: list.id)
   .row.card-wraper
     .right-content.col-3.mt-4
       .card
         .card-body
-          = search_form_for @q, url:events_search_path  do |f|
+          = search_form_for @q, url: events_search_path do |f|
             %div
               = f.label 'キーワード'
             .search-content
