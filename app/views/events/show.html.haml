@@ -8,8 +8,12 @@
           .event-title 
             = @event.name
           .text-title イベント詳細
-          .card-text 
+          .card-text.mb-5
             = @event.text
+          .event-tag 
+            - @event.tags.each do |list|
+              = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
+          %hr
           %button.btn.btn-primary.btn-lg.join-button{:type => "button"} 参加する
           
 
@@ -17,8 +21,8 @@
       .card
         .card-body
           .second-title 日程
-          .event-date 
-            = @event.date
+          .event-date
+            = @event.display_date
           %hr
           .second-title 参加者
           .event-entry 10人

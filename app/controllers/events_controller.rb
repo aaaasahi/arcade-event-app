@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-
+  before_action :set_search, only: [:search]
   def index
     @events = Event.all
+    
   end
 
   def show
@@ -15,7 +16,9 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    tag_list = params[:event][:tag_name].split(nil)
     if @event.save
+      @event.save_event_tag(tag_list)
       redirect_to events_path, notice: '作成しました'
     else
       flash.now[:error] = '作成に失敗しました'
@@ -44,13 +47,22 @@ class EventsController < ApplicationController
   end
 
   def search
-    @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true)
+    @tag_lists = Tag.all
+
+    if params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @events = @tag.events.order(created_at: :desc).all
+    end
   end
 
   private
 
   def event_params
     params.require(:event).permit(:name, :text, :store, :date, :eyecatch, :prefecture_id, :category_id)
+  end
+
+  def set_search
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true)
   end
 end

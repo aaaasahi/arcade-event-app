@@ -25,8 +25,37 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one_attached :eyecatch
 
+  has_many :tagmaps, dependent: :destroy
+  has_many :tags, through: :tagmaps
+
   validates :name, presence: true
   validates :text, presence: true
+
+  #日付の表示
+  def display_date
+    if self.date.present?
+      I18n.l(self.date, format: :default)
+    end
+  end
+
+  #タグ作成
+  def save_event_tag(tags)
+    # 既にタグネームあるなら取得
+    current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
+    # 共通要素取り出し
+    old_tags = current_tags - tags
+    new_tags = tags - current_tags
+
+    # Destroy
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(tag_name:old_name)
+    end
+    # Create
+    new_tags.each do |new_name|
+      post_tag = Tag.find_or_create_by(tag_name:new_name)
+      self.tags << post_tag
+    end
+  end
 
   def eyecatch_image
     if eyecatch.attached?
