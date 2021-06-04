@@ -1,6 +1,9 @@
 .container 
   .title
     %h2 イベントを探す
+  .tag
+    - @tag_lists.each do |list|
+      = link_to list.tag_name, root_path
   .row.card-wraper
     .right-content.col-3.mt-4
       .card
