@@ -25,6 +25,9 @@ class Event < ApplicationRecord
   belongs_to :user
   has_one_attached :eyecatch
 
+  has_many :tagmaps, dependent: :destroy
+  has_many :tags, through: :tagmaps
+
   validates :name, presence: true
   validates :text, presence: true
 

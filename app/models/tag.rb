@@ -12,4 +12,6 @@
 #  index_tags_on_tag_name  (tag_name) UNIQUE
 #
 class Tag < ApplicationRecord
+  has_many :tagmaps, dependent: :destroy
+  has_many :events, through: :tagmaps
 end

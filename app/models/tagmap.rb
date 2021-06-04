@@ -19,4 +19,6 @@
 #  fk_rails_...  (tag_id => tags.id)
 #
 class Tagmap < ApplicationRecord
+  belongs_to :event
+  belongs_to :tag
 end
