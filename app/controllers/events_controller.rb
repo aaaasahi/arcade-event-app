@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @tag_lists = Tag.all
   end
 
   def show
@@ -15,7 +16,9 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    tag_list = params[:event][:tag_name].split(nil)
     if @event.save
+      @event.save_events(tag_list)
       redirect_to events_path, notice: '作成しました'
     else
       flash.now[:error] = '作成に失敗しました'
