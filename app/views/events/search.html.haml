@@ -37,8 +37,8 @@
                 .card-body
                   .event-title 
                     = event.name
-                  .event-date.mb-4
-                    = event.date
+                  .event-date.mb-4.text-muted
+                    = event.display_date
                   .tag
                     %object
                       - event.tags.each do |list|

@@ -31,6 +31,14 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :text, presence: true
 
+  #日付の表示
+  def display_date
+    if self.date.present?
+      I18n.l(self.date, format: :default)
+    end
+  end
+
+  #タグ作成
   def save_event_tag(tags)
     # 既にタグネームあるなら取得
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
