@@ -43,6 +43,10 @@ class EventsController < ApplicationController
     redirect_to events_path, notice: '削除しました'
   end
 
+  def search
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true)
+  end
 
   private
 
