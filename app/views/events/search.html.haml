@@ -5,7 +5,7 @@
     .right-content.col-3.mt-4
       .card
         .card-body
-          = search_form_for @q, url:search_path  do |f|
+          = search_form_for @q, url:events_search_path  do |f|
             %div
               = f.label 'キーワード'
             .search-content

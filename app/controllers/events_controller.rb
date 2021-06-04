@@ -2,8 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true)
+    @events = Event.all
   end
 
   def show
@@ -45,7 +44,7 @@ class EventsController < ApplicationController
   end
 
   def search
-    @q = Event.search(search_params)
+    @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true)
   end
 
@@ -53,9 +52,5 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:name, :text, :store, :date, :eyecatch, :prefecture_id, :category_id)
-  end
-
-  def search_params
-    params.require(:q).permit(:name_or_text_or_store_cont, :prefecture_id_eq,:category_id_eq)
   end
 end
