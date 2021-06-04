@@ -56,6 +56,6 @@ class EventsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:name_cont, :prefecture_id_eq,:category_id_eq)
+    params.require(:q).permit(:name_or_text_or_store_cont, :prefecture_id_eq,:category_id_eq)
   end
 end
