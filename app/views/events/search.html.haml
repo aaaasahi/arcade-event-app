@@ -1,7 +1,7 @@
 .container 
   .title
     %h2 イベントを探す
-  .row.card-wraper
+  .row.card-box
     .right-content.col-3.mt-4
       .card
         .card-body
@@ -43,3 +43,5 @@
                     %object
                       - event.tags.each do |list|
                         = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
+  .page.mt-3
+    = paginate @events,theme: 'twitter-bootstrap-4'
