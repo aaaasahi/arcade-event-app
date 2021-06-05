@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_search, only: [:search]
+  PER_PAGE = 5
   def index
     @events = Event.all
     
@@ -51,7 +52,7 @@ class EventsController < ApplicationController
 
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
-      @events = @tag.events.order(created_at: :desc).all
+      @events = @tag.events.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
     end
   end
 
@@ -63,6 +64,6 @@ class EventsController < ApplicationController
 
   def set_search
     @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true)
+    @events = @q.result(distinct: true).page(params[:page]).per(PER_PAGE)
   end
 end

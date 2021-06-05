@@ -1,37 +1,45 @@
-.container
-  %ul
-    - event.errors.full_messages.each do |message|
-      %li= message
-  = form_with(model: [@tag, event], local: true) do |f|
-    %div
-      = f.label :name, 'イベント名(必須)'
-    %div
-      = f.text_field :name, class: 'form-control'
-    %div
-      = f.label :text, 'イベント詳細(必須)' 
-    %div
-      = f.text_area :text, class: 'form-control'
-    %div
-      = f.label :store, '店舗名'
-    %div
-      = f.text_field :store, class: 'form-control'
-    %div 
-      = f.label :name, 'タグ'
-    %div
-      = f.text_field :tag_name, class: 'form-control'
-    %div
-      = f.label :prefecture_id, '都道府県'
-    %div
-      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}
-    %div
-      = f.label :category_id, 'カテゴリ'
-    %div
-      = f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}
-    .form-group
-      = f.label :date, '開催日', class: 'control-label'
-      = f.date_field :date, class: 'form-control'
-    %div
-      = f.label :eyecatch, 'アイキャッチ'
-    %div
-      = f.file_field :eyecatch
-    = f.submit '作成', class: 'btn btn-success w-100'
+%ul
+  - event.errors.full_messages.each do |message|
+    %li= message
+.card
+  .card-body
+    = form_with(model: [@tag, event], local: true) do |f|
+      .label
+        = f.label :eyecatch, '画像'
+      .form
+        = f.file_field :eyecatch
+      .label
+        = f.label :name, 'イベント名(必須)'
+      .form
+        = f.text_field :name, class: 'form-control'
+      .label
+        = f.label :text, 'イベント詳細(必須)' 
+      .form
+        = f.text_area :text, class: 'form-control'
+      .label
+        = f.label :store, '店舗名'
+      .row
+        .form.col-6
+          = f.text_field :store, class: 'form-control'
+      .label
+        = f.label :prefecture_id, '都道府県'
+      .form
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}
+      .label
+        = f.label :date, '開催日'
+      .row
+        .form.col-6
+          = f.date_field :date, class: 'form-control'
+      .label
+        = f.label :category_id, 'カテゴリ'
+      .form
+        = f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}
+      .label
+        = f.label :name, 'タグ'
+      .row.mb-3
+        .form.col-6
+          = f.text_field :tag_name, class: 'form-control'
+      %hr
+      .mt-5.mb-3
+      = f.submit '投稿', class: 'btn btn-success btn-lg post-button'
+  

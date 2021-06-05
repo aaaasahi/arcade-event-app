@@ -6,16 +6,22 @@
 .join-button {
   margin: 0 auto;
   display: block;
-  width: 150px;
+  max-width: 60%;
 }
 
 .edit-button {
   margin-right: 7px;
 }
 
-.search-btn {
+.search-button {
   width: 60%;
   border-radius: 5px;
   margin: 0 auto;
   display: block;
+}
+
+.post-button {
+  margin: 0 auto;
+  display: block;
+  width: 15%;
 }
