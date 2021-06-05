@@ -3,7 +3,7 @@
     %li= message
 .card
   .card-body
-    = form_with(model: [@tag, event], local: true) do |f|
+    = form_with(model: event, local: true) do |f|
       .label
         = f.label :eyecatch, '画像'
       .form
@@ -17,14 +17,14 @@
       .form
         = f.text_area :text, class: 'form-control'
       .label
+        = f.label :prefecture_id, '都道府県'
+      .form
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}
+      .label
         = f.label :store, '店舗名'
       .row
         .form.col-6
           = f.text_field :store, class: 'form-control'
-      .label
-        = f.label :prefecture_id, '都道府県'
-      .form
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}
       .label
         = f.label :date, '開催日'
       .row
@@ -38,7 +38,7 @@
         = f.label :name, 'タグ'
       .row.mb-3
         .form.col-6
-          = f.text_field :tag_name, class: 'form-control'
+          = f.text_field :tag_name, value: @tag_list, class: 'form-control'
       %hr
       .mt-5.mb-3
       = f.submit '投稿', class: 'btn btn-success btn-lg post-button'
