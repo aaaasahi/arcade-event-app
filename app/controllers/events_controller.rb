@@ -29,11 +29,14 @@ class EventsController < ApplicationController
 
   def edit
     @event = current_user.events.find(params[:id])
+    @tag_list = @event.tags.pluck(:tag_name).split(nil)
   end
 
   def update
     @event = current_user.events.find(params[:id])
+    tag_list = params[:event][:tag_name].split(nil)
     if @event.update(event_params)
+      @event.save_event_tag(tag_list)
       redirect_to event_path(@event), notice: '更新しました'
     else
       flash.now[:error] = '更新に失敗しました'

@@ -20,7 +20,7 @@
               = f.collection_select :category_id_eq, Category.all,:id,:name,include_blank: '指定なし',class:'select'
             %hr
             = f.submit '検索', class:'"btn btn-dark search-button'
-      .card.mt-3
+      .card.mt-3.mb-3
         .card-body 
           .tag 
             %p.tag-title タグで検索
@@ -39,7 +39,7 @@
                     = event.name
                   .event-date.mb-4.text-muted
                     = event.display_date
-                  .tag
+                  - if event.tags.present?
                     %object
                       - event.tags.each do |list|
                         = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
