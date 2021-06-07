@@ -7,13 +7,17 @@
           = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
             = render "devise/shared/error_messages", resource: resource
             .field
-              = f.label :メールアドレス
+              = f.label :email
               %br/
               = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form"
             .field
-              = f.label :パスワード
+              = f.label :password
               %br/
               = f.password_field :password, autocomplete: "new-password", class: "form-control form"
+            .field
+              = f.label :password_confirmation
+              %br/
+              = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form"
             .actions
               = f.submit "新規登録", class: "btn btn-success w-100 login-button"
           = render "devise/shared/links"
