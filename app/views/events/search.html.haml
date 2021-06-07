@@ -39,7 +39,7 @@
                     = event.name
                   .event-date.mb-4.text-muted
                     = event.display_date
-                  - if  event.tags.present?
+                  - if event.tags.present?
                     %object
                       - event.tags.each do |list|
                         = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'

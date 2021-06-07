@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = current_user.events.find(params[:id])
-    @tag_list = @event.tags.pluck(:tag_name).join(",")
+    @tag_list = @event.tags.pluck(:tag_name).split(nil)
   end
 
   def update
