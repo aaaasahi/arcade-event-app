@@ -22,7 +22,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :events
+  has_many :events, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
   #パスワードなしで変更可能
   def update_without_current_password(params, *options)
