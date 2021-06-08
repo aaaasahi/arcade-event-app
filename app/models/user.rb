@@ -25,6 +25,8 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  delegate :gender, :introduction, :age_cal, to: :profile, allow_nil: true
+
   #パスワードなしで変更可能
   def update_without_current_password(params, *options)
     if params[:password].blank? && params[:password_confirmation].blank?

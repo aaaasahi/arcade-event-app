@@ -1,0 +1,35 @@
+.card 
+  .card-body
+    .row
+      .profile-image.col-3
+        = image_tag current_user.avatar_image, class:'avatar'
+      .profile-text.col-9
+        .profile-name
+          = current_user.display_name
+        - if current_user.gender.present?
+          %hr
+          %dl.gender 
+            .row 
+              %dt.col-2 性別
+              %dd.col-8
+                - if current_user.gender.present?
+                  = I18n.t("enum.genders.#{current_user.profile.gender}")
+        - if current_user.age_cal.present?
+          %hr 
+          %dl.age 
+            .row 
+              %dt.col-2 年齢
+              %dd.col-8
+                = current_user.age_cal
+        - if current_user.introduction.present?
+          %hr
+          %dl.introduction
+            .row
+              %dt.col-2 自己紹介
+              %dd.col-8
+                = current_user.introduction
+.user-event.mt-5
+  .text-title.mb-4 投稿イベント一覧
+  - current_user.events.each do |event|
+    = render 'commons/event', event: event
+
