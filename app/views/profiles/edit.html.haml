@@ -18,7 +18,7 @@
             .label
               = f.label :gender, '性別'
             .form
-              = f.select :gender, Profile.genders.keys, {}, { class: 'text' }
+              = f.select :gender, Profile.genders.keys.map { |k, v| [ I18n.t("enum.genders.#{k}"), k ] }, {}, { class: 'text' }
             .label
               = f.label :age, '生年月日'
             .row
