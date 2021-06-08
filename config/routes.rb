@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as: 'user'
   
   resources :events
+
+  resource :profile, only: [:show, :edit, :update]
 end

@@ -1,0 +1,43 @@
+.container 
+  .row
+    .right-profile.col-9.mt-5 
+      .card 
+        .card-body
+          .row
+            .profile-image.col-3
+              = image_tag 'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image', class:'avator'
+            .profile-text.col-9
+              .profile-name 
+                %h3 ユーザー名
+              %hr
+              .profile-text 
+                %p 自己紹介
+              %hr 
+              .profile-gender 
+                %p 性別
+              %hr 
+              .profile-age 
+                %p 年齢
+        .user-event
+          .text-title.mr-3.ml-3 投稿イベント一覧
+          
+
+    .left-profile.col-3.mt-5 
+      .card 
+        .profile-title マイページ
+        .card-body
+          .profile-link
+            %a{:href => "#"} お気に入り
+          %hr
+          .profile-link
+            %a{:href => "#"} 参加イベント
+          %hr
+          .profile-link
+            %a{:href => "#"} プロフィール変更
+          %hr
+          .profile-link
+            = link_to 'ユーザー情報変更', edit_user_registration_path
+          %hr 
+          .profile-link 
+            %a{:href => "#"} 退会
+          
