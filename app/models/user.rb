@@ -47,4 +47,5 @@ class User < ApplicationRecord
   def display_name
     profile&.name || self.email.split('@').first
   end
+
 end

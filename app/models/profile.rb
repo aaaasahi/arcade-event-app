@@ -18,4 +18,16 @@
 class Profile < ApplicationRecord
   enum gender: { male: 0, female: 1, other: 2 }
   belongs_to :user
+
+  #年齢計算
+  def age_cal
+    return '不明' unless age.present?
+    years = Time.zone.now.year - age.year
+    days = Time.zone.now.yday - age.yday
+    if days < 0
+      "#{years - 1}歳"
+    else
+      "#{years}歳"
+    end
+  end
 end
