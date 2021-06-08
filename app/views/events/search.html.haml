@@ -2,7 +2,7 @@
   .title
     %h2 イベントを探す
   .row.card-box
-    .right-content.col-3.mt-4
+    .left-content.col-3.mt-4
       .card
         .card-body
           = search_form_for @q, url: events_search_path do |f|
@@ -26,22 +26,8 @@
             %p.tag-title タグで検索
             - @tag_lists.each do |list|
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
-    .left-content.col-9.mt-4
+    .right-content.col-9.mt-4
       - @events.each do |event|
-        = link_to event_path(event) do
-          .card.mb-4
-            .row
-              .col-md-4
-                = image_tag event.eyecatch_image, class: 'card-image-top card-image'
-              .col-md-8
-                .card-body
-                  .event-title 
-                    = event.name
-                  .event-date.mb-4.text-muted
-                    = event.display_date
-                  - if event.tags.present?
-                    %object
-                      - event.tags.each do |list|
-                        = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
+        = render 'commons/event', event: event
   .page.mt-3
     = paginate @events,theme: 'twitter-bootstrap-4'

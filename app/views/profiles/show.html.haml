@@ -1,6 +1,6 @@
 .container 
   .row
-    .right-profile.col-9.mt-5 
+    .left-profile.col-9.mt-5 
       .card 
         .card-body
           .row
@@ -18,11 +18,12 @@
               %hr 
               .profile-age 
                 %p 年齢
-        .user-event
-          .text-title.mr-3.ml-3 投稿イベント一覧
-          
+      .user-event.mt-5
+        .text-title.mb-4 投稿イベント一覧
+        - current_user.events.each do |event|
+          = render 'commons/event', event: event
 
-    .left-profile.col-3.mt-5 
+    .right-profile.col-3.mt-5 
       .card 
         .profile-title マイページ
         .card-body
