@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'events/search', to: 'events#search'
   get '/users/:id', to: 'users#show', as: 'user'
   
-  resources :events
+  resources :events do
+    resources :comments, only: [:new, :create]
+  end
 
   resource :profile, only: [:show, :edit, :update]
 end
