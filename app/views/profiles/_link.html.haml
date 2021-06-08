@@ -1,0 +1,17 @@
+.card 
+  .profile-title マイページ
+  .card-body
+    .profile-link
+      %a{:href => "#"} お気に入り
+    %hr
+    .profile-link
+      %a{:href => "#"} 参加イベント
+    %hr
+    .profile-link
+      = link_to 'プロフィール変更', edit_profile_path
+    %hr
+    .profile-link
+      = link_to 'ユーザー情報変更', edit_user_registration_path
+    %hr 
+    .profile-link 
+      %a{:href => "#"} 退会

@@ -1,6 +1,6 @@
 .container 
   .row
-    .left-profile.col-9.mt-5 
+    .left-content.col-9.mt-5 
       .card 
         .card-body
           .row
@@ -23,22 +23,5 @@
         - current_user.events.each do |event|
           = render 'commons/event', event: event
 
-    .right-profile.col-3.mt-5 
-      .card 
-        .profile-title マイページ
-        .card-body
-          .profile-link
-            %a{:href => "#"} お気に入り
-          %hr
-          .profile-link
-            %a{:href => "#"} 参加イベント
-          %hr
-          .profile-link
-            %a{:href => "#"} プロフィール変更
-          %hr
-          .profile-link
-            = link_to 'ユーザー情報変更', edit_user_registration_path
-          %hr 
-          .profile-link 
-            %a{:href => "#"} 退会
-          
+    .right-content.col-3.mt-5 
+      = render 'link' 
