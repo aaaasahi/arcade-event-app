@@ -7,17 +7,26 @@
             .profile-image.col-3
               = image_tag 'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image', class:'avator'
             .profile-text.col-9
-              .profile-name 
-                %h3 ユーザー名
+              .profile-name
+                = current_user.display_name
+              %hr 
+              %dl.gender 
+                .row 
+                  %dt.col-2 性別
+                  %dd.col-8
+                    = current_user.profile&.gender
+              %hr 
+              %dl.age 
+                .row 
+                  %dt.col-2 年齢
+                  %dd.col-8
+                    = current_user.profile&.age
               %hr
-              .profile-text 
-                %p 自己紹介
-              %hr 
-              .profile-gender 
-                %p 性別
-              %hr 
-              .profile-age 
-                %p 年齢
+              %dl.introduction
+                .row
+                  %dt.col-2 自己紹介
+                  %dd.col-8
+                    = current_user.profile&.introduction
       .user-event.mt-5
         .text-title.mb-4 投稿イベント一覧
         - current_user.events.each do |event|
