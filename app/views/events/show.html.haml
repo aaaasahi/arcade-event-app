@@ -30,6 +30,14 @@
           .second-title 開催店舗
           .event-store 
             = @event.store
+          %hr
+          .second-title.mb-3 作成者
+          = link_to user_path(@user) do
+            .row
+              .user-avator.col-5
+                = image_tag @event.user.avatar_image, class: 'avatar-mini'
+              .user-name.col-6.d-flex.align-items-center
+                = @event.user.display_name
       - if user_signed_in? && current_user.has_written?(@event)
         .option
           = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
