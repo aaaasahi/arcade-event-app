@@ -8,6 +8,10 @@
         .card-body
           = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
             .label
+              = f.label :avatar, 'プロフィール画像'
+            .form
+              = f.file_field :avatar
+            .label
               = f.label :name, 'ユーザー名'
             .form
               = f.text_field :name, class: 'form-control'
@@ -17,8 +21,9 @@
               = f.text_area :introduction, class: 'form-control'
             .label
               = f.label :gender, '性別'
-            .form
-              = f.select :gender, Profile.genders.keys.map { |k, v| [ I18n.t("enum.genders.#{k}"), k ] }, {}, { class: 'text' }
+            .row
+              .form.col-3
+                = f.select :gender, Profile.genders.keys.map { |k, v| [ I18n.t("enum.genders.#{k}"), k ] }, {}, {class: 'form-control'}
             .label
               = f.label :age, '生年月日'
             .row

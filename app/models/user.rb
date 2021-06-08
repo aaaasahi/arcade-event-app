@@ -48,4 +48,12 @@ class User < ApplicationRecord
     profile&.name || self.email.split('@').first
   end
 
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image'
+    end
+  end
+
 end

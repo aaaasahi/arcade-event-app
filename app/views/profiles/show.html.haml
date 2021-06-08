@@ -5,7 +5,7 @@
         .card-body
           .row
             .profile-image.col-3
-              = image_tag 'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image', class:'avator'
+              = image_tag current_user.avatar_image, class:'avatar'
             .profile-text.col-9
               .profile-name
                 = current_user.display_name
@@ -14,7 +14,8 @@
                 .row 
                   %dt.col-2 性別
                   %dd.col-8
-                    = I18n.t("enum.genders.#{current_user.profile&.gender}")
+                    - if current_user.profile&.gender.present?
+                      = I18n.t("enum.genders.#{current_user.profile.gender}")
               %hr 
               %dl.age 
                 .row 
