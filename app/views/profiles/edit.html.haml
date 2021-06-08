@@ -1,0 +1,37 @@
+.container 
+  %ul
+    - @profile.errors.full_messages.each do |message|
+      %li= message
+  .row 
+    .left-content.col-9.mt-5
+      .card.mb-5
+        .card-body
+          = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+            .label
+              = f.label :avatar, 'プロフィール画像'
+            .form
+              = f.file_field :avatar
+            .label
+              = f.label :name, 'ユーザー名'
+            .form
+              = f.text_field :name, class: 'form-control'
+            .label
+              = f.label :introduction, '自己紹介' 
+            .form
+              = f.text_area :introduction, class: 'form-control'
+            .label
+              = f.label :gender, '性別'
+            .row
+              .form.col-3
+                = f.select :gender, Profile.genders.keys.map { |k, v| [ I18n.t("enum.genders.#{k}"), k ] }, {}, {class: 'form-control'}
+            .label
+              = f.label :age, '生年月日'
+            .row
+              .form.col-6
+                = f.date_field :age, class: 'form-control'
+            .mt-5.mb-3
+            = f.submit '保存', class: 'btn btn-success btn-lg post-button'
+    
+    .right-content.col-3.mt-5 
+      = render 'commons/link' 
+  

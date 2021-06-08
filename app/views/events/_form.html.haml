@@ -18,8 +18,9 @@
         = f.text_area :text, class: 'form-control'
       .label
         = f.label :prefecture_id, '都道府県'
-      .form
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}
+      .row 
+        .form.col-3
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, {class: 'form-control'}
       .label
         = f.label :store, '店舗名'
       .row
@@ -32,8 +33,9 @@
           = f.date_field :date, class: 'form-control'
       .label
         = f.label :category_id, 'カテゴリ'
-      .form
-        = f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}
+      .row
+        .form.col-3
+          = f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}, {class: 'form-control'}
       .label
         = f.label :name, 'タグ'
       .row.mb-3

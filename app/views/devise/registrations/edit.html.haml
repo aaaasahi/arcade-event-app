@@ -1,25 +1,27 @@
 .container
   .row
-    .col-md-7.offset-md-3
-      %h2.title ユーザー基本情報
+    .left-content.col-9.mt-5
       .card
         .card-body
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
             = render "devise/shared/error_messages", resource: resource
-            .field
+            .label
               = f.label :email
-              %br/
+            .form
               = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form"
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
               %div
                 Currently waiting confirmation for: #{resource.unconfirmed_email}
-            .field
+            .label
               = f.label :password
-              %br/
+            .form
               = f.password_field :password, autocomplete: "new-password", class: "form-control form"
-            .field
+            .label
               = f.label :password_confirmation
-              %br/
+            .form
               = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form"
-            .actions
-              = f.submit "変更する", class: "btn btn-success w-100 login-button"
+            .mt-5.mb-3
+              = f.submit "変更する", class: "btn btn-success  btn-lg post-button"
+    
+    .right-content.col-3.mt-5 
+      = render 'commons/link' 

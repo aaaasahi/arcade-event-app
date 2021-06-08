@@ -22,7 +22,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :events
+  has_many :events, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
   #パスワードなしで変更可能
   def update_without_current_password(params, *options)
@@ -38,4 +39,21 @@ class User < ApplicationRecord
   def has_written?(event)
     events.exists?(id: event.id)
   end
+
+  def prepare_profile
+    profile || build_profile
+  end
+
+  def display_name
+    profile&.name || self.email.split('@').first
+  end
+
+  def avatar_image
+    if profile&.avatar&.attached?
+      profile.avatar
+    else
+      'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image'
+    end
+  end
+
 end

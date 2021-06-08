@@ -1,0 +1,22 @@
+.avatar {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.profile-title {
+  line-height: 2.0;
+  background-color: black;
+  color: white;
+  padding: 0 10px;
+  font-size: 15px;
+}
+
+.profile-link:hover {
+  opacity: 0.5;
+}
+
+.profile-name {
+  font-size: 30px;
+  font-weight: bold;
+}

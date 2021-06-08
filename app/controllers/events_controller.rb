@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_search, only: [:search]
   PER_PAGE = 5
+  
   def index
     @events = Event.all
     
