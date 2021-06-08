@@ -39,4 +39,9 @@ class User < ApplicationRecord
   def has_written?(event)
     events.exists?(id: event.id)
   end
+
+  def prepare_profile
+    profile || build_profile
+  end
+  
 end
