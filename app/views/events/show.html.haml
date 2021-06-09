@@ -15,7 +15,23 @@
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
           %hr
           %button.btn.btn-primary.btn-lg.join-button{:type => "button"} 参加する
-          
+
+      - if user_signed_in?
+        .comment-field.mt-5
+          %h5 コメント一覧
+          .card 
+            .card-body
+              - @comments.each do |comment|
+                .row
+                  = link_to user_path(comment.user) do
+                    .comment-avator.col-2.mb-4
+                      = image_tag comment.user.avatar_image, class: 'avatar-mini'
+                  .comment-text.col-6.d-flex.align-items-center
+                    %p= comment.content
+        .comment-btn
+          = link_to new_event_comment_path(@event) do
+            .btn
+              コメントを追加
 
     .left-card.col-3.mt-5
       .card
@@ -32,17 +48,13 @@
             = @event.store
           %hr
           .second-title.mb-3 作成者
-          = link_to user_path(@user) do
+          = link_to user_path(@event.user) do
             .row
               .user-avator.col-5
-                = image_tag @event.user.avatar_image, class: 'avatar-mini'
+                = image_tag @event.user.avatar_image, class: 'avatar-normal'
               .user-name.col-6.d-flex.align-items-center
                 = @event.user.display_name
       - if user_signed_in? && current_user.has_written?(@event)
         .option
           = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
           = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
-    .comment 
-      = link_to new_event_comment_path(@event) do
-        .btn
-          コメントを追加
