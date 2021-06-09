@@ -12,6 +12,11 @@
   margin-bottom: 20px;
 }
 
+.title-field {
+  display: flex;
+  justify-content: space-between;
+}
+
 .text-title {
   font-size: 20px;
   background-color: darkgrey;
@@ -38,4 +43,39 @@
 
 .user-name {
   font-size: 20px;
+}
+
+.clip {
+  display: flex;
+    &__icon {
+      border: 1px solid #000;
+      padding: 5px;
+      border-radius: 5px;
+      color:black;
+    }
+    &__icon:hover {
+      background-color:#c0c0c0;
+      color: white;
+    }
+    &__icon::before {
+      font-family: "Font Awesome 5 Free";
+      content: '\f0c6';
+      font-weight: 900;
+    }
+
+    &__active {
+      border: 1px solid #000;
+      padding: 5px;
+      border-radius: 5px;
+      color:white;
+      background-color:#c0c0c0;
+    }
+    &__active:hover {
+      opacity: 0.5;
+    }
+    &__active::before {
+      font-family: "Font Awesome 5 Free";
+      content: '\f0c6';
+      font-weight: 900;
+    }
 }

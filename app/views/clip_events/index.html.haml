@@ -1,0 +1,7 @@
+.container
+  .row 
+    .left-content.col-9.mt-5 
+      - @events.each do |event|
+        = render 'commons/event', event: event
+    .right-content.col-3.mt-5 
+      = render 'commons/link' 
