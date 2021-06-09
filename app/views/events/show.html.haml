@@ -42,3 +42,7 @@
         .option
           = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
           = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
+    .comment 
+      = link_to new_event_comment_path(@event) do
+        .btn
+          コメントを追加
