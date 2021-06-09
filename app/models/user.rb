@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   has_many :events, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :clips, dependent: :destroy
 
   has_one :profile, dependent: :destroy
 
