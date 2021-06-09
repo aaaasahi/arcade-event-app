@@ -8,8 +8,12 @@
           .event-title 
             = @event.name
           .clip
-            = link_to event_clip_path(@event), data: { method: 'post' } do
-              .clip__icon クリップ
+            - if  current_user.has_clipped?(@event)
+              = link_to event_clip_path(@event), data: { method: 'delete' } do
+                .clip__active クリップ中
+            -else
+              = link_to event_clip_path(@event), data: { method: 'post' } do
+                .clip__icon クリップ
           .text-title イベント詳細
           .card-text.mb-5
             = @event.text

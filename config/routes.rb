@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :comments, only: [:new, :create]
 
-    resource :clip, only: [:create]
+    resource :clip, only: [:create, :destroy]
   end
 
   resource :profile, only: [:show, :edit, :update]

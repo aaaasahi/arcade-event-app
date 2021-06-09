@@ -45,6 +45,10 @@ class User < ApplicationRecord
     events.exists?(id: event.id)
   end
 
+  def has_clipped?(event)
+    clips.exists?(event_id: event.id)
+  end
+
   def prepare_profile
     profile || build_profile
   end

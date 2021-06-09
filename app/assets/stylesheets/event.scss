@@ -66,8 +66,7 @@
       background-color:#c0c0c0;
     }
     &__active:hover {
-      color:black;
-      background-color: white;
+      opacity: 0.5;
     }
     &__active::before {
       font-family: "Font Awesome 5 Free";
