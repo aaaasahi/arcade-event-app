@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
 
   resource :profile, only: [:show, :edit, :update]
+  resources :clip_events, only: [:index]
 end
