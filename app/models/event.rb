@@ -29,6 +29,7 @@ class Event < ApplicationRecord
   has_many :tags, through: :tagmaps
   has_many :comments, dependent: :destroy
   has_many :clips, dependent: :destroy
+  has_many :joins, dependent: :destroy
 
   validates :name, presence: true
   validates :text, presence: true
