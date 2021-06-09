@@ -44,11 +44,13 @@ ActiveRecord::Schema.define(version: 2021_06_08_235542) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "event_id", null: false
+    t.bigint "event_id"
+    t.bigint "user_id"
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_comments_on_event_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -105,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_06_08_235542) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "events"
+  add_foreign_key "comments", "users"
   add_foreign_key "tagmaps", "events"
   add_foreign_key "tagmaps", "tags"
 end
