@@ -50,8 +50,9 @@
           .event-date
             = @event.display_date
           %hr
-          .second-title 参加者
-          .event-entry 10人
+          .second-title 参加予定者
+          .event-entry 
+            = "#{@event.join_count}人"
           %hr
           .second-title 開催店舗
           .event-store 

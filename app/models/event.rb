@@ -34,6 +34,10 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :text, presence: true
 
+  def join_count
+    joins.count
+  end
+
   #日付の表示
   def display_date
     if self.date.present?
