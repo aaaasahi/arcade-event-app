@@ -12,7 +12,7 @@
               - if current_user.has_clipped?(@event)
                 = link_to event_clip_path(@event), data: { method: 'delete' } do
                   .clip__active クリップ中
-              -else
+              - else
                 = link_to event_clip_path(@event), data: { method: 'post' } do
                   .clip__icon クリップ
           .text-title イベント詳細
@@ -22,8 +22,10 @@
             - @event.tags.each do |list|
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
           %hr
-          %button.btn.btn-primary.btn-lg.join-button{:type => "button"} 参加する
-
+          - if current_user.has_joined?(@event)
+            = link_to '参加予定', event_join_path(@event), class: 'btn btn-primary btn-lg join-button', data: { method: 'delete' }
+          - else
+            = link_to '参加する', event_join_path(@event), class: 'btn btn-outline-primary btn-lg join-button', data: { method: 'post' }
       - if user_signed_in?
         .comment-field.mt-5
           %h5 コメント一覧
@@ -48,8 +50,9 @@
           .event-date
             = @event.display_date
           %hr
-          .second-title 参加者
-          .event-entry 10人
+          .second-title 参加予定者
+          .event-entry 
+            = "#{@event.join_count}人"
           %hr
           .second-title 開催店舗
           .event-store 
