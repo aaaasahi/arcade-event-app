@@ -33,7 +33,7 @@
             .card-body
               - @comments.each do |comment|
                 .row
-                  = link_to user_path(comment.user) do
+                  = link_to  account_path(comment.user) do
                     .comment-avator.col-2.mb-4
                       = image_tag comment.user.avatar_image, class: 'avatar-mini'
                   .comment-text.col-6.d-flex.align-items-center
@@ -59,7 +59,7 @@
             = @event.store
           %hr
           .second-title.mb-3 作成者
-          = link_to user_path(@event.user) do
+          = link_to account_path(@event.user) do
             .row
               .user-avator.col-5
                 = image_tag @event.user.avatar_image, class: 'avatar-normal'
