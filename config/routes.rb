@@ -3,7 +3,6 @@ Rails.application.routes.draw do
     controllers: { registrations: 'registrations' }
   root 'events#index'
   get 'events/search', to: 'events#search'
-  get '/users/:id', to: 'users#show', as: 'user'
   
   resources :events do
     resources :comments, only: [:new, :create]
@@ -12,6 +11,9 @@ Rails.application.routes.draw do
     resource :join, only: [:create, :destroy]
   end
 
+  resources :accounts, only: [:show]
+
   resource :profile, only: [:show, :edit, :update]
   resources :clip_events, only: [:index]
+  resources :join_events, only: [:index]
 end

@@ -30,8 +30,9 @@ gem 'active_hash'
 gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'active_decorator'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
