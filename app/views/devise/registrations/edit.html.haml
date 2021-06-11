@@ -3,7 +3,7 @@
     %h4 ユーザー情報変更
   .row
     .left-content.col-9.mt-5
-      .card
+      .card.mb-5
         .card-body
           = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
             = render "devise/shared/error_messages", resource: resource

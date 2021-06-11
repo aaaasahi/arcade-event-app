@@ -1,7 +1,7 @@
 %ul
   - event.errors.full_messages.each do |message|
     %li= message
-.card
+.card.mb-5
   .card-body
     = form_with(model: event, local: true) do |f|
       .label
