@@ -34,17 +34,6 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :text, presence: true
 
-  def join_count
-    joins.count
-  end
-
-  #日付の表示
-  def display_date
-    if self.date.present?
-      I18n.l(self.date, format: :default)
-    end
-  end
-
   #タグ作成
   def save_event_tag(tags)
     # 既にタグネームあるなら取得
@@ -63,12 +52,5 @@ class Event < ApplicationRecord
       self.tags << post_tag
     end
   end
-
-  def eyecatch_image
-    if eyecatch.attached?
-      eyecatch
-    else
-      'http://placehold.jp/eeeeee/cccccc/200x150.png?text=No%20Image'
-    end
-  end
+  
 end
