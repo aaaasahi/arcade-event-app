@@ -9,7 +9,7 @@
             .event-title 
               = @event.name
             .clip
-              - if current_user.has_clipped?(@event)
+              - if user_signed_in? &&current_user.has_clipped?(@event)
                 = link_to event_clip_path(@event), data: { method: 'delete' } do
                   .clip__active クリップ中
               - else
@@ -22,10 +22,15 @@
             - @event.tags.each do |list|
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
           %hr
-          - if current_user.has_joined?(@event)
-            = link_to '参加予定', event_join_path(@event), class: 'btn btn-primary btn-lg join-button', data: { method: 'delete' }
+          - if user_signed_in? && current_user.has_written?(@event)
+            .option
+              = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
+              = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
           - else
-            = link_to '参加する', event_join_path(@event), class: 'btn btn-outline-primary btn-lg join-button', data: { method: 'post' }
+            - if user_signed_in? && current_user.has_joined?(@event)
+              = link_to '参加予定', event_join_path(@event), class: 'btn btn-primary btn-lg join-button', data: { method: 'delete' }
+            - else
+              = link_to '参加する', event_join_path(@event), class: 'btn btn-outline-primary btn-lg join-button', data: { method: 'post' }
       - if user_signed_in?
         .comment-field.mt-5
           %h5 コメント一覧
@@ -33,7 +38,7 @@
             .card-body
               - @comments.each do |comment|
                 .row
-                  = link_to user_path(comment.user) do
+                  = link_to  account_path(comment.user) do
                     .comment-avator.col-2.mb-4
                       = image_tag comment.user.avatar_image, class: 'avatar-mini'
                   .comment-text.col-6.d-flex.align-items-center
@@ -48,7 +53,7 @@
         .card-body
           .second-title 日程
           .event-date
-            = @event.display_date
+            = @event.display_date || '未定'
           %hr
           .second-title 参加予定者
           .event-entry 
@@ -56,16 +61,12 @@
           %hr
           .second-title 開催店舗
           .event-store 
-            = @event.store
+            = @event.store || '未定'
           %hr
           .second-title.mb-3 作成者
-          = link_to user_path(@event.user) do
+          = link_to account_path(@event.user) do
             .row
               .user-avator.col-5
                 = image_tag @event.user.avatar_image, class: 'avatar-normal'
               .user-name.col-6.d-flex.align-items-center
                 = @event.user.display_name
-      - if user_signed_in? && current_user.has_written?(@event)
-        .option
-          = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
-          = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'

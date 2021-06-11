@@ -30,6 +30,7 @@ gem 'active_hash'
 gem 'ransack'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'active_decorator'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
