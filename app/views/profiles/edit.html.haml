@@ -1,4 +1,6 @@
 .container 
+  .profile-title.mt-5
+    %h4 プロフィール変更
   %ul
     - @profile.errors.full_messages.each do |message|
       %li= message

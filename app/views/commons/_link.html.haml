@@ -1,5 +1,5 @@
 .card 
-  .profile-title マイページ
+  .link-title マイページ
   .card-body
     .profile-link
       = link_to 'TOP', profile_path
@@ -8,7 +8,7 @@
       = link_to 'クリップ', clip_events_path
     %hr
     .profile-link
-      = link_to '参加予定イベント', join_events_path
+      = link_to '参加予定', join_events_path
     %hr
     .profile-link
       = link_to 'プロフィール変更', edit_profile_path
