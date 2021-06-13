@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
 
     resource :clip, only: [:show, :create, :destroy]
-    resource :join, only: [:create, :destroy]
+    resource :join, only: [:show, :create, :destroy]
   end
 
   resources :accounts, only: [:show]

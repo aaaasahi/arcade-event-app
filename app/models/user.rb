@@ -48,6 +48,10 @@ class User < ApplicationRecord
     clips.exists?(event_id: event.id)
   end
 
+  def has_joined?(event)
+    joins.exists?(event_id: event.id)
+  end
+
   def prepare_profile
     profile || build_profile
   end

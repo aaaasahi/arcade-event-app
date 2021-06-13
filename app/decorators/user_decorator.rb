@@ -6,9 +6,7 @@ module UserDecorator
     events.exists?(id: event.id)
   end
 
-  def has_joined?(event)
-    joins.exists?(event_id: event.id)
-  end
+  
 
   def display_name
     profile&.name || self.email.split('@').first
