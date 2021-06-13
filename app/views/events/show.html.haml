@@ -24,10 +24,8 @@
               = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
               = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
           - else
-            - if user_signed_in? && current_user.has_joined?(@event)
-              = link_to '参加予定', event_join_path(@event), class: 'btn btn-primary btn-lg join-button', data: { method: 'delete' }
-            - else
-              = link_to '参加する', event_join_path(@event), class: 'btn btn-outline-primary btn-lg join-button', data: { method: 'post' }
+            .btn.btn-primary.btn-lg.join-button.hidden.active-join 参加予定
+            .btn.btn-outline-primary.btn-lg.join-button.hidden.inactive-join 参加する
       - if user_signed_in?
         .comment-field.mt-5
           %h5 コメント一覧

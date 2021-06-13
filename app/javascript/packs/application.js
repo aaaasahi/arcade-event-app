@@ -26,6 +26,14 @@ const handleClipDisplay = (hasClipped) => {
   }
 }
 
+const handleJoinDisplay = (hasJoined) => {
+  if (hasJoined) {
+    $('.active-join').removeClass('hidden')
+  } else {
+    $('.inactive-join').removeClass('hidden')
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#event-show').data()
   const eventId = dataset.eventId
@@ -35,6 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(response)
       const hasClipped = response.data.hasClipped
       handleClipDisplay(hasClipped)
+    })
+
+    axios.get(`/events/${eventId}/join`)
+    .then((response) => {
+      console.log(response)
+      const hasJoined = response.data.hasJoined
+      handleJoinDisplay(hasJoined)
     })
 
     $('.inactive-clip').on('click', () => {
@@ -58,6 +73,36 @@ document.addEventListener('DOMContentLoaded', () => {
           if (response.data.status === 'ok') {
             $('.active-clip').addClass('hidden')
             $('.inactive-clip').removeClass('hidden')
+          }
+          console.log(response)
+        })
+        .catch((e) => {
+          window.alert('Error')
+          console.log(e)
+        })
+    })
+
+    $('.inactive-join').on('click', () => {
+      axios.post(`/events/${eventId}/join`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $('.active-join').removeClass('hidden')
+            $('.inactive-join').addClass('hidden')
+          }
+          console.log(response)
+        })
+        .catch((e) => {
+          window.alert('Error')
+          console.log(e)
+        })
+    })
+
+    $('.active-join').on('click', () => {
+      axios.delete(`/events/${eventId}/join`)
+        .then((response) => {
+          if (response.data.status === 'ok') {
+            $('.active-join').addClass('hidden')
+            $('.inactive-join').removeClass('hidden')
           }
           console.log(response)
         })
