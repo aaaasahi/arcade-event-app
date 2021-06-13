@@ -10,7 +10,7 @@ class ClipsController < ApplicationController
   def create
     event = Event.find(params[:event_id])
     event.clips.create!(user_id: current_user.id)
-    redirect_to event_path(event)
+    render json: { status: 'ok' }
   end
 
   def destroy
@@ -18,6 +18,6 @@ class ClipsController < ApplicationController
     clip = event.clips.find_by!(user_id: current_user.id)
 
     clip.destroy!
-    redirect_to event_path(event)
+    render json: { status: 'ok' }
   end
 end

@@ -10,10 +10,8 @@
               = @event.name
             .clip
               - if user_signed_in?
-                = link_to event_clip_path(@event), data: { method: 'delete' } do
-                  .clip__active.hidden.active-clip クリップ中
-                = link_to event_clip_path(@event), data: { method: 'post' } do
-                  .clip__icon.hidden.inactive-clip クリップ
+                .clip__active.hidden.active-clip クリップ中
+                .clip__icon.hidden.inactive-clip クリップ
           .text-title イベント詳細
           .card-text.mb-5
             = @event.text
