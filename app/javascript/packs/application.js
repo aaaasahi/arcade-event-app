@@ -8,12 +8,15 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap/dist/js/bootstrap"
 
-
 import $ from 'jquery'
-import axios from 'axios'
-import { csrfToken } from 'rails-ujs'
+import axios from 'modules/axios'
+import {
+  InactiveClipEvent,
+  ActiveClipEvent,
+  InActiveJoinEvent,
+  ActiveJoinEvent
+} from 'modules/handle.js'
 
-axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 Rails.start()
 ActiveStorage.start()
@@ -52,63 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
       handleJoinDisplay(hasJoined)
     })
 
-    $('.inactive-clip').on('click', () => {
-      axios.post(`/events/${eventId}/clip`)
-        .then((response) => {
-          if (response.data.status === 'ok') {
-            $('.active-clip').removeClass('hidden')
-            $('.inactive-clip').addClass('hidden')
-          }
-          console.log(response)
-        })
-        .catch((e) => {
-          window.alert('Error')
-          console.log(e)
-        })
-    })
-
-    $('.active-clip').on('click', () => {
-      axios.delete(`/events/${eventId}/clip`)
-        .then((response) => {
-          if (response.data.status === 'ok') {
-            $('.active-clip').addClass('hidden')
-            $('.inactive-clip').removeClass('hidden')
-          }
-          console.log(response)
-        })
-        .catch((e) => {
-          window.alert('Error')
-          console.log(e)
-        })
-    })
-
-    $('.inactive-join').on('click', () => {
-      axios.post(`/events/${eventId}/join`)
-        .then((response) => {
-          if (response.data.status === 'ok') {
-            $('.active-join').removeClass('hidden')
-            $('.inactive-join').addClass('hidden')
-          }
-          console.log(response)
-        })
-        .catch((e) => {
-          window.alert('Error')
-          console.log(e)
-        })
-    })
-
-    $('.active-join').on('click', () => {
-      axios.delete(`/events/${eventId}/join`)
-        .then((response) => {
-          if (response.data.status === 'ok') {
-            $('.active-join').addClass('hidden')
-            $('.inactive-join').removeClass('hidden')
-          }
-          console.log(response)
-        })
-        .catch((e) => {
-          window.alert('Error')
-          console.log(e)
-        })
-    })
+  InactiveClipEvent(eventId)
+  ActiveClipEvent(eventId)
+  InActiveJoinEvent(eventId)
+  ActiveJoinEvent(eventId)
 })
