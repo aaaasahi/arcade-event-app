@@ -1,4 +1,4 @@
-.container 
+.container#event-show{data: {event_id: @event.id}}
   .row 
     .right-card.col-9.mt-5
       .card
@@ -9,12 +9,9 @@
             .event-title 
               = @event.name
             .clip
-              - if user_signed_in? &&current_user.has_clipped?(@event)
-                = link_to event_clip_path(@event), data: { method: 'delete' } do
-                  .clip__active クリップ中
-              - else
-                = link_to event_clip_path(@event), data: { method: 'post' } do
-                  .clip__icon クリップ
+              - if user_signed_in?
+                .clip__active.hidden.active-clip クリップ中
+                .clip__icon.hidden.inactive-clip クリップ
           .text-title イベント詳細
           .card-text.mb-5
             = @event.text
@@ -27,10 +24,8 @@
               = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
               = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
           - else
-            - if user_signed_in? && current_user.has_joined?(@event)
-              = link_to '参加予定', event_join_path(@event), class: 'btn btn-primary btn-lg join-button', data: { method: 'delete' }
-            - else
-              = link_to '参加する', event_join_path(@event), class: 'btn btn-outline-primary btn-lg join-button', data: { method: 'post' }
+            .btn.btn-primary.btn-lg.join-button.hidden.active-join 参加予定
+            .btn.btn-outline-primary.btn-lg.join-button.hidden.inactive-join 参加する
       - if user_signed_in?
         .comment-field.mt-5
           %h5 コメント一覧
