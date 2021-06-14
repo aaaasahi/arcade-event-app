@@ -1,11 +1,12 @@
 class  Users::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: :destroy
+  before_action :ensure_normal_user, only: [:destroy, :update]
 
   protected
 
   def ensure_normal_user
     if resource.email == "guest@example.com"
-      redirect_to root_path, alert: "ゲストユーザーは削除できません。"
+      flash[:error] = "ゲストユーザーの更新・削除はできません。"
+      redirect_back(fallback_location: root_path)
     end
   end
 
