@@ -15,4 +15,5 @@
               = f.password_field :password, autocomplete: "current-password", class: "form-control form"
             .actions
               = f.submit "ログイン", class: "btn btn-success w-100 login-button"
+          = link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post 
           = render "devise/shared/links"
