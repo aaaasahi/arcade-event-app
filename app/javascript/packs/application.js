@@ -55,6 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
       handleJoinDisplay(hasJoined)
     })
 
+    $('.show-comment-form').on('click', () => {
+      $('.show-comment-form').addClass('hidden')
+      $('.comment-container').removeClass('hidden')
+    })
+
   InactiveClipEvent(eventId)
   ActiveClipEvent(eventId)
   InActiveJoinEvent(eventId)
