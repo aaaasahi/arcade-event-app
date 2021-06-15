@@ -20,4 +20,6 @@
               = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form"
             .actions
               = f.submit "新規登録", class: "btn btn-success w-100 login-button"
-          = render "devise/shared/links"
+          .login-group.d-flex.mt-3
+            = link_to 'ログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn btn-primary w-50 mr-3"
+            = link_to 'ログイン',new_user_session_path, class: "btn btn-danger w-50"
