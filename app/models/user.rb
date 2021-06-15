@@ -44,6 +44,12 @@ class User < ApplicationRecord
     result
   end
 
+  def self.guest
+    find_or_create_by!(email: "guest@example.com") do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   def has_clipped?(event)
     clips.exists?(event_id: event.id)
   end

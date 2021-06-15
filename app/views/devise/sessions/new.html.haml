@@ -14,5 +14,7 @@
               %br/
               = f.password_field :password, autocomplete: "current-password", class: "form-control form"
             .actions
-              = f.submit "ログイン", class: "btn btn-success w-100 login-button"
-          = render "devise/shared/links"
+              = f.submit "ログイン", class: "btn btn-danger w-100 login-button"
+            .login-group.d-flex.mt-3
+              = link_to 'ログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn btn-primary w-50 mr-3"
+              = link_to '新規登録',new_user_registration_path, class: "btn btn-success w-50"
