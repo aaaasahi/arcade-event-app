@@ -5,9 +5,11 @@
   .card-body
     = form_with(model: event, local: true) do |f|
       .label
-        = f.label :eyecatch, '画像'
-      .form
-        = f.file_field :eyecatch
+        = f.label :eyecatch, 'イベント画像'
+      .form.text-center
+        = image_tag event.eyecatch_image, id: 'preview', class: 'preview-image'
+      .form.text-center.mt-5
+        = f.file_field :eyecatch, id: 'input-file'
       .label
         = f.label :name, 'イベント名(必須)'
       .form
@@ -44,4 +46,7 @@
       %hr
       .mt-5.mb-3
       = f.submit '投稿', class: 'btn btn-success btn-lg post-button'
+
+
+= javascript_pack_tag 'image-preview'
   
