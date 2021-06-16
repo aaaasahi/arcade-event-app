@@ -27,7 +27,20 @@
             - @tag_lists.each do |list|
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
     .right-content.col-9.mt-4
-      - @events.each do |event|
-        = render 'commons/event', event: event
-  .page.mt-3
-    = paginate @events,theme: 'twitter-bootstrap-4'
+      .sort-container
+        %ul.sort
+          %li 並び順
+          %li
+            = link_to '新着', events_search_path(new: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?new=true')}"}
+          %li
+            = link_to '古い', events_search_path(old: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?old=true')}"}
+          %li
+            = link_to '参加者数', events_search_path(join: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?join=true')}"}
+      - if @events.present?
+        - @events.each do |event|
+          = render 'commons/event', event: event
+      - else 
+        %h3 検索結果はありません
+  - if @events.present?
+    .page.mt-3
+      = paginate @events,theme: 'twitter-bootstrap-4'

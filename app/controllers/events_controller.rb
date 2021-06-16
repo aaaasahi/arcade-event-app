@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_search, only: [:search]
   PER_PAGE = 5
   
   def index
@@ -54,7 +53,18 @@ class EventsController < ApplicationController
   end
 
   def search
+    @q = Event.ransack(params[:q])
     @tag_lists = Tag.all
+    @events = @q.result(distinct: true).page(params[:page]).per(PER_PAGE)
+
+  if params[:new]
+    @events = Event.latest.page(params[:page]).per(PER_PAGE)
+  elsif params[:old]
+    @events = Event.old.page(params[:page]).per(PER_PAGE)
+  elsif params[:join]
+    events = Event.join_count
+    @events =  Kaminari.paginate_array(events).page(params[:page]).per(PER_PAGE)
+  end
 
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
@@ -68,8 +78,4 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name, :text, :store, :date, :eyecatch, :prefecture_id, :category_id)
   end
 
-  def set_search
-    @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true).page(params[:page]).per(PER_PAGE)
-  end
 end

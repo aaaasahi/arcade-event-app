@@ -13,6 +13,11 @@ html {
   padding-bottom: 60px; 
   box-sizing: border-box;
 }
+
+ul {
+  list-style: none;
+}
+
 .header {
   z-index: 1;
 }
@@ -36,10 +41,9 @@ html {
 a {
   text-decoration: none !important;
   color: black;
-}
-
-a:hover {
-  color: black;
+  &:hover {
+    color: black;
+  }
 }
 
 .login {
@@ -68,3 +72,36 @@ a:hover {
 .hidden {
   display: none;
 }
+
+.sort-container .sort {
+  text-align: right;
+}
+
+.sort li {
+  display:inline;
+	margin-right:6px;
+	padding-left:10px;
+
+}
+
+.sort li + li {
+  border-left:1px solid #999;
+}
+
+.sort-link {
+  color: #0e7ac4;
+  &:hover {
+    text-decoration: underline !important;
+    color: #0e7ac4
+  }
+}
+
+.active {
+  color: black;
+  &:hover {
+    color: black;
+    text-decoration: none !important;
+  }
+}
+
+
