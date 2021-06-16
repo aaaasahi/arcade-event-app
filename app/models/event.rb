@@ -52,5 +52,9 @@ class Event < ApplicationRecord
       self.tags << post_tag
     end
   end
+
+  scope :latest, -> {order(updated_at: :desc)}
+  scope :old, -> {order(updated_at: :asc)}
+  scope :join_count, -> { includes(:joins).sort {|a,b| b.joins.size <=> a.joins.size}}
   
 end

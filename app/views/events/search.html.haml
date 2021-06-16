@@ -1,6 +1,10 @@
 .container 
   .title
     %h2 イベントを探す
+  .sort-link
+    = link_to '新着', events_search_path(new: 'true')
+    = link_to '古い', events_search_path(old: 'true')
+    = link_to '参加者数', events_search_path(join: 'true')
   .row.card-box
     .left-content.col-3.mt-4
       .card
@@ -27,7 +31,11 @@
             - @tag_lists.each do |list|
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
     .right-content.col-9.mt-4
-      - @events.each do |event|
-        = render 'commons/event', event: event
-  .page.mt-3
-    = paginate @events,theme: 'twitter-bootstrap-4'
+      - if @events.present?
+        - @events.each do |event|
+          = render 'commons/event', event: event
+      - else 
+        %h3 検索結果はありません
+  - if @events.present?
+    .page.mt-3
+      = paginate @events,theme: 'twitter-bootstrap-4'
