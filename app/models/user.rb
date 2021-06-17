@@ -62,4 +62,8 @@ class User < ApplicationRecord
   def prepare_profile
     profile || build_profile
   end
+
+  def active_for_authentication?
+    super && (is_valid == true)
+  end
 end
