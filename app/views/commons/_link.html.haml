@@ -17,4 +17,4 @@
       = link_to 'ユーザー情報変更', edit_user_registration_path
     %hr 
     .profile-link 
-      %a{:href => "#"} 退会
+      = link_to '退会する', unsubscribe_path(current_user)

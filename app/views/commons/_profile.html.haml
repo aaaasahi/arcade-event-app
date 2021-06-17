@@ -1,3 +1,6 @@
+- if user.is_valid == false 
+  .unsub-text.mb-3
+    %h4 （退会済みユーザー）
 .card
   .card-body
     .row
@@ -30,6 +33,6 @@
                 = user.introduction
 .user-event.mt-5
   .text-title.mb-4 投稿イベント一覧
-  - current_user.events.each do |event|
+  - user.events.each do |event|
     = render 'commons/event', event: event
 
