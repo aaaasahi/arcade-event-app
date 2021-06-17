@@ -1,0 +1,5 @@
+.container
+  = month_calendar events: @events do |date, events|
+    = date.day
+    - events.each do |event|
+      =link_to event.name, event_path(event)

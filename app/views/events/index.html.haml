@@ -1,6 +1,7 @@
 .container
   .title
     %h2 Topページ予定
+  = link_to 'カレンダー', calendars_path
   .row 
     - @events.each do |event|
       .card-container.col-12.col-md-6.col-lg-3
