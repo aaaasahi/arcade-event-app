@@ -1,0 +1,8 @@
+.container
+  .title 
+    %h2 イベントカレンダー
+  = month_calendar events: @events do |date, events|
+    = date.day
+    - events.each do |event|
+      .calendar-link-box
+        = link_to ("・#{event.name}"), event_path(event), class: 'calendar-link'

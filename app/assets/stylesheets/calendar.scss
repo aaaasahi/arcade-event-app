@@ -1,0 +1,21 @@
+.calendar-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+  .calendar-link-box:hover {
+    text-decoration: underline !important;
+    background-color: #3cb371;
+  }
+
+  .calendar-link:hover {
+    color: white;
+  }
+
+
+  .wday-6 {
+    color: blue;
+  }
+  .wday-0 {
+    color: red;
+  }
