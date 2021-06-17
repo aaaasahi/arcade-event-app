@@ -5,6 +5,7 @@
 #  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
+#  is_valid               :boolean          default(TRUE), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -60,5 +61,9 @@ class User < ApplicationRecord
 
   def prepare_profile
     profile || build_profile
+  end
+
+  def active_for_authentication?
+    super && (is_valid == true)
   end
 end
