@@ -18,6 +18,8 @@
           %li.nav-item
             = link_to 'イベントを探す', events_search_path, class: "nav-link"
           %li.nav-item
+            = link_to 'イベントカレンダー', calendars_path, class: "nav-link"
+          %li.nav-item
             = link_to 'イベント作成', new_event_path, class: "nav-link"
         - if user_signed_in?
           %ul.navbar-nav
