@@ -3,8 +3,8 @@
 # Table name: events
 #
 #  id            :bigint           not null, primary key
-#  date          :date
 #  name          :string           not null
+#  start_time    :date
 #  store         :string
 #  text          :text             not null
 #  created_at    :datetime         not null

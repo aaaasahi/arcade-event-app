@@ -5,8 +5,8 @@ module EventDecorator
   end
 
   def display_date
-    if self.date.present?
-      I18n.l(self.date, format: :default)
+    if self.start_time.present?
+      I18n.l(self.start_time, format: :default)
     end
   end
 
