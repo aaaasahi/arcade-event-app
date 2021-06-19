@@ -10,6 +10,8 @@ ja:
       event:
         name: "イベント名"
         text: "イベント内容"
+      profile:
+        name: "ユーザー名"
   date:
     abbr_day_names:
       - 日

@@ -1,11 +1,11 @@
 class Users::SessionsController < Devise::SessionsController
 
-  protected
-  
   def guest_sign_in
     sign_in User.guest
     redirect_to root_path, notice: "ゲストユーザーとしてログインしました。"
   end
+
+  protected
 
   def reject_user
     @user = User.find(params[:id])

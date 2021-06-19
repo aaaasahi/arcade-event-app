@@ -1,0 +1,87 @@
+.avatar-chat {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.chat-header {
+  display: flex;
+  margin-left: 20px;
+}
+
+.chat-user-name {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+.chat-text {
+  font-size: 24px;
+  margin-left: 100px;
+}
+
+.chat-card:hover {
+  opacity: 0.7;
+}
+
+.chats{
+  padding: 20px 10px;
+  text-align: right;
+  font-size: 14px;
+  background: #7da4cd;
+  margin: 20px;
+}
+.fukidasi {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.fukidasi .faceicon  {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+.fukidasi img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.fukidasi .chatting {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 10px 0 0 70px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  font-size: 15px;
+  background: #edf1ee;
+}
+.says p {
+  margin: 0;
+  padding: 0;
+}
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 0;
+  padding: 10px;
+  max-width: 300px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+
+.chat-form {
+  width: 60%;
+}
+
+.chat-form-group {
+  display: flex;
+  justify-content: center;
+}
