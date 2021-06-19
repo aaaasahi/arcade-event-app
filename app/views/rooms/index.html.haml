@@ -1,0 +1,25 @@
+.container 
+  .title
+    %h2メッセージ一覧
+  .row
+    .left-content.col-9
+      - if @another_entries.present?
+        - @another_entries.each do |entry|
+          = link_to room_path(entry.room) do
+            .card.chat-card
+              .card-body
+                %div
+                  .d-flex
+                    .chat-avator
+                      %object
+                        = link_to account_path(entry.user) do
+                          = image_tag entry.user.avatar_image, class:'avatar-chat'
+                    .chat-user-name
+                      = entry.user.display_name
+                .chat-text
+                  = Message.find_by(id: entry.room.message_ids.last)&.body
+      - else
+        %p メッセージはありません。
+
+    .right-content.col-3
+      = render 'commons/link' 
