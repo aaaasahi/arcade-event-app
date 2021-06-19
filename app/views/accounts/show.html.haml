@@ -2,3 +2,17 @@
   .row
     .left-content.col-9.mt-5 
       = render 'commons/profile', user: @user
+    - if user_signed_in? && @user.is_valid == true
+      .right-content.col-3.mt-5 
+        .card 
+          .card-body 
+            .contact.text-center
+              - unless @user.id == current_user.id
+                - if @is_room == true
+                  = link_to 'メッセージへ', room_path(@room_id), class: 'contact-button-open'
+                - else
+                  = form_for @room do |f|
+                    = fields_for @entry do |e|
+                      - e.hidden_field :user_id, value: @user.id 
+                    = f.button type: :submit, class: 'contact-button' do
+                      メッセージを送る　
