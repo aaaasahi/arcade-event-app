@@ -29,6 +29,8 @@ class User < ApplicationRecord
   has_many :joins, dependent: :destroy
   has_many :clip_events, through: :clips, source: :event
   has_many :join_events, through: :joins, source: :event
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   has_one :profile, dependent: :destroy
 
