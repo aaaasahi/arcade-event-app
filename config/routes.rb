@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   root 'events#index'
   get 'events/search', to: 'events#search'
   
-  
   resources :events do
     resources :comments, only: [:new, :create]
 
@@ -23,7 +22,10 @@ Rails.application.routes.draw do
   patch '/accounts/:id/withdrawal' => 'accounts#withdrawal', as: 'withdrawal'
 
   resource :profile, only: [:show, :edit, :update]
+
   resources :clip_events, only: [:index]
   resources :join_events, only: [:index]
   resources :calendars, only: [:index]
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create, :index, :show]
 end
