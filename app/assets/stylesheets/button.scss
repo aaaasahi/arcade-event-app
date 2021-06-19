@@ -25,3 +25,55 @@
   display: block;
   width: 15%;
 }
+
+.contact-button{
+	border: none;
+	padding: 0 20px;
+	height: 40px;
+	line-height: 1;
+	background: #e0ecf9;
+	color: #3366cc;
+	border: 2px solid #3366cc;
+	font-size: 1em;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.contact-button:before {
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Font Awesome 5 Free"; 
+	font-weight: 400;
+	content: '\f0e0';
+	margin-right: 5px;
+}
+
+.contact-button:hover {
+  color: black;
+}
+
+.contact-button-open{
+	border: none;
+	padding: 10px 20px;
+	height: 40px;
+	line-height: 1;
+	background: #e0ecf9;
+	color: #3366cc;
+	border: 2px solid #3366cc;
+	font-size: 1em;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.contact-button-open:before {
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	font-family: "Font Awesome 5 Free"; 
+	font-weight: 400;
+	content: '\f2b6';
+	margin-right: 5px;
+}
