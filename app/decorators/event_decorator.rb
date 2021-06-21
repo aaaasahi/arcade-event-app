@@ -7,8 +7,20 @@ module EventDecorator
   def display_date
     if self.start_time.present?
       I18n.l(self.start_time, format: :default)
+    else
+      '未定'
     end
   end
+
+  def display_store
+    if self.store.present?
+      self.store
+    else
+      '未定'
+    end
+  end
+
+
 
   def eyecatch_image
     if eyecatch.attached?

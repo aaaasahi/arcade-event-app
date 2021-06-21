@@ -57,6 +57,7 @@ class EventsController < ApplicationController
     @tag_lists = Tag.all
     @events = @q.result(distinct: true).page(params[:page]).per(PER_PAGE)
 
+    # ソート
   if params[:new]
     @events = Event.latest.page(params[:page]).per(PER_PAGE)
   elsif params[:old]
@@ -66,6 +67,7 @@ class EventsController < ApplicationController
     @events =  Kaminari.paginate_array(events).page(params[:page]).per(PER_PAGE)
   end
 
+    # タグ
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @events = @tag.events.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
@@ -75,7 +77,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :text, :store, :start_time, :eyecatch, :prefecture_id, :category_id)
+    params.require(:event).permit(:name, :text, :store, :address, :start_time, :eyecatch, :prefecture_id, :category_id)
   end
 
 end

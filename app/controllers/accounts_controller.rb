@@ -6,23 +6,18 @@ class AccountsController < ApplicationController
       redirect_to profile_path
     end
 
-    # DM処理
-    # Entryに記録するために押したユーザー探す
+    # DM
     @current_entry = Entry.where(user_id: current_user.id)
-    # 押されたユーザー
     @another_entry = Entry.where(user_id: @user.id)
-    # ログインユーザーじゃない
     unless @user.id == current_user.id
       @current_entry.each do |current|
         @another_entry.each do |another|
-          # id同じ = 同部屋 存在する場合
           if current.room_id == another.room_id
             @is_room = true
             @room_id = current.room_id
           end
         end
       end
-      # ルームが存在しない場合は新規作成
       unless @is_room
         @room = Room.new
         @entry = Entry.new

@@ -32,6 +32,8 @@ gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
 gem 'active_decorator'
 gem 'simple_calendar', '~> 2.0'
+gem 'geocoder'
+gem 'dotenv-rails'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
