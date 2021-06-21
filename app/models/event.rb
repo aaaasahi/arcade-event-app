@@ -3,6 +3,9 @@
 # Table name: events
 #
 #  id            :bigint           not null, primary key
+#  address       :string
+#  latitude      :float
+#  longitude     :float
 #  name          :string           not null
 #  start_time    :date
 #  store         :string
@@ -19,6 +22,9 @@
 #
 class Event < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  geocoded_by :address
+  after_validation :geocode
+  
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :category
 
