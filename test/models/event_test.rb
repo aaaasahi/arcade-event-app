@@ -3,6 +3,9 @@
 # Table name: events
 #
 #  id            :bigint           not null, primary key
+#  address       :string
+#  latitude      :float
+#  longitude     :float
 #  name          :string           not null
 #  start_time    :date
 #  store         :string
