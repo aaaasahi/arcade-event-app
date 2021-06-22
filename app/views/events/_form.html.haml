@@ -17,19 +17,14 @@
       .label
         = f.label :text, 'イベント詳細 ※(必須)' 
       .form
-        = f.text_area :text, class: 'form-control'
-      .label
-        = f.label :prefecture_id, '都道府県'
-      .row 
-        .form.col-3
-          = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {include_blank: "---"}, {class: 'form-control'}
+        = f.rich_text_area  :text, class: 'form-control'
       .label
         = f.label :store, '開催店舗  ※(未入力の場合未定と表示)'
       .row
         .form.col-6
           = f.text_field :store, class: 'form-control'
       .label
-        = f.label :address, '住所 ※(例: 東京都港区六本木○○-○)'
+        = f.label :address, '開催店舗住所 ※(例: 東京都港区六本木○○-○)'
       .form
         = f.text_field :address, class: 'form-control'
       .label
@@ -43,7 +38,7 @@
         .form.col-3
           = f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}, {class: 'form-control'}
       .label
-        = f.label :name, 'タグ'
+        = f.label :name, 'タグ ※(半角で区切るとタグになります。 例: 音ゲー 初心者)'
       .row.mb-3
         .form.col-6
           = f.text_field :tag_name, value: @tag_list, class: 'form-control'

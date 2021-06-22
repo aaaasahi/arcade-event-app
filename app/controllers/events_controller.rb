@@ -57,6 +57,12 @@ class EventsController < ApplicationController
     @tag_lists = Tag.all
     @events = @q.result(distinct: true).page(params[:page]).per(PER_PAGE)
 
+    if params[:search].present?
+      @events = Event.key_search(params["q"]).page(params[:page]).per(PER_PAGE)
+    end
+
+
+
     # ソート
   if params[:new]
     @events = Event.latest.page(params[:page]).per(PER_PAGE)
@@ -72,6 +78,7 @@ class EventsController < ApplicationController
       @tag = Tag.find(params[:tag_id])
       @events = @tag.events.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
     end
+    
   end
 
   private
