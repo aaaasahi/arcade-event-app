@@ -3,17 +3,23 @@
     %h2 イベントを探す
   .row.card-box
     .left-content.col-3.mt-4
+      .card.mb-3
+        .card-body
+          = form_tag events_search_path,  method: :get do
+            = hidden_field_tag :search, :value => ''
+            %div
+              = label_tag 'キーワード'
+            .search-content
+              = text_field_tag :q, '', placeholder: 'キーワードを入力', class:'form-control'
+            %hr
+            = submit_tag '検索', class:'"btn btn-dark search-button'
       .card
         .card-body
           = search_form_for @q, url: events_search_path do |f|
             %div
-              = f.label 'キーワード'
+              = f.label '開催地'
             .search-content
-              = f.search_field :name_or_text_or_store_cont, class:'form-control',:placeholder => "キーワードを入力"
-            %div
-              = f.label '都道府県'
-            .search-content
-              = f.collection_select :prefecture_id_eq, Prefecture.all,:id,:name,{include_blank: '指定なし'}, {class: 'form-control'}
+              = f.search_field :store_or_address_cont, class:'form-control',:placeholder => "開催地/住所を入力"
             %div
               = f.label 'カテゴリ'
             .search-content

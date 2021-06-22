@@ -9,7 +9,6 @@
 #  name          :string           not null
 #  start_time    :date
 #  store         :string
-#  text          :text             not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  category_id   :integer
@@ -25,11 +24,12 @@ class Event < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
   
-  belongs_to_active_hash :prefecture
   belongs_to_active_hash :category
 
   belongs_to :user
   has_one_attached :eyecatch
+
+  has_rich_text :text
 
   has_many :tagmaps, dependent: :destroy
   has_many :tags, through: :tagmaps
@@ -59,8 +59,19 @@ class Event < ApplicationRecord
     end
   end
 
+  #ソート
   scope :latest, -> {order(updated_at: :desc)}
   scope :old, -> {order(updated_at: :asc)}
   scope :join_count, -> { includes(:joins).sort {|a,b| b.joins.size <=> a.joins.size}}
   
+  scope :key_search, -> (search_param = nil) {
+    return if search_param.blank?
+    joins("INNER JOIN action_text_rich_texts ON action_text_rich_texts.record_id = events.id AND action_text_rich_texts.record_type = 'Event'")
+    .where("action_text_rich_texts.body LIKE ? OR events.name LIKE ? ", "%#{search_param}%", "%#{search_param}%")
+  }
+
+  scope :store_search, -> (search_param = nil) {
+    return if search_param.blank?
+    where("events.store LIKE ? OR events.address LIKE ? ", "%#{search_param}%", "%#{search_param}%")
+  }
 end
