@@ -9,7 +9,6 @@
 #  name          :string           not null
 #  start_time    :date
 #  store         :string
-#  text          :text             not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  category_id   :integer

@@ -65,3 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
   InActiveJoinEvent(eventId)
   ActiveJoinEvent(eventId)
 })
+require("trix")
+require("@rails/actiontext")
