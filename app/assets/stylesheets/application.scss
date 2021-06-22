@@ -9,6 +9,8 @@
 @import 'profile';
 @import 'calendar';
 @import 'chat';
+@import 'actiontext';
+@import 'trix/dist/trix.css';
 
 html {
   min-height: 100vh; 
@@ -19,6 +21,12 @@ html {
 
 ul {
   list-style: none;
+}
+
+trix-editor {
+  min-height: 20em;
+  max-height: 20em;
+  overflow-y: auto;
 }
 
 .header {
