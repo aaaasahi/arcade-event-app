@@ -1,6 +1,6 @@
 .container 
   .title
-    %h2 イベントを探す
+    %h2= I18n.t('events.search.event-search')
   .row.card-box
     .left-content.col-3.mt-4
       .card.mb-3
@@ -8,45 +8,45 @@
           = form_tag events_search_path,  method: :get do
             = hidden_field_tag :search, :value => ''
             %div
-              = label_tag 'キーワード'
+              = label_tag I18n.t('events.search.keyword')
             .search-content
-              = text_field_tag :q, '', placeholder: 'キーワードを入力', class:'form-control'
+              = text_field_tag :q, '', placeholder: I18n.t('events.search.key-place'), class:'form-control'
             %hr
-            = submit_tag '検索', class:'"btn btn-dark search-button'
+            = submit_tag I18n.t('events.search.search-btn'), class:'"btn btn-dark search-button'
       .card
         .card-body
           = search_form_for @q, url: events_search_path do |f|
             %div
-              = f.label '開催地'
+              = f.label I18n.t('events.search.store')
             .search-content
-              = f.search_field :store_or_address_cont, class:'form-control',:placeholder => "開催地/住所を入力"
+              = f.search_field :store_or_address_cont, class:'form-control',:placeholder => I18n.t('events.search.store-place')
             %div
-              = f.label 'カテゴリ'
+              = f.label I18n.t('events.search.category')
             .search-content
-              = f.collection_select :category_id_eq, Category.all,:id,:name,{include_blank: '指定なし'}, {class:'form-control'}
+              = f.collection_select :category_id_eq, Category.all,:id,:name,{include_blank: I18n.t('events.search.not-set')}, {class:'form-control'}
             %hr
-            = f.submit '検索', class:'"btn btn-dark search-button'
+            = f.submit I18n.t('events.search.search-btn'), class:'"btn btn-dark search-button'
       .card.mt-3.mb-3
         .card-body 
           .tag 
-            %p.tag-title タグで検索
+            %p.tag-title= I18n.t('events.search.tag')
             - @tag_lists.each do |list|
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
     .right-content.col-9.mt-4
       .sort-container
         %ul.sort
-          %li 並び順
+          %li= I18n.t('events.search.order')
           %li
-            = link_to '新着', sort_new_path(new: 'true'), {class: 'sort-link' "#{add_active_class(sort_new_path)}"}
+            = link_to I18n.t('events.search.new'), sort_new_path(new: 'true'), {class: 'sort-link' "#{add_active_class(sort_new_path)}"}
           %li
-            = link_to '古い', sort_old_path(old: 'true'), {class: 'sort-link' "#{add_active_class(sort_old_path)}"}
+            = link_to I18n.t('events.search.old'), sort_old_path(old: 'true'), {class: 'sort-link' "#{add_active_class(sort_old_path)}"}
           %li
-            = link_to '参加者数', sort_join_path(join: 'true'), {class: 'sort-link' "#{add_active_class(sort_join_path)}"}
+            = link_to I18n.t('events.search.join'), sort_join_path(join: 'true'), {class: 'sort-link' "#{add_active_class(sort_join_path)}"}
       - if @events.present?
         - @events.each do |event|
           = render 'commons/event', event: event
       - else 
-        %h3 検索結果はありません
+        %h3= I18n.t('events.search.result')
   - if @events.present?
     .page.mt-3
       = paginate @events,theme: 'twitter-bootstrap-4'

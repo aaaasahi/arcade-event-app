@@ -1,8 +1,8 @@
 class Category < ActiveHash::Base
 
   self.data = [
-    {id: 1, name: '音楽ゲーム'}, {id: 2, name: 'ビデオゲーム'}, {id: 3, name: 'カードゲーム'},
-    {id: 4, name: 'その他'}
+    {id: 1, name: I18n.t('events.search.music')}, {id: 2, name: I18n.t('events.search.video')}, {id: 3, name: I18n.t('events.search.card')},
+    {id: 4, name: I18n.t('events.search.other')}
   ]
 
   include ActiveHash::Associations

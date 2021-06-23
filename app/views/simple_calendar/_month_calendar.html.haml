@@ -1,12 +1,12 @@
 .simple-calendar
   .calendar-heading.text-center.mb-4
     .month-button
-      = link_to t('simple_calendar.previous', default: '前の月'), calendar.url_for_previous_view, class: 'btn btn-outline-dark'
+      = link_to t('simple_calendar.previous', default: I18n.t('events.calendar.before')), calendar.url_for_previous_view, class: 'btn btn-outline-dark'
     %h3.calendar-title
       = t('date.month_names')[start_date.month]
       = start_date.year
     .month-button
-      = link_to t('simple_calendar.next', default: '次の月'), calendar.url_for_next_view, class: 'btn btn-outline-dark'
+      = link_to t('simple_calendar.next', default: I18n.t('events.calendar.next')), calendar.url_for_next_view, class: 'btn btn-outline-dark'
   %table.table.table-striped
     %thead
       %tr
