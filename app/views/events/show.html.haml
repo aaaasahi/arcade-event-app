@@ -10,9 +10,9 @@
               = @event.name
             .clip
               - if user_signed_in?
-                .clip__active.hidden.active-clip クリップ中
-                .clip__icon.hidden.inactive-clip クリップ
-          .text-title イベント詳細
+                .clip__active.hidden.active-clip= I18n.t('events.show.clip')
+                .clip__icon.hidden.inactive-clip= I18n.t('events.show.clip-now')
+          .text-title= I18n.t('events.show.event-show')
           .card-text.mb-5
             = @event.text
           .event-tag 
@@ -21,23 +21,23 @@
           %hr
           - if user_signed_in? && current_user.has_written?(@event)
             .option
-              = link_to 'イベント編集', edit_event_path(@event), class: 'btn btn-success edit-button'
-              = link_to 'イベント削除', event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
+              = link_to I18n.t('events.show.edit'), edit_event_path(@event), class: 'btn btn-success edit-button'
+              = link_to I18n.t('events.show.delete'), event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
           - else
-            .btn.btn-primary.btn-lg.join-button.hidden.active-join 参加予定
-            .btn.btn-outline-primary.btn-lg.join-button.hidden.inactive-join 参加する
+            .btn.btn-primary.btn-lg.join-button.hidden.active-join= I18n.t('events.show.join')
+            .btn.btn-outline-primary.btn-lg.join-button.hidden.inactive-join= I18n.t('events.show.join-now')
       .btn.btn-outline-success.show-comment-form
-        コメントを追加
+        = I18n.t('events.show.add-comment')
       .comment-container.hidden
         = form_with(model:[@event, @comment], local:true) do |f|
           .form
-            = f.text_area :content, placeholder: "コメントを入力", class: 'form-control'
+            = f.text_area :content, placeholder: I18n.t('events.show.comment-place'), class: 'form-control'
           .text-right
-            = f.submit '投稿する', class: 'btn btn-dark'
+            = f.submit I18n.t('events.show.btn'), class: 'btn btn-dark'
 
       - if user_signed_in? && @comments.present?
         .comment-field.mt-5.mb-5
-          %h5 コメント一覧
+          %h5= I18n.t('events.show.comment-list')
           .card 
             .card-body
               - @comments.each do |comment|
@@ -51,26 +51,26 @@
     .left-card.col-3.mt-5
       .card.mb-5
         .card-body
-          .second-title 日程
+          .second-title= I18n.t('events.show.event-date')
           .event-date
             = @event.display_date
           %hr
-          .second-title 参加予定者
+          .second-title= I18n.t('events.show.join-number')
           .event-entry 
             = "#{@event.join_count}人"
           %hr
-          .second-title 開催店舗
+          .second-title= I18n.t('events.show.store')
           .event-store 
             = @event.display_store
           %hr
           - if @event.address.present?
-            .second-title 住所
+            .second-title= I18n.t('events.show.address')
             .event-address
               = @event.address
             .mt-2
             = render 'map', event: @event
             %hr
-          .second-title.mb-3 作成者
+          .second-title.mb-3= I18n.t('events.show.contributor')
           = link_to account_path(@event.user) do
             .row
               .user-avator.col-5

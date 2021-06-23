@@ -1,0 +1,8 @@
+en:
+  header:
+    search: "Search"
+    calendar: "Calendar"
+    post: "Post"
+    my-page: "My Page"
+    login: "Log in"
+    logout: "Log out"

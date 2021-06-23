@@ -1,23 +1,23 @@
 .card 
-  .link-title マイページ
+  .link-title= I18n.t('profiles.link.my-page')
   .card-body
     .profile-link
       = link_to 'TOP', profile_path
     %hr
     .profile-link
-      = link_to 'クリップ', clip_events_path
+      = link_to I18n.t('profiles.link.clip'), clip_events_path
     %hr
     .profile-link
-      = link_to '参加予定', join_events_path
+      = link_to I18n.t('profiles.link.join'), join_events_path
     %hr
       .profile-link
-        = link_to 'メッセージ', rooms_path
+        = link_to I18n.t('profiles.link.message'), rooms_path
     %hr
     .profile-link
-      = link_to 'プロフィール変更', edit_profile_path
+      = link_to I18n.t('profiles.link.change-profile'), edit_profile_path
     %hr
     .profile-link
-      = link_to 'ユーザー情報変更', edit_user_registration_path
+      = link_to I18n.t('profiles.link.change-user'), edit_user_registration_path
     %hr 
     .profile-link 
-      = link_to '退会する', unsubscribe_path(current_user)
+      = link_to I18n.t('profiles.link.withdrawal'), unsubscribe_path(current_user)

@@ -8,7 +8,7 @@ module EventDecorator
     if self.start_time.present?
       I18n.l(self.start_time, format: :default)
     else
-      '未定'
+      I18n.t('events.show.undecided')
     end
   end
 
@@ -16,7 +16,7 @@ module EventDecorator
     if self.store.present?
       self.store
     else
-      '未定'
+      I18n.t('events.show.undecided')
     end
   end
 

@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
   root 'events#index'
-  get 'events/search', to: 'events#search'
+  scope "(:locale)" do
+    get 'events/search', to: 'events#search'
+  end
+  get 'events/search/sort_new', to: 'events#search', as: 'sort_new'
+  get 'events/search/sort_old', to: 'events#search', as: 'sort_old'
+  get 'events/search/sort_join', to: 'events#search', as: 'sort_join'
   
   resources :events do
     resources :comments, only: [:new, :create]

@@ -1,6 +1,6 @@
 .container
   .title 
-    %h2 イベントカレンダー
+    %h2= I18n.t('events.calendar.event-calendar')
   = month_calendar events: @events do |date, events|
     = date.day
     - events.each do |event|

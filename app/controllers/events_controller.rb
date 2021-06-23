@@ -54,9 +54,9 @@ class EventsController < ApplicationController
 
   def search
     @q = Event.ransack(params[:q])
-    @tag_lists = Tag.all
     @events = @q.result(distinct: true).page(params[:page]).per(PER_PAGE)
 
+    #キーワード
     if params[:search].present?
       @events = Event.key_search(params["q"]).page(params[:page]).per(PER_PAGE)
     end
@@ -79,6 +79,7 @@ class EventsController < ApplicationController
       @events = @tag.events.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
     end
     
+    @tag_lists = Tag.all
   end
 
   private
