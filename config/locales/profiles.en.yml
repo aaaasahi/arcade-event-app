@@ -1,0 +1,29 @@
+en:
+  profiles:
+    gender: "gender"
+    age: "age"
+    introduction: "bio"
+    post-event: "Post Event List"
+    clip-event: "Clip Event List"
+    join-event: "Participation Event List"
+    message-index: "Message List"
+    btn: "Post"
+    withdrawal-user: "Unsubscribed User"
+    not-set: "Not Set"
+    form:
+      image: "Profile Image"
+      name: "User Name ※(required)"
+      birthday: "Birthday"
+    message:
+      title: "from Message"
+      text-place: "Input Message"
+      btn: "Send"
+    link:
+      my-page: "My Page"
+      clip: "Clip List"
+      join: "Participation List"
+      message: "Message List"
+      change-profile: "Change My Profile"
+      change-user: "Change User Info"
+      withdrawal: "Unsubscribe"
+      not-set: "Not set"

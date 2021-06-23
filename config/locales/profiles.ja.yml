@@ -1,0 +1,29 @@
+ja:
+  profiles:
+    gender: "性別"
+    age: "年齢"
+    introduction: "自己紹介"
+    post-event: "投稿イベント一覧"
+    clip-event: "クリップしたイベント"
+    join-event: "参加予定イベント"
+    message-index: "メッセージ一覧"
+    btn: "変更する"
+    withdrawal-user: "退会済ユーザー"
+    not-set: "未設定"
+    form:
+      image: "プロフィール画像"
+      name: "ユーザー名 ※(必須)"
+      birthday: "生年月日"
+      btn: "保存"
+    message:
+      title: "さんとのメッセージ"
+      text-place: "メッセージを入力"
+      btn: "送信"
+    link:
+      my-page: "マイページ"
+      clip: "クリップ"
+      join: "参加予定"
+      message: "メッセージ"
+      change-profile: "プロフィール変更"
+      change-user: "ユーザー情報変更"
+      withdrawal: "退会する"

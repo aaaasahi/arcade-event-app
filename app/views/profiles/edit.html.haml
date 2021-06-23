@@ -1,6 +1,6 @@
 .container 
   .profile-title.mt-5
-    %h4 プロフィール変更
+    %h4= I18n.t('profiles.link.change-profile')
   %ul
     - @profile.errors.full_messages.each do |message|
       %li= message
@@ -10,31 +10,31 @@
         .card-body
           = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
             .label
-              = f.label :avatar, 'プロフィール画像'
+              = f.label :avatar, I18n.t('profiles.form.image')
               .form.text-center
                 = image_tag current_user.avatar_image, id: 'preview', class: 'preview-avatar'
             .form.text-center
               = f.file_field :avatar, id: 'input-file'
             .label
-              = f.label :name, 'ユーザー名(必須)'
+              = f.label :name, I18n.t('profiles.form.name')
             .form
               = f.text_field :name, class: 'form-control'
             .label
-              = f.label :introduction, '自己紹介' 
+              = f.label :introduction, I18n.t('profiles.introduction') 
             .form
               = f.text_area :introduction, class: 'form-control'
             .label
-              = f.label :gender, '性別'
+              = f.label :gender, I18n.t('profiles.gender') 
             .row
               .form.col-3
                 = f.select :gender, Profile.genders.keys.map { |k, v| [ I18n.t("enum.genders.#{k}"), k ] }, {}, {class: 'form-control'}
             .label
-              = f.label :age, '生年月日'
+              = f.label :age, I18n.t('profiles.form.birthday') 
             .row
               .form.col-6
                 = f.date_field :age, class: 'form-control'
             .mt-5.mb-3
-            = f.submit '保存', class: 'btn btn-success btn-lg post-button'
+            = f.submit I18n.t('profiles.btn') , class: 'btn btn-success btn-lg post-button'
     
     .right-content.col-3.mt-5 
       = render 'commons/link' 

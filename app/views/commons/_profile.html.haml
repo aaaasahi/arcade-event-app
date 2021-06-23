@@ -1,6 +1,6 @@
 - if user.is_valid == false 
   .unsub-text.mb-3
-    %h4 （退会済みユーザー）
+    %h4= I18n.t('profiles.withdrawal-user')
 .card
   .card-body
     .row
@@ -13,7 +13,7 @@
           %hr
           %dl.gender 
             .row 
-              %dt.col-2 性別
+              %dt.col-2= I18n.t('profiles.gender')
               %dd.col-8
                 - if user.gender.present?
                   = I18n.t("enum.genders.#{user.profile.gender}")
@@ -21,18 +21,18 @@
           %hr 
           %dl.age 
             .row 
-              %dt.col-2 年齢
+              %dt.col-2= I18n.t('profiles.age')
               %dd.col-8
                 = user.age_cal
         - if user.introduction.present?
           %hr
           %dl.introduction
             .row
-              %dt.col-2 自己紹介
+              %dt.col-2= I18n.t('profiles.introduction')
               %dd.col-8
                 = user.introduction
 .user-event.mt-5
-  .text-title.mb-4 投稿イベント一覧
+  .text-title.mb-4= I18n.t('profiles.post-event')
   - user.events.each do |event|
     = render 'commons/event', event: event
 
