@@ -37,11 +37,11 @@
         %ul.sort
           %li 並び順
           %li
-            = link_to '新着', events_search_path(new: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?new=true')}"}
+            = link_to '新着', sort_new_path(new: 'true'), {class: 'sort-link' "#{add_active_class(sort_new_path)}"}
           %li
-            = link_to '古い', events_search_path(old: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?old=true')}"}
+            = link_to '古い', sort_old_path(old: 'true'), {class: 'sort-link' "#{add_active_class(sort_old_path)}"}
           %li
-            = link_to '参加者数', events_search_path(join: 'true'), {class: 'sort-link' "#{'active' if current_page?('/events/search?join=true')}"}
+            = link_to '参加者数', sort_join_path(join: 'true'), {class: 'sort-link' "#{add_active_class(sort_join_path)}"}
       - if @events.present?
         - @events.each do |event|
           = render 'commons/event', event: event

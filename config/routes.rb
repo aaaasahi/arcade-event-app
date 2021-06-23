@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
   root 'events#index'
   get 'events/search', to: 'events#search'
+  get 'events/search/sort_new', to: 'events#search', as: 'sort_new'
+  get 'events/search/sort_old', to: 'events#search', as: 'sort_old'
+  get 'events/search/sort_join', to: 'events#search', as: 'sort_join'
   
   resources :events do
     resources :comments, only: [:new, :create]
