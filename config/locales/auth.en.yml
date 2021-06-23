@@ -1,0 +1,6 @@
+en:
+  auth:
+    login: "Log in"
+    logout: "Log out"
+    guests: "Guest"
+    new: "Sign up"

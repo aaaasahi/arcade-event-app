@@ -1,0 +1,6 @@
+ja:
+  auth:
+    login: "ログイン"
+    logout: "ログアウト"
+    guests: "ログイン(閲覧用)"
+    new: "新規登録"

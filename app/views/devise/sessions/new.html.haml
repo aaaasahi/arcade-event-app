@@ -3,18 +3,18 @@
     .col-md-6.offset-md-3
       .card.login
         .card-body
-          %h2.login-title ログイン
+          %h2.login-title= I18n.t('auth.login')
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             .field
-              = f.label :メールアドレス
+              = f.label :email
               %br/
               = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form"
             .field
-              = f.label :パスワード
+              = f.label :password
               %br/
               = f.password_field :password, autocomplete: "current-password", class: "form-control form"
             .actions
-              = f.submit "ログイン", class: "btn btn-danger w-100 login-button"
+              = f.submit I18n.t('auth.login'), class: "btn btn-danger w-100 login-button"
             .login-group.d-flex.mt-3
-              = link_to 'ログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn btn-primary w-50 mr-3"
-              = link_to '新規登録',new_user_registration_path, class: "btn btn-success w-50"
+              = link_to I18n.t('auth.guests'), users_guest_sign_in_path, method: :post, class: "btn btn-primary w-50 mr-3"
+              = link_to I18n.t('auth.new'),new_user_registration_path, class: "btn btn-success w-50"
