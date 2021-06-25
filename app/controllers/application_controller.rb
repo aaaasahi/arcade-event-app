@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user.administrator?
-      administrator_admins_path 
+      flash[:notice] = "管理者ユーザーとしてログインしました。"
+      administrator_admins_path
     else 
       root_path
     end
