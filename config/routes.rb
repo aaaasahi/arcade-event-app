@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   namespace :administrator do
     resources :admins, only: [:index]
-    resources :events, only: [:index]
+    resources :events_data, only: [:index]
+    resources :users_data, only: [:index]
   end
 
   root 'events#index'
