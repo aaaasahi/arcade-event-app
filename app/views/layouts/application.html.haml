@@ -48,4 +48,5 @@
       .footer-container
         %p.footer-text Copyright © Asahi Fukuda, All Rights Reserved.
     = yield
-    = render 'layouts/lang'
+    - unless user_signed_in? && current_user.administrator?
+      = render 'layouts/lang'

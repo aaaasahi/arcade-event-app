@@ -64,6 +64,7 @@ class Event < ApplicationRecord
   scope :old, -> {order(updated_at: :asc)}
   scope :join_count, -> { includes(:joins).sort {|a,b| b.joins.size <=> a.joins.size}}
   
+  #検索
   scope :key_search, -> (search_param = nil) {
     return if search_param.blank?
     joins("INNER JOIN action_text_rich_texts ON action_text_rich_texts.record_id = events.id AND action_text_rich_texts.record_type = 'Event'")
@@ -74,4 +75,6 @@ class Event < ApplicationRecord
     return if search_param.blank?
     where("events.store LIKE ? OR events.address LIKE ? ", "%#{search_param}%", "%#{search_param}%")
   }
+
+
 end

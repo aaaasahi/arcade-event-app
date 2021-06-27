@@ -1,1 +1,53 @@
-admin top ページ
+.container.mb-5
+  .title
+    %h2 TOP
+  .card.mb-5
+    .card-body
+      .chart-container.d-flex.justify-content-around.mb-5
+        .chart-user-box
+          .chart-title 合計
+          .chart-count
+            = @users.count
+        .chart-user-box
+          .chart-title 週間
+          .chart-count
+            = @user_week.count
+        .chart-user-box
+          .chart-title 昨日
+          .chart-count
+            =  @user_yesterday.count
+      .row
+        .chart.col-6.mb-3
+          .chart-title.mb-3 ユーザー登録状況
+          .chart
+            = line_chart @users.group_by_day(:created_at).count, ytitle: "登録者数"
+        .chart.col-6.mb-3
+          .chart-title.mb-3 性別
+          .chart
+            = pie_chart Profile.group(:gender).count
+
+  .card
+    .card-body 
+      .event-container.d-flex.justify-content-around.mb-4
+        .event-box
+          .chart-title 合計
+          .chart-count
+            = @events.count
+        .event-box
+          .chart-title 週間
+          .chart-count
+            = @event_week.count
+        .event-box
+          .chart-title 昨日
+          .chart-count
+            =  @event_yesterday.count
+      .row
+        .chart.col-6
+          .chart-title.mb-3 イベント投稿状況
+          = line_chart @events.group_by_day(:created_at).count, ytitle: "投稿数", colors: ["#008000"]
+        .chart.col-6
+          .chart-title.mb-3 カテゴリ
+          = pie_chart ({"音楽ゲーム" => @music, "ビデオゲーム" => @video, "カードゲーム" => @card, "その他" => @other}) 
+
+
+
