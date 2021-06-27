@@ -34,6 +34,8 @@ gem 'active_decorator'
 gem 'simple_calendar', '~> 2.0'
 gem 'geocoder'
 gem 'dotenv-rails'
+gem "chartkick"
+gem 'groupdate'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
