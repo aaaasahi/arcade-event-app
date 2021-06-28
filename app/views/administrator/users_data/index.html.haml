@@ -2,7 +2,8 @@
   .title  
     %h2 ユーザーデータ
   
-  
+  %div 
+    = link_to 'PDF出力', administrator_users_data_path(format: :pdf), class: "btn btn-dark mb-3 pdf"
 
   .chart-title.mb-3 全てのユーザー
   %table.table.table-striped.mb-5
