@@ -2,13 +2,13 @@ class Administrator::AdminsController < ApplicationController
   before_action :admin_user
   def index
     @users = User.all 
-    @user_week = User.week
-    @user_yesterday = User.yesterday
+    @users_week = User.week
+    @users_yesterday = User.yesterday
 
 
     @events = Event.all
-    @event_week = Event.week
-    @event_yesterday = Event.yesterday
+    @events_week = Event.week
+    @events_yesterday = Event.yesterday
 
 
     @music = Event.where(category_id: 1).count
