@@ -1,6 +1,14 @@
 class Administrator::EventsDataController < ApplicationController
   before_action :admin_user
   def index
+    @events = Event.all
+    @events_yesterday = Event.yesterday
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "event", template: "administrator/events_data/index.html.haml"
+      end
+    end
   end
   
   private
