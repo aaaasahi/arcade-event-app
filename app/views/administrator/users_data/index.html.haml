@@ -1,1 +1,58 @@
-users page
+.container.mb-5
+  .title  
+    %h2 ユーザーデータ
+  
+  %div 
+    = link_to 'PDF出力', administrator_users_data_path(format: :pdf), class: "btn btn-dark mb-3 pdf"
+
+  .chart-title.mb-3 全てのユーザー
+  %table.table.table-striped.mb-5
+    %thead 
+      %tr
+        %th{:scope => "col"} ID
+        %th{:scope => "col"} ユーザー名
+        %th{:scope => "col"} 登録日
+        %th{:scope => "col"} 投稿数
+    %tbody
+    - @users.each do |user|
+      - unless user.administrator?
+        %tr
+          %th{:scope => "row"} 
+            = user.id
+          %td 
+            - if user.is_valid == false 
+              = ("#{user.display_name}(退会済)")
+            - else
+              = user.display_name
+          %td 
+            = user.display_created_at
+          %td 
+            = user.events.count
+  
+  .chart-title.mb-3 昨日の登録ユーザー
+  - if @users_yesterday.present?
+    %table.table.table-striped
+      %thead 
+        %tr
+          %th{:scope => "col"} ID
+          %th{:scope => "col"} ユーザー名
+          %th{:scope => "col"} 登録日
+          %th{:scope => "col"} 投稿数
+      %tbody
+      - @users_yesterday.each do |user|
+        - unless user.administrator?
+          %tr
+            %th{:scope => "row"} 
+              = user.id
+            %td 
+              - if user.is_valid == false 
+                = ("#{user.display_name}(退会済)")
+              - else
+                = user.display_name
+            %td 
+              = user.display_created_at
+            %td 
+              = user.events.count
+  - else
+    昨日の登録ユーザーはいません
+

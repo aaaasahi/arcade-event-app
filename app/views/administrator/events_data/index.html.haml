@@ -1,1 +1,56 @@
-event page
+.container.mb-5
+  .title  
+    %h2 イベントデータ
+
+  %div 
+    = link_to 'PDF出力', administrator_events_data_path(format: :pdf), class: "btn btn-dark mb-3 pdf"
+
+  .chart-title.mb-3 全てのイベント
+  %table.table.table-striped.mb-5
+    %thead 
+      %tr
+        %th{:scope => "col"} ID
+        %th{:scope => "col"} イベント名
+        %th{:scope => "col"} カテゴリー
+        %th{:scope => "col"} 参加人数
+        %th{:scope => "col"} 投稿者
+    %tbody
+    - @events.each do |event|
+      %tr
+        %th{:scope => "row"} 
+          = event.id
+        %td 
+          = event.name
+        %td 
+          = event.category.name
+        %td 
+          = ("#{event.join_count}人")
+        %td 
+          = event.user.display_name
+
+  
+  .chart-title.mb-3 昨日のイベント
+  - if @events_yesterday.present?
+    %table.table.table-striped
+      %thead 
+        %tr
+          %th{:scope => "col"} ID
+          %th{:scope => "col"} イベント名
+          %th{:scope => "col"} カテゴリー
+          %th{:scope => "col"} 参加人数
+          %th{:scope => "col"} 投稿者
+      %tbody
+      - @events_yesterday.each do |event|
+        %tr
+          %th{:scope => "row"} 
+            = event.id
+          %td 
+            = event.name
+          %td 
+            = event.category.name
+          %td 
+            = ("#{event.join_count}人")
+          %td 
+            = event.user.display_name
+  - else
+    昨日の投稿はありません

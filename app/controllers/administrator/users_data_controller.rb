@@ -1,6 +1,15 @@
 class Administrator::UsersDataController < ApplicationController
   before_action :admin_user
   def index
+    @users = User.all
+    @users_yesterday = User.yesterday
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "event", template: "administrator/users_data/index.html.haml"
+      end
+    end
   end
   
   private

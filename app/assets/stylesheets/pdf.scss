@@ -1,0 +1,18 @@
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 30px;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.chart-title {
+  margin-bottom: 15px;
+}
+
+.pdf {
+  display: none;
+}
