@@ -6,7 +6,9 @@ module UserDecorator
     events.exists?(id: event.id)
   end
 
-  
+  def display_created_at
+    I18n.l(self.created_at, format: :default)
+  end
 
   def display_name
     profile&.name || self.email.split('@').first
