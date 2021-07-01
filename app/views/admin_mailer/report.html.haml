@@ -1,0 +1,20 @@
+.container
+  %h4 ・ユーザー情報
+  %p 現在の登録者数: #{@users_registrant}人
+  %h4 ・昨日の登録者情報
+  - if  @users_registrant_yesterday.present?
+    %p 登録者数: #{ @users_registrant_yesterday.count}人
+    -  @users_registrant_yesterday.each do |user|
+      %p 登録者名: #{user.display_name}
+  - else
+    %p 昨日の登録者はいません
+  
+  %h4 ・イベント投稿情報
+  %p 現在のイベント投稿数: #{@events_post_count}件
+  %h4 ・昨日のイベント投稿情報
+  - if @events_post_yesterday.present?
+    %p 投稿数: #{@events_post_yesterday.count}件
+    - @events_post_yesterday.each do |event|
+      %p イベント名: #{event.name} 投稿者: #{event.user.display_name}
+  - else
+    %p 昨日の投稿はありません

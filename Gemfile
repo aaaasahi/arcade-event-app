@@ -38,6 +38,8 @@ gem "chartkick"
 gem 'groupdate'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'rexml'
+gem 'whenever', require: false
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
@@ -61,6 +63,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'erb2haml'
+  gem 'letter_opener_web'
 end
 
 group :test do
