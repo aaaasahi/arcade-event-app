@@ -1,4 +1,6 @@
 .container
+  - breadcrumb :event_calendar
+  = breadcrumbs separator: " &rsaquo; "
   .title 
     %h2= I18n.t('events.calendar.event-calendar')
   = month_calendar events: @events do |date, events|

@@ -1,6 +1,8 @@
 .container#event-show{data: {event_id: @event.id}}
+  - breadcrumb :event_show, @event
+  = breadcrumbs separator: " &rsaquo; "
   .row 
-    .right-card.col-9.mt-5
+    .left-card.col-9.mt-5
       .card.mb-5
         .card-body
           .main-image
@@ -48,7 +50,7 @@
                   .comment-text.col-6.d-flex.align-items-center
                     %p= comment.content
 
-    .left-card.col-3.mt-5
+    .right-card.col-3.mt-5
       .card.mb-5
         .card-body
           .second-title= I18n.t('events.show.event-date')
@@ -62,6 +64,10 @@
           .second-title= I18n.t('events.show.store')
           .event-store 
             = @event.display_store
+          %hr
+          .second-title= I18n.t('events.show.category')
+          .event-store 
+            = @event.category.name
           %hr
           - if @event.address.present?
             .second-title= I18n.t('events.show.address')
