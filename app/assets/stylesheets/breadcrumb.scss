@@ -1,0 +1,10 @@
+.breadcrumbs {
+  margin-top: 15px;
+  font-size: 15px;
+  &.breadcrumbs a {
+    color: red;
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+}
