@@ -8,9 +8,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    @comment = Comment.new
-    @comments = @event.comments
+    begin
+      @event = Event.find(params[:id])
+      @comment = Comment.new
+      @comments = @event.comments
+    rescue
+      redirect_to new_event_path, notice: '存在しないイベントです。イベントを作成しましょう!'
+    end
   end
 
   def new

@@ -1,4 +1,6 @@
 .container
+  - breadcrumb :profile_join, current_user
+  = breadcrumbs separator: " &rsaquo; "
   .profile-title.mt-5
     %h4= I18n.t('profiles.join-event')
   = render 'commons/events', events: @events

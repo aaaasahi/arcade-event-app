@@ -50,6 +50,7 @@ en:
       event-date: "Event Date"
       join-number: "Number of Participants"
       store: "Venue"
+      category: "Category"
       address: "Address"
       contributor: "Contributor"
       undecided: "Undecided"

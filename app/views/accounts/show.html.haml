@@ -1,4 +1,6 @@
 .container 
+  - breadcrumb :user_profile, @user
+  = breadcrumbs separator: " &rsaquo; "
   .row
     .left-content.col-9.mt-5 
       = render 'commons/profile', user: @user

@@ -1,4 +1,6 @@
 .container
+  - breadcrumb :event_new
+  = breadcrumbs separator: " &rsaquo; "
   .title
     %h2= I18n.t('events.form.event-post')
   = render 'form', event: @event
