@@ -1,4 +1,6 @@
 .container 
+  - breadcrumb :message, current_user
+  = breadcrumbs separator: " &rsaquo; "
   .title
     %h2 
       = ("#{@another.user.display_name} #{I18n.t('profiles.message.title')}")

@@ -1,4 +1,6 @@
 .container 
+  - breadcrumb :profile_message, current_user
+  = breadcrumbs separator: " &rsaquo; "
   .title
     %h2= I18n.t('profiles.message-index')
   .row
