@@ -26,8 +26,11 @@
               = link_to I18n.t('events.show.edit'), edit_event_path(@event), class: 'btn btn-success edit-button'
               = link_to I18n.t('events.show.delete'), event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
           - else
-            .btn.btn-primary.btn-lg.join-button.hidden.active-join= I18n.t('events.show.join-now')
-            .btn.btn-outline-primary.btn-lg.join-button.hidden.inactive-join= I18n.t('events.show.join')
+            - if @event.status?
+              .btn.btn-danger.btn-lg.join-button.close-button 終了
+            - else
+              .btn.btn-primary.btn-lg.join-button.hidden.active-join= I18n.t('events.show.join-now')
+              .btn.btn-outline-primary.btn-lg.join-button.hidden.inactive-join= I18n.t('events.show.join')
       .btn.btn-outline-success.show-comment-form
         = I18n.t('events.show.add-comment')
       .comment-container.hidden
@@ -67,7 +70,7 @@
           %hr
           .second-title= I18n.t('events.show.category')
           .event-store 
-            = @event.category.name
+            = @event.category_name
           %hr
           - if @event.address.present?
             .second-title= I18n.t('events.show.address')

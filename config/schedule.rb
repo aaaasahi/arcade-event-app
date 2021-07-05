@@ -11,3 +11,7 @@ set :output, "#{Rails.root}/log/cron.log"
 every 1.day, at: '8am' do
   rake 'admin_report:mail_admin_report'
 end
+
+every 1.day, at: '8am' do
+  rake 'close_event:close_event'
+end

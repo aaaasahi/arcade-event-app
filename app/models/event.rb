@@ -2,18 +2,18 @@
 #
 # Table name: events
 #
-#  id            :bigint           not null, primary key
-#  address       :string
-#  latitude      :float
-#  longitude     :float
-#  name          :string           not null
-#  start_time    :date
-#  store         :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  category_id   :integer
-#  prefecture_id :integer
-#  user_id       :bigint           not null
+#  id          :bigint           not null, primary key
+#  address     :string
+#  latitude    :float
+#  longitude   :float
+#  name        :string           not null
+#  start_time  :date
+#  status      :boolean          default(FALSE)
+#  store       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#  user_id     :bigint           not null
 #
 # Indexes
 #
@@ -39,6 +39,11 @@ class Event < ApplicationRecord
 
   validates :name, presence: true
   validates :text, presence: true
+  validate :day_after_today
+
+  def day_after_today
+      errors.add(:base, "開催日程は今日より前の日は指定できません") if start_time < Date.today
+  end
 
   #タグ作成
   def save_event_tag(tags)

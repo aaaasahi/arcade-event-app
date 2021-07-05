@@ -2,18 +2,18 @@
 #
 # Table name: events
 #
-#  id            :bigint           not null, primary key
-#  address       :string
-#  latitude      :float
-#  longitude     :float
-#  name          :string           not null
-#  start_time    :date
-#  store         :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  category_id   :integer
-#  prefecture_id :integer
-#  user_id       :bigint           not null
+#  id          :bigint           not null, primary key
+#  address     :string
+#  latitude    :float
+#  longitude   :float
+#  name        :string           not null
+#  start_time  :date
+#  status      :boolean          default(FALSE)
+#  store       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  category_id :integer
+#  user_id     :bigint           not null
 #
 # Indexes
 #
