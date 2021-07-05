@@ -7,4 +7,7 @@
     = date.day
     - events.each do |event|
       .calendar-link-box
-        = link_to ("・#{event.name}"), event_path(event), class: 'calendar-link'
+        - if event.status?
+          = link_to ("・#{event.name}(終)"), event_path(event), class: 'calendar-link'
+        - else
+          = link_to ("・#{event.name}"), event_path(event), class: 'calendar-link'

@@ -7,6 +7,17 @@
   object-fit: cover;
 }
 
+.status {
+  background-color:  #999;
+  color: white;
+}
+
+.close-button {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
 .preview-image {
   width: 40%;
   height: auto;

@@ -8,7 +8,10 @@
           .event-title 
             = event.name
           .event-date.mb-4.text-muted
-            = event.display_date
+            - if event.status?
+              %span.border.p-1.status 終了しました
+            - else
+              = event.display_date
           - if event.tags.present?
             %object
               - event.tags.each do |list|
