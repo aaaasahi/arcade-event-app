@@ -10,6 +10,7 @@ ja:
       event:
         name: "イベント名"
         text: "イベント内容"
+        start_time: "開催日程"
       profile:
         name: "ユーザー名"
   date:

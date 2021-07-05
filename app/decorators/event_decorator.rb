@@ -20,6 +20,14 @@ module EventDecorator
     end
   end
 
+  def category_name
+    if self.category.present?
+      self.category.name
+    else
+      I18n.t('events.show.unspecified')
+    end
+  end
+
 
 
   def eyecatch_image
