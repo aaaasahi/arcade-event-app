@@ -1,0 +1,41 @@
+.main-visual {
+  background: url("louie-castro-garcia-UitmwXNMHiE-unsplash.jpg") no-repeat center center / cover;
+  height: 600px;
+  width: 100%;
+  position: relative;
+}
+.main-visual__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.main-visual__title {
+  color: white;
+  font-size: 50px;
+  font-weight: 700;
+}
+.main-visual__lead {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 24px;
+  color: white;
+}
+.main-visual__button {
+  margin-top: 36px;
+}
+
+.service__container {
+  background-color: #f9f9f9;
+}
+
+.service__title, .service__text {
+  text-align: center;
+}
+.service__text p {
+  margin-bottom: 0;
+}
+.service__button {
+  text-align: center;
+}
