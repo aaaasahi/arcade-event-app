@@ -1,0 +1,17 @@
+en:
+  top-page:
+    title: "The joy of playing games together!"
+    lead: "A service to host and search for events at arcades"
+    create: "Event Post"
+    new-event: "New Event"
+    more: "More"
+    service: "Service"
+    search: "Search Event"
+    now-create: "Event Post"
+    now-search: "Search Event"
+    create-lead1: "Anyone can host by posting an event"
+    create-lead2: "It doesn't matter if the date and venue are not decided"
+    create-lead3: "Let's post the event!"
+    search-lead1: "You can search for posted events"
+    search-lead2: "You can also search by keywords and tags."
+    search-lead3: "Search for your favorite event and join us!"

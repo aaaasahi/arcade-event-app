@@ -1,14 +1,62 @@
+.main-visual 
+  .main-visual__content 
+    .main-visual__title 
+      = I18n.t('top-page.title')
+    .main-visual__lead 
+      = I18n.t('top-page.lead')
+    .main-visual__button 
+      .btn.btn-danger
+        = link_to I18n.t('top-page.create'), new_event_path, class: 'top-button'
 .container
-  .title
-    %h2 Topページ予定
-  .row 
-    - @events.each do |event|
-      .card-container.col-12.col-md-6.col-lg-3
-        = link_to event_path(event) do
-          .card.card-main
-            = image_tag event.eyecatch_image, class: 'card-image-top card-image'
-            .card-body
-              %h5.card-title 
-                = event.name
-              %p.card-text 
-                = event.text
+  .card-container
+    .title 
+      %h2= I18n.t('top-page.new-event')
+    .row 
+      - @events.each do |event|
+        .card-container.col-12.col-md-6.col-lg-3
+          = link_to event_path(event) do
+            .card.card-main
+              = image_tag event.eyecatch_image, class: 'card-image-top card-image'
+              .card-body
+                %h5.card-title 
+                  = event.name
+                %p.card-text 
+                  = event.display_date
+    .more.text-center
+      .btn.btn-outline-secondary.mt-3
+        = link_to I18n.t('top-page.more'), events_search_path, class:'more-button'
+
+.service__container.p-4.mt-5
+  .container
+    .title 
+      %h2= I18n.t('top-page.service')
+    .row.mb-5
+      .col-12.col-md-6.col-lg-6
+        .card.mb-4
+          .card-body
+            .service__title 
+              %h3= I18n.t('top-page.create')
+            .service__text 
+              %p= I18n.t('top-page.create-lead1')
+              %p= I18n.t('top-page.create-lead2')
+              %p= I18n.t('top-page.create-lead3')
+            .service__button.mt-5
+              .btn.btn-danger 
+                = link_to I18n.t('top-page.now-create'),new_event_path, class:'service-button'
+      .col-12.col-md-6.col-lg-6
+        .card
+          .card-body
+            .service__title 
+              %h3= I18n.t('top-page.search')
+            .service__text 
+              %p= I18n.t('top-page.search-lead1')
+              %p= I18n.t('top-page.search-lead2')
+              %p= I18n.t('top-page.search-lead3')
+            .service__button.mt-5
+              .btn.btn-warning
+                = link_to I18n.t('top-page.now-search'),events_search_path, class:'service-button'
+
+
+
+
+

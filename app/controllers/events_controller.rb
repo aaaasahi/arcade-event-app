@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   PER_PAGE = 5
   
   def index
-    @events = Event.all
+    @events = Event.latest.limit(8)
     
   end
 

@@ -42,7 +42,9 @@ class Event < ApplicationRecord
   validate :day_after_today
 
   def day_after_today
-      errors.add(:base, "開催日程は今日より前の日は指定できません") if start_time < Date.today
+    if start_time.present? && start_time < Date.today
+      errors.add(:base, "開催日程は今日より前の日は指定できません") 
+    end
   end
 
   #タグ作成
