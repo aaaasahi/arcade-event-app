@@ -1,14 +1,16 @@
 .main-visual 
   .main-visual__content 
-    .main-visual__title 誰かとゲームできる喜びを！
-    .main-visual__lead ゲームセンターでのイベントを主催、検索できるサービス
+    .main-visual__title 
+      = I18n.t('top-page.title')
+    .main-visual__lead 
+      = I18n.t('top-page.lead')
     .main-visual__button 
       .btn.btn-danger
-        = link_to 'イベントを作る', new_event_path, class: 'top-button'
+        = link_to I18n.t('top-page.create'), new_event_path, class: 'top-button'
 .container
   .card-container
     .title 
-      %h2 新着イベント
+      %h2= I18n.t('top-page.new-event')
     .row 
       - @events.each do |event|
         .card-container.col-12.col-md-6.col-lg-3
@@ -22,37 +24,37 @@
                   = event.display_date
     .more.text-center
       .btn.btn-outline-secondary.mt-3
-        = link_to 'もっと見る', events_search_path, class:'more-button'
+        = link_to I18n.t('top-page.more'), events_search_path, class:'more-button'
 
 .service__container.p-4.mt-5
   .container
     .title 
-      %h2 サービス
+      %h2= I18n.t('top-page.service')
     .row.mb-5
       .col-12.col-md-6.col-lg-6
         .card.mb-4
           .card-body
             .service__title 
-              %h3 イベントを作る
+              %h3= I18n.t('top-page.create')
             .service__text 
-              %p イベントを作成することで誰でも主催者になれます。
-              %p 開催日や開催店舗が決まってなくてもOK！
-              %p まずは気軽にイベントを作成してみましょう！
+              %p= I18n.t('top-page.create-lead1')
+              %p= I18n.t('top-page.create-lead2')
+              %p= I18n.t('top-page.create-lead3')
             .service__button.mt-5
               .btn.btn-danger 
-                = link_to 'いますぐイベントを作成する',new_event_path, class:'service-button'
+                = link_to I18n.t('top-page.now-create'),new_event_path, class:'service-button'
       .col-12.col-md-6.col-lg-6
         .card
           .card-body
             .service__title 
-              %h3 イベントを探す
+              %h3= I18n.t('top-page.search')
             .service__text 
-              %p 投稿されたイベントを検索してみましょう。
-              %p キーワードやタグなど条件で絞り込んで検索もできます。
-              %p お気に入りのイベントを見つけて参加しましょう！
+              %p= I18n.t('top-page.search-lead1')
+              %p= I18n.t('top-page.search-lead2')
+              %p= I18n.t('top-page.search-lead3')
             .service__button.mt-5
               .btn.btn-warning
-                = link_to 'いますぐイベントを検索する',events_search_path, class:'service-button'
+                = link_to I18n.t('top-page.now-search'),events_search_path, class:'service-button'
 
 
 
