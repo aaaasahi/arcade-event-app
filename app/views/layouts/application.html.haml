@@ -35,6 +35,11 @@
           %ul.navbar-nav
             - unless current_user.administrator?
               %li.nav-item
+                - if unchecked_notifications.any?
+                  = link_to I18n.t('header.notice'), notifications_path , class: "nav-link notice-active"
+                - else  
+                  = link_to I18n.t('header.notice'), notifications_path , class: "nav-link"
+              %li.nav-item
                 = link_to I18n.t('header.my-page'), profile_path, class: "nav-link"
             %li.nav-item
               = link_to I18n.t('header.logout'), destroy_user_session_path, data: { method: 'delete' }, class: "nav-link"
