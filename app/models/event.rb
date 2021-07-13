@@ -36,10 +36,30 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :clips, dependent: :destroy
   has_many :joins, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   validates :name, presence: true
   validates :text, presence: true
   validate :day_after_today
+
+  #参加通知
+  def create_notification_join!(current_user)
+    # すでにあるか?
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'join'])
+    # ない場合通知作成
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        event_id: id,
+        visited_id: user_id,
+        action: 'join'
+      )
+      # 自分の場合は通知済み
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
+  end
 
   def day_after_today
     if start_time.present? && start_time < Date.today
