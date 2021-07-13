@@ -1,0 +1,22 @@
+.avatar-notice {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.notice-update {
+  margin-left: 20px;
+}
+.notice-link {
+  padding: 0;
+  vertical-align: 0%;
+}
+
+.notice-active::before {
+  font-family: "Font Awesome 5 Free";
+  content: '\f111';
+  font-size: 12px;
+  font-weight: 900;
+  margin-right: 3px;
+  color:red;
+}

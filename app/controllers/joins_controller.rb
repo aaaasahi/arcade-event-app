@@ -10,6 +10,7 @@ class JoinsController < ApplicationController
   def create
     event = Event.find(params[:event_id])
     event.joins.create!(user_id: current_user.id)
+    event.create_notification_join!(current_user)
     render json: { status: 'ok' }
   end
 

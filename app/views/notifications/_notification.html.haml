@@ -1,0 +1,24 @@
+- visitor = notification.visitor
+- visited = notification.visited
+- if notification.checked == false
+  .card 
+    .card-body
+      .d-flex
+        .avatar-wrapper
+          = image_tag visitor.avatar_image, class:'avatar-notice'
+        .notice-wrapper
+          = link_to account_path(visitor),class: 'btn btn-link notice-link' do
+            = visitor.display_name
+          さんが
+          - case notification.action
+          - when 'dm' then
+            あなたに
+            = link_to 'メッセージ', notification.room, class: 'btn btn-link notice-link'
+            を送りました。
+            = link_to I18n.t('notice.read'),notification_path(notification.id),method: :put, class: 'btn btn-link notice-link'
+          - when 'join'
+            = link_to 'あなたのイベント', notification.event, class: 'btn btn-link notice-link'
+            に参加しました。
+            = link_to I18n.t('notice.read'),notification_path(notification.id),method: :put, class: 'btn btn-link notice-link'
+          .time 
+            = notification.how_long_ago

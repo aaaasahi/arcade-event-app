@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   resources :clip_events, only: [:index]
   resources :join_events, only: [:index]
   resources :calendars, only: [:index]
+  resources :notifications, only: [:index, :update]
   resources :messages, only: [:create]
   resources :rooms, only: [:create, :index, :show]
 end
