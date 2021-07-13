@@ -2,6 +2,7 @@ en:
   events:
     search:
       event-search: "Search Event"
+      event-list: "Event List"
       keyword: "Keyword"
       key-place: "Keyword input"
       search-btn: "Search"
@@ -38,11 +39,13 @@ en:
     show:
       clip: "Clip"
       clip-now: "Clipping"
+      clip-list: "Clip List"
       event-show: "Event Details"
       edit: "Edit"
       delete: "Delete"
       join: "Participation"
       join-now: "Participating"
+      join-list: "Participation list"
       add-comment: "Add Comment"
       comment-place: "Input Comment"
       btn: "Post"

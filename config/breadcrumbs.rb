@@ -3,17 +3,17 @@ crumb :root do
 end
 
 crumb :user_login do
-  link "ログイン", new_user_session_path
+  link I18n.t('auth.login'), new_user_session_path
   parent :root
 end
 
 crumb :user_signin do
-  link "新規登録", new_user_registration_path
+  link I18n.t('auth.new'), new_user_registration_path
   parent :root
 end
 
 crumb :event_search do 
-  link "イベント一覧", events_search_path
+  link I18n.t('events.search.event-list'), events_search_path
   parent :root
 end
 
@@ -28,17 +28,22 @@ crumb :user_profile do |user|
 end
 
 crumb :event_new do
-  link "イベント作成", new_event_path
+  link I18n.t('events.form.event-post'), new_event_path
   parent :root
 end
 
 crumb :event_edit do |event|
-  link "ユーザー編集"
+  link I18n.t('events.form.event-edit')
   parent :event_show, event
 end
 
 crumb :event_calendar do
-  link "イベントカレンダー", calendars_path
+  link I18n.t('events.calendar.event-calendar'), calendars_path
+  parent :root
+end
+
+crumb :notice do
+  link I18n.t('notice.title'), notifications_path
   parent :root
 end
 
@@ -48,37 +53,37 @@ crumb :profile_top do |user|
 end
 
 crumb :profile_clip do |user|
-  link 'クリップ'
+  link I18n.t('events.show.clip-list')
   parent :profile_top, user
 end
 
 crumb :profile_join do |user|
-  link '参加予定'
+  link I18n.t('events.show.join-list')
   parent :profile_top, user
 end
 
 crumb :profile_message do |user|
-  link 'メッセージ一覧',rooms_path
+  link I18n.t('profiles.message-index'),rooms_path
   parent :profile_top, user
 end
 
 crumb :message do |user|
-  link 'メッセージ'
+  link I18n.t('profiles.link.message')
   parent :profile_message, user
 end
 
 crumb :profile_edit do |user|
-  link 'プロフィール変更'
+  link I18n.t('profiles.link.change-profile')
   parent :profile_top, user
 end
 
 crumb :profile_user_edit do |user|
-  link 'ユーザー情報変更'
+  link I18n.t('profiles.link.change-user')
   parent :profile_top, user
 end
 
 crumb :profile_unsubscribe do |user|
-  link '退会'
+  link I18n.t('profiles.link.withdrawal')
   parent :profile_top, user
 end
 

@@ -2,6 +2,7 @@ ja:
   events:
     search:
       event-search: "イベントを探す"
+      event-list: "イベント一覧"
       keyword: "キーワード"
       key-place: "キーワードを入力"
       search-btn: "検索"
@@ -38,11 +39,13 @@ ja:
     show:
       clip: "クリップ"
       clip-now: "クリップ中"
+      clip-list: "クリップ一覧"
       event-show: "イベント詳細"
       edit: "イベント編集"
       delete: "イベント削除"
       join: "参加する"
       join-now: "参加中"
+      join-list: "参加一覧"
       add-comment: "コメント追加"
       comment-place: "コメントを入力"
       btn: "投稿する"
