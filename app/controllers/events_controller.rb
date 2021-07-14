@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   PER_PAGE = 5
+  EVENT_LIMIT = 8
   
   def index
-    @events = Event.latest.limit(8)
+    @events = Event.latest.limit(EVENT_LIMIT)
     
   end
 

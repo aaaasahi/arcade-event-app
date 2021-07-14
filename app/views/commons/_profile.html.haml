@@ -4,32 +4,32 @@
 .card
   .card-body
     .row
-      .profile-image.col-3
+      .profile-image.col-12.col-lg-3
         = image_tag user.avatar_image, class:'avatar'
-      .profile-text.col-9
+      .profile-text.col-12.col-lg-9
         .profile-name
           = user.display_name
         - if user.gender.present?
           %hr
           %dl.gender 
             .row 
-              %dt.col-2= I18n.t('profiles.gender')
-              %dd.col-8
+              %dt.col-4.col-lg-2= I18n.t('profiles.gender')
+              %dd.col-4.col-lg-8
                 - if user.gender.present?
                   = I18n.t("enum.genders.#{user.profile.gender}")
         - if user.age_cal.present?
           %hr 
           %dl.age 
             .row 
-              %dt.col-2= I18n.t('profiles.age')
-              %dd.col-8
+              %dt.col-4.col-lg-2= I18n.t('profiles.age')
+              %dd.col-4.col-lg-8
                 = user.age_cal
         - if user.introduction.present?
           %hr
           %dl.introduction
             .row
-              %dt.col-2= I18n.t('profiles.introduction')
-              %dd.col-8
+              %dt.col-4.col-lg-2= I18n.t('profiles.introduction')
+              %dd.col-4.col-lg-8
                 = user.introduction
 .user-event.mt-5
   .text-title.mb-4= I18n.t('profiles.post-event')

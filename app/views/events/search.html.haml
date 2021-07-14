@@ -4,7 +4,7 @@
   .title
     %h2= I18n.t('events.search.event-search')
   .row.card-box
-    .left-content.col-3.mt-4
+    .left-content.col-12.col-lg-3.mt-4
       .card.mb-3
         .card-body
           = form_tag events_search_path,  method: :get do
@@ -34,7 +34,7 @@
             %p.tag-title= I18n.t('events.search.tag')
             - @tag_lists.each do |list|
               = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
-    .right-content.col-9.mt-4
+    .right-content.col-12.col-lg-9.mt-4
       .sort-container
         %ul.sort
           %li= I18n.t('events.search.order')

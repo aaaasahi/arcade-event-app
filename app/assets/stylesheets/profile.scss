@@ -43,3 +43,25 @@
   text-align: center;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 767px) {
+  .profile-image {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .profile-name {
+    text-align: center;
+  }
+  .left-content-room {
+    margin-bottom: 50px;
+  }
+  .preview-avatar {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+  }
+  .message-title {
+    font-size: 20px;
+  }
+  
+}

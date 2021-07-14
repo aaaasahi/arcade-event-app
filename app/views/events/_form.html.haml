@@ -21,7 +21,7 @@
       .label
         = f.label :store, I18n.t('events.form.store')
       .row
-        .form.col-6
+        .form.col-8.col-lg-6
           = f.text_field :store, class: 'form-control'
       .label
         = f.label :address, I18n.t('events.form.address')
@@ -30,21 +30,21 @@
       .label
         = f.label :start_time, I18n.t('events.form.date')
       .row
-        .form.col-6
+        .form.col-8.col-lg-6
           = f.date_field :start_time, class: 'form-control'
       .label
         = f.label :category_id, I18n.t('events.form.category')
       .row
-        .form.col-3
+        .form.col-6.col-lg-3
           = f.collection_select :category_id, Category.all, :id, :name, {include_blank: "---"}, {class: 'form-control'}
       .label
         = f.label :name, I18n.t('events.form.tag')
       .row.mb-3
-        .form.col-6
+        .form.col-8.col-lg-6
           = f.text_field :tag_name, value: @tag_list, class: 'form-control'
       %hr
-      .mt-5.mb-3
-      = f.submit I18n.t('events.form.post'), class: 'btn btn-success btn-lg post-button'
+      .mt-5.mb-3.text-center
+        = f.submit I18n.t('events.form.post'), class: 'btn btn-success btn-lg'
 
 
 = javascript_pack_tag 'image-preview'

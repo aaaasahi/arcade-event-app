@@ -8,23 +8,22 @@
       .btn.btn-danger
         = link_to I18n.t('top-page.create'), new_event_path, class: 'top-button'
 .container
-  .card-container
-    .title 
-      %h2= I18n.t('top-page.new-event')
-    .row 
-      - @events.each do |event|
-        .card-container.col-12.col-md-6.col-lg-3
-          = link_to event_path(event) do
-            .card.card-main
-              = image_tag event.eyecatch_image, class: 'card-image-top card-image'
-              .card-body
-                %h5.card-title 
-                  = event.name
-                %p.card-text 
-                  = event.display_date
-    .more.text-center
-      .btn.btn-outline-secondary.mt-3
-        = link_to I18n.t('top-page.more'), events_search_path, class:'more-button'
+  .title 
+    %h2= I18n.t('top-page.new-event')
+  .row
+    - @events.each do |event|
+      .col-12.col-md-6.col-lg-3
+        = link_to event_path(event) do
+          .card.card-main
+            = image_tag event.eyecatch_image, class: 'card-image-top card-image'
+            .card-body
+              %h5.card-title 
+                = event.name
+              %p.card-text 
+                = event.display_date
+  .more.text-center
+    .btn.btn-outline-secondary.mt-3
+      = link_to I18n.t('top-page.more'), events_search_path, class:'more-button'
 
 .service__container.p-4.mt-5
   .container

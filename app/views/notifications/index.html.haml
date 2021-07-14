@@ -6,5 +6,7 @@
     %h2= I18n.t('notice.title')
   - if notifications.exists?
     = render notifications
+    .page.mt-5
+      = paginate notifications,theme: 'twitter-bootstrap-4'
   - else
     %p 通知はありません

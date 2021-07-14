@@ -21,7 +21,7 @@ ja:
       card: "カードゲーム"
       other: "その他"
     calendar:
-      event-calendar: "イベントカレンダー"
+      event-calendar: "カレンダー"
       next: "次の月"
       before: "前の月"
     form:
@@ -35,7 +35,7 @@ ja:
       date: "開催日 ※(未入力の場合未定と表示)"
       category: "カテゴリ"
       tag: "タグ ※(半角で区切るとタグになります。 例: 音ゲー 初心者)"
-      post: "作成"
+      post: "作成する"
     show:
       clip: "クリップ"
       clip-now: "クリップ中"
