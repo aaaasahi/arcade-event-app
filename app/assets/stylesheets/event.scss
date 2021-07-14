@@ -105,3 +105,10 @@
   height: 300px;
   width: 100%;
 }
+
+@media only screen and (max-width: 767px) {
+  .preview-image {
+    width: 100%;
+    height: auto;
+  }
+}

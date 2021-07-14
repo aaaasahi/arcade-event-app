@@ -21,8 +21,12 @@
           = event.id
         %td 
           = event.name
-        %td 
-          = event.category.name
+        - if event.category.present?
+          %td 
+            = event.category.name
+        - else  
+          %td 
+            未入力
         %td 
           = ("#{event.join_count}人")
         %td 

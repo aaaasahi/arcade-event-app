@@ -15,3 +15,13 @@
 .label {
   margin-bottom: 10px;
 }
+
+@media only screen and (max-width: 767px) {
+  .card-main {
+    max-width: none;
+  }
+  .label {
+    font-size: 13px;
+    margin-top: 20px;
+  }
+}

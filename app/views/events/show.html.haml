@@ -2,7 +2,7 @@
   - breadcrumb :event_show, @event
   = breadcrumbs separator: " &rsaquo; "
   .row 
-    .left-card.col-9.mt-5
+    .left-card.col-12.col-lg-9.mt-5
       .card.mb-5
         .card-body
           .main-image
@@ -26,34 +26,14 @@
               = link_to I18n.t('events.show.edit'), edit_event_path(@event), class: 'btn btn-success edit-button'
               = link_to I18n.t('events.show.delete'), event_path(@event), data: { method: 'delete', confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger'
           - else
-            - if @event.status?
-              .btn.btn-danger.btn-lg.join-button.close-button 終了
-            - else
-              .btn.btn-primary.btn-lg.join-button.hidden.active-join= I18n.t('events.show.join-now')
-              .btn.btn-outline-primary.btn-lg.join-button.hidden.inactive-join= I18n.t('events.show.join')
-      .btn.btn-outline-success.show-comment-form
-        = I18n.t('events.show.add-comment')
-      .comment-container.hidden
-        = form_with(model:[@event, @comment], local:true) do |f|
-          .form
-            = f.text_area :content, placeholder: I18n.t('events.show.comment-place'), class: 'form-control'
-          .text-right
-            = f.submit I18n.t('events.show.btn'), class: 'btn btn-dark'
-
-      - if user_signed_in? && @comments.present?
-        .comment-field.mt-5.mb-5
-          %h5= I18n.t('events.show.comment-list')
-          .card 
-            .card-body
-              - @comments.each do |comment|
-                .row
-                  = link_to  account_path(comment.user) do
-                    .comment-avator.col-2.mb-3
-                      = image_tag comment.user.avatar_image, class: 'avatar-mini'
-                  .comment-text.col-6.d-flex.align-items-center
-                    %p= comment.content
-
-    .right-card.col-3.mt-5
+            .text-center
+              - if @event.status?
+                .btn.btn-danger.btn-lg.close-button 終了
+              - else
+                .btn.btn-primary.btn-lg.hidden.active-join= I18n.t('events.show.join-now')
+                .btn.btn-outline-primary.btn-lg.hidden.inactive-join= I18n.t('events.show.join')
+      
+    .right-card.col-12.col-lg-3.mt-5
       .card.mb-5
         .card-body
           .second-title= I18n.t('events.show.event-date')
@@ -86,3 +66,26 @@
                 = image_tag @event.user.avatar_image, class: 'avatar-normal'
               .user-name.col-6.d-flex.align-items-center
                 = @event.user.display_name
+
+    .col-12.col-lg-9.mt-5
+      .btn.btn-outline-success.show-comment-form
+        = I18n.t('events.show.add-comment')
+      .comment-container.hidden
+        = form_with(model:[@event, @comment], local:true) do |f|
+          .form
+            = f.text_area :content, placeholder: I18n.t('events.show.comment-place'), class: 'form-control'
+          .text-right
+            = f.submit I18n.t('events.show.btn'), class: 'btn btn-dark'
+
+      - if user_signed_in? && @comments.present?
+        .comment-field.mt-5.mb-5
+          %h5= I18n.t('events.show.comment-list')
+          .card 
+            .card-body
+              - @comments.each do |comment|
+                .row
+                  = link_to  account_path(comment.user) do
+                    .comment-avator.col-2.mb-3
+                      = image_tag comment.user.avatar_image, class: 'avatar-mini'
+                  .comment-text.col-6.d-flex.align-items-center
+                    %p= comment.content

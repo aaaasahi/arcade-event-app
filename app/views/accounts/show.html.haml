@@ -2,10 +2,10 @@
   - breadcrumb :user_profile, @user
   = breadcrumbs separator: " &rsaquo; "
   .row
-    .left-content.col-9.mt-5 
+    .left-content.col-12.col-lg-9.mt-5 
       = render 'commons/profile', user: @user
     - if user_signed_in? && @user.is_valid == true
-      .right-content.col-3.mt-5 
+      .right-content.col-12.col-lg-3.mt-5 
         .card 
           .card-body 
             .contact.text-center

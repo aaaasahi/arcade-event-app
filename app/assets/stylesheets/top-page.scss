@@ -39,3 +39,13 @@
 .service__button {
   text-align: center;
 }
+
+@media only screen and (max-width: 767px) {
+  .main-visual__title {
+    font-size: 28px;
+  }
+  .main-visual__lead {
+    font-size: 13px;
+  }
+
+}

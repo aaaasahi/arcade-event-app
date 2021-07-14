@@ -21,7 +21,7 @@ en:
       card: "card game"
       other: "other"
     calendar:
-      event-calendar: "Event Calendar"
+      event-calendar: "Calendar"
       next: "Next"
       before: "Before"
     form:

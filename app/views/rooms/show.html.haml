@@ -2,7 +2,7 @@
   - breadcrumb :message, current_user
   = breadcrumbs separator: " &rsaquo; "
   .title
-    %h2 
+    %h2.message-title
       = ("#{@another.user.display_name} #{I18n.t('profiles.message.title')}")
 
   .card

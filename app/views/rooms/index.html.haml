@@ -4,7 +4,7 @@
   .title
     %h2= I18n.t('profiles.message-index')
   .row
-    .left-content.col-9
+    .left-content-room.col-12.col-lg-9
       - if @another_entries.present?
         - @another_entries.each do |entry|
           = link_to room_path(entry.room) do
@@ -23,5 +23,5 @@
       - else
         %p メッセージはありません。
 
-    .right-content.col-3
+    .right-content.col-12.col-lg-3
       = render 'commons/link' 
