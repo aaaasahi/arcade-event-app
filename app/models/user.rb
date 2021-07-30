@@ -21,8 +21,12 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+        :recoverable, :rememberable, :validatable
+
+  validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
 
   has_many :events, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -50,6 +54,7 @@ class User < ApplicationRecord
     result
   end
 
+  #ゲストユーザー
   def self.guest
     find_or_create_by!(email: "guest@example.com") do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -68,6 +73,7 @@ class User < ApplicationRecord
     profile || build_profile
   end
 
+  #退会処理
   def active_for_authentication?
     super && (is_valid == true)
   end
