@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
+  subject { event.valid? }
   let(:user) { build(:user) }
-  describe "正常系の機能" do
+  describe "正常の機能" do
     context "正しく入力さている場合" do
       let(:event) { build(:event) }
       it "保存できる" do
-        expect(event.valid?).to eq true
+        expect(subject).to eq true
       end
     end
   end
 
   describe "バリデーション" do
-    subject { event.valid? }
     context "name が空の場合" do
       let(:event) { build(:event, name: "") }
       it "保存できない" do
@@ -74,6 +74,28 @@ RSpec.describe Event, type: :model do
       it "保存できない" do
         expect(subject).to eq false
         expect(event.errors.messages[:base]).to include "開催日程は今日より前の日は指定できません"
+      end
+    end
+  end
+
+  describe "関連性" do
+    context "event が削除された場合" do
+      subject { event.destroy }
+      let(:event) { create(:event) }
+      it "join も削除される" do
+        create_list(:join, 2, event: event)
+        create(:join)
+        expect { subject }.to change { event.joins.count }.by(-2)
+      end
+      it "clip も削除される" do
+        create_list(:clip, 2, event: event)
+        create(:clip)
+        expect { subject }.to change { event.clips.count }.by(-2)
+      end
+      it "comment も削除される" do
+        create_list(:comment, 2, event: event)
+        create(:comment)
+        expect { subject }.to change { event.comments.count }.by(-2)
       end
     end
   end
