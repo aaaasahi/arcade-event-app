@@ -20,6 +20,7 @@ class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :avatar
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :introduction , length: { maximum: 300 }
 
 end
