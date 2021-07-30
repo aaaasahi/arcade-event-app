@@ -38,15 +38,17 @@ class Event < ApplicationRecord
   has_many :joins, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :text, presence: true
+  validates :store, length: { minimum: 2, maximum: 50 }
+  validates :address, length: { minimum: 2, maximum: 50 }
   validate :day_after_today
 
   #参加通知
   def create_notification_join!(current_user)
     # すでにあるか?
     temp = Notification.where(["visitor_id = ? and visited_id = ? and event_id = ? and action = ? ", current_user.id, user_id, id, 'join'])
-    # ない場合通知作成
+    # ない場合作成
     if temp.blank?
       notification = current_user.active_notifications.new(
         event_id: id,
@@ -61,6 +63,7 @@ class Event < ApplicationRecord
     end
   end
 
+  #日付
   def day_after_today
     if start_time.present? && start_time < Date.today
       errors.add(:base, "開催日程は今日より前の日は指定できません") 
@@ -69,9 +72,7 @@ class Event < ApplicationRecord
 
   #タグ作成
   def save_event_tag(tags)
-    # 既にタグネームあるなら取得
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
-    # 共通要素取り出し
     old_tags = current_tags - tags
     new_tags = tags - current_tags
 
