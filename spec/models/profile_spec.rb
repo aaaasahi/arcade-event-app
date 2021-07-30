@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Profile, type: :model do
   subject { profile.valid? }
   let(:user) { build(:user) }
-  describe "正常系の機能" do
+  describe "正常の機能" do
     context "正しく入力さている場合" do
       let(:profile) { build(:profile) }
       it "保存できる" do

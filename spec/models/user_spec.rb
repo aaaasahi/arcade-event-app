@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
       end
     end
     context "email が256文字以上の場合" do
-      let(:user) { build(:user, email: "a" * 256) }
+      let(:user) { build(:user, email: Faker::Lorem.characters(number: 257)) }
       it "保存できない" do
         expect(subject).to eq false
         expect(user.errors.messages[:email]).to include "は255文字以内で入力してください"
@@ -39,6 +39,20 @@ RSpec.describe User, type: :model do
       it "保存できない" do
         expect(subject).to eq false
         expect(user.errors.messages[:email]).to include "は不正な値です"
+      end
+    end
+    context "password が空の場合" do
+      let(:user) { build(:user, password: "") }
+      it "保存できない" do
+        expect(subject).to eq false
+        expect(user.errors.messages[:password]).to include "を入力してください"
+      end
+    end
+    context 'パスワードが5文字以下のとき' do
+      let(:user) { build(:user, password: Faker::Lorem.characters(number: 5)) }
+      it 'エラーが発生する' do
+        expect(subject).to eq false
+        expect(user.errors.messages[:password]).to include 'は6文字以上で入力してください'
       end
     end
   end
