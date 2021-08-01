@@ -9,7 +9,7 @@ RSpec.describe "Joins", type: :request do
   describe "POST #create" do
     let(:new_event) { create(:event, user_id: user.id) }
     let(:event_id) { new_event.id }
-    subject { post(event_join_path(event_id), xhr: true) }
+    subject { post(event_join_path(event_id)) }
 
     context "正常な場合" do
       it "リクエストが成功する" do
@@ -28,7 +28,7 @@ RSpec.describe "Joins", type: :request do
     before do
       create(:join, user_id: user.id, event_id: event.id)
     end
-    subject { delete(event_join_path(event.id), xhr: true) }
+    subject { delete(event_join_path(event.id)) }
 
     context "正常な場合" do
       it "リクエストが成功する" do
