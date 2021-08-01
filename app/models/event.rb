@@ -40,8 +40,8 @@ class Event < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
   validates :text, presence: true
-  validates :store, length: { minimum: 2, maximum: 50 }
-  validates :address, length: { minimum: 2, maximum: 50 }
+  validates :store, length: { maximum: 50 }
+  validates :address, length: { maximum: 50 }
   validate :day_after_today
 
   #参加通知

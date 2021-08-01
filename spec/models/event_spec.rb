@@ -41,25 +41,11 @@ RSpec.describe Event, type: :model do
         expect(event.errors.messages[:text]).to include "を入力してください"
       end
     end
-    context "store が2文字以下の場合" do
-      let(:event) { build(:event, store: Faker::Lorem.characters(number: 1) ) }
-      it "保存できない" do
-        expect(subject).to eq false
-        expect(event.errors.messages[:store]).to include "は2文字以上で入力してください"
-      end
-    end
     context "store が50文字以上の場合" do
       let(:event) { build(:event, store: Faker::Lorem.characters(number: 51) ) }
       it "保存できない" do
         expect(subject).to eq false
         expect(event.errors.messages[:store]).to include "は50文字以内で入力してください"
-      end
-    end
-    context "address が2文字以下の場合" do
-      let(:event) { build(:event, address: Faker::Lorem.characters(number: 1) ) }
-      it "保存できない" do
-        expect(subject).to eq false
-        expect(event.errors.messages[:address]).to include "は2文字以上で入力してください"
       end
     end
     context "address が50文字以上の場合" do
