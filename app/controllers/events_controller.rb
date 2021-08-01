@@ -24,9 +24,13 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
-    tag_list = params[:event][:tag_name].split(nil)
-    if @event.save
+
+    if params[:event][:tag_name].present?
+      tag_list = params[:event][:tag_name].split(nil)
       @event.save_event_tag(tag_list)
+    end
+
+    if @event.save 
       redirect_to events_path, notice: '作成しました'
     else
       flash.now[:error] = '作成に失敗しました'
@@ -41,9 +45,13 @@ class EventsController < ApplicationController
 
   def update
     @event = current_user.events.find(params[:id])
-    tag_list = params[:event][:tag_name].split(nil)
-    if @event.update(event_params)
+
+    if params[:event][:tag_name].present?
+      tag_list = params[:event][:tag_name].split(nil)
       @event.save_event_tag(tag_list)
+    end
+
+    if @event.update(event_params)
       redirect_to event_path(@event), notice: '更新しました'
     else
       flash.now[:error] = '更新に失敗しました'

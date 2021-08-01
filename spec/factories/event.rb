@@ -7,5 +7,10 @@ FactoryBot.define do
     start_time { Date.today }
     category_id { 1 }
     user
+
+    trait :invalid do
+      name { nil }
+    end
+    
   end
 end
