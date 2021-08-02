@@ -4,9 +4,25 @@ RSpec.describe Event, type: :model do
   subject { event.valid? }
   let(:user) { build(:user) }
   describe "正常の機能" do
-    context "正しく入力さている場合" do
+    context "全て正しく入力されているイベント投稿できる場合" do
       let(:event) { build(:event) }
       it "保存できる" do
+        expect(subject).to eq true
+      end
+      it "store が未入力でも保存できる" do 
+        build(:event, store: "") 
+        expect(subject).to eq true
+      end
+      it "address が未入力でも保存できる" do 
+        build(:event, address: "") 
+        expect(subject).to eq true
+      end
+      it "start_time が未入力でも保存できる" do 
+        build(:event, start_time: "") 
+        expect(subject).to eq true
+      end
+      it "category_id が未入力でも保存できる" do 
+        build(:event, category_id: nil) 
         expect(subject).to eq true
       end
     end
@@ -64,7 +80,7 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "関連性" do
+  describe "削除時の関連性" do
     context "event が削除された場合" do
       subject { event.destroy }
       let(:event) { create(:event) }
@@ -85,4 +101,40 @@ RSpec.describe Event, type: :model do
       end
     end
   end
+
+  describe "アソシエーション" do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+    let(:event) { create(:event) }
+
+    context "Userモデルとのアソシエーション" do
+      let(:target) { :user }
+      it "Userとの関連付けはbelongs_toであること" do
+        expect(association.macro).to eq :belongs_to
+      end
+    end
+
+    context "Joinモデルとのアソシエーション" do
+      let(:target) { :joins }
+      it "Joinとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context "Clipモデルとのアソシエーション" do
+      let(:target) { :clips }
+      it "Clipとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context "Commentモデルとのアソシエーション" do
+      let(:target) { :comments }
+      it "Commentとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+    end
+  end
+
 end

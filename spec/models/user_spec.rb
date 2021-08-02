@@ -50,14 +50,14 @@ RSpec.describe User, type: :model do
     end
     context 'パスワードが5文字以下のとき' do
       let(:user) { build(:user, password: Faker::Lorem.characters(number: 5)) }
-      it 'エラーが発生する' do
+      it '保存できない' do
         expect(subject).to eq false
         expect(user.errors.messages[:password]).to include 'は6文字以上で入力してください'
       end
     end
   end
 
-  describe "関連性" do
+  describe "削除時の関連性" do
     context "user が削除された場合" do
       subject { user.destroy }
       let(:user) { create(:user) }
@@ -88,4 +88,41 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "アソシエーション" do
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+    let(:user) { create(:user) }
+
+    context "Eventモデルとのアソシエーション" do
+      let(:target) { :events }
+      it "Eventとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context "Joinモデルとのアソシエーション" do
+      let(:target) { :joins }
+      it "Joinとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context "Clipモデルとのアソシエーション" do
+      let(:target) { :clips }
+      it "Clipとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+    end
+
+    context "Commentモデルとのアソシエーション" do
+      let(:target) { :comments }
+      it "Commentとの関連付けはhas_manyであること" do
+        expect(association.macro).to eq :has_many
+      end
+    end
+  end
+
+  
 end

@@ -9,6 +9,18 @@ RSpec.describe Profile, type: :model do
       it "保存できる" do
         expect(subject).to eq true
       end
+      it "introductionが未入力でも保存できる" do 
+        build(:profile, introduction: "")  
+        expect(subject).to eq true
+      end
+      it "genderが未入力でも保存できる" do 
+        build(:profile, gender: nil)  
+        expect(subject).to eq true
+      end
+      it "ageが未入力でも保存できる" do 
+        build(:profile, age: nil)  
+        expect(subject).to eq true
+      end
     end
   end
 
