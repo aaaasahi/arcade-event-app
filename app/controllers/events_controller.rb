@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   EVENT_LIMIT = 8
   
   def index
-    @events = Event.latest.limit(EVENT_LIMIT)
+    @events = Event.with_attached_eyecatch.latest.limit(EVENT_LIMIT)
     
   end
 
@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     begin
       @event = Event.find(params[:id])
       @comment = Comment.new
-      @comments = @event.comments
+      @comments = @event.comments.includes(:user)
     rescue
       redirect_to new_event_path, notice: '存在しないイベントです。イベントを作成しましょう!'
     end
@@ -67,29 +67,29 @@ class EventsController < ApplicationController
 
   def search
     @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true).page(params[:page]).per(PER_PAGE)
+    @events = @q.result(distinct: true).includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE)
 
     #キーワード
     if params[:search].present?
-      @events = Event.key_search(params["q"]).page(params[:page]).per(PER_PAGE)
+      @events = Event.key_search(params["q"]).includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE)
     end
 
 
 
     # ソート
   if params[:new]
-    @events = Event.latest.page(params[:page]).per(PER_PAGE)
+    @events = Event.latest.includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE)
   elsif params[:old]
-    @events = Event.old.page(params[:page]).per(PER_PAGE)
+    @events = Event.includes(:tags, :tagmaps).with_attached_eyecatch.old.page(params[:page]).per(PER_PAGE)
   elsif params[:join]
-    events = Event.join_count
-    @events =  Kaminari.paginate_array(events).page(params[:page]).per(PER_PAGE)
+    events = Event.includes(:tags, :tagmaps).with_attached_eyecatch.join_count
+    @events = Kaminari.paginate_array(events).page(params[:page]).per(PER_PAGE)
   end
 
     # タグ
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
-      @events = @tag.events.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+      @events = @tag.events.includes(:tags, :tagmaps).with_attached_eyecatch.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
     end
     
     @tag_lists = Tag.all
