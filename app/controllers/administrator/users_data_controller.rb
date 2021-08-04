@@ -1,7 +1,7 @@
 class Administrator::UsersDataController < ApplicationController
   before_action :admin_user
   def index
-    @users = User.all
+    @users = User.all.includes(:profile)
     @users_yesterday = User.yesterday
 
     respond_to do |format|

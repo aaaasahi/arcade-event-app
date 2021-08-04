@@ -10,16 +10,16 @@ class RoomsController < ApplicationController
   def index
     current_entries = current_user.entries
     my_room_id = []
-    current_entries.each do |entry|
+    current_entries.includes(:room).each do |entry|
       my_room_id << entry.room.id
     end
-    @another_entries = Entry.where(room_id: my_room_id).where.not(user_id: current_user.id)
+    @another_entries = Entry.includes(:room, user: {profile: :avatar_attachment}).where(room_id: my_room_id).where.not(user_id: current_user.id)
   end
 
   def show
     begin
       @room = Room.find(params[:id])
-      @messages = @room.messages.all
+      @messages = @room.messages.includes(:user)
       @message = Message.new
       @entries = @room.entries
       @another = @entries.where.not(user_id: current_user.id).first
