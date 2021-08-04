@@ -33,6 +33,6 @@
                 = user.introduction
 .user-event.mt-5
   .text-title.mb-4= I18n.t('profiles.post-event')
-  - user.events.each do |event|
+  - user.events.includes(:tags, :tagmaps).with_attached_eyecatch.each do |event|
     = render 'commons/event', event: event
 
