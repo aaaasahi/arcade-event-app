@@ -1,7 +1,7 @@
 class Administrator::EventsDataController < ApplicationController
   before_action :admin_user
   def index
-    @events = Event.all
+    @events = Event.includes(user: :profile)
     @events_yesterday = Event.yesterday
     respond_to do |format|
       format.html
