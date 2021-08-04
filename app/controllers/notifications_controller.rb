@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
   PER_PAGE = 5
 
   def index
-    @notifications = current_user.passive_notifications.page(params[:page]).per(PER_PAGE)
+    @notifications = current_user.passive_notifications.includes(:event, :room, :visitor).page(params[:page]).per(PER_PAGE)
   end
 
   def update
