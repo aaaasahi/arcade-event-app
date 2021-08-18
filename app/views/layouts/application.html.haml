@@ -8,10 +8,13 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag('favicon.png')
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.bg-light.py-4.header.sticky-top
       - unless user_signed_in? && current_user.administrator?
-        = link_to 'Event', root_path, class: 'navbar-brand'
+        = link_to root_path do
+          .header-icon-container
+            = image_tag 'icon.png', class: 'navbar-brand header-icon'
       %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
         %span.navbar-toggler-icon
       #navbarNav.collapse.navbar-collapse

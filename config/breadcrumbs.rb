@@ -1,5 +1,5 @@
 crumb :root do
-  link "TOP", root_path
+  link 'TOP', root_path
 end
 
 crumb :user_login do
@@ -12,7 +12,7 @@ crumb :user_signin do
   parent :root
 end
 
-crumb :event_search do 
+crumb :event_search do
   link I18n.t('events.search.event-list'), events_search_path
   parent :root
 end
@@ -63,7 +63,7 @@ crumb :profile_join do |user|
 end
 
 crumb :profile_message do |user|
-  link I18n.t('profiles.message-index'),rooms_path
+  link I18n.t('profiles.message-index'), rooms_path
   parent :profile_top, user
 end
 
@@ -86,5 +86,3 @@ crumb :profile_unsubscribe do |user|
   link I18n.t('profiles.link.withdrawal')
   parent :profile_top, user
 end
-
-

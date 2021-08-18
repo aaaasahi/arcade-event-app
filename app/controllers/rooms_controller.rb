@@ -13,18 +13,16 @@ class RoomsController < ApplicationController
     current_entries.includes(:room).each do |entry|
       my_room_id << entry.room.id
     end
-    @another_entries = Entry.includes(:room, user: {profile: :avatar_attachment}).where(room_id: my_room_id).where.not(user_id: current_user.id)
+    @another_entries = Entry.includes(:room, user: [profile: { avatar_attachment: :blob }]).where(room_id: my_room_id).where.not(user_id: current_user.id)
   end
 
   def show
-    begin
-      @room = Room.find(params[:id])
-      @messages = @room.messages.includes(:user)
-      @message = Message.new
-      @entries = @room.entries
-      @another = @entries.where.not(user_id: current_user.id).first
-    rescue
-      redirect_to rooms_path, notice: '存在しない部屋です。'
-    end
+    @room = Room.find(params[:id])
+    @messages = @room.messages.includes(:user)
+    @message = Message.new
+    @entries = @room.entries
+    @another = @entries.where.not(user_id: current_user.id).first
+  rescue StandardError
+    redirect_to rooms_path, notice: '存在しない部屋です。'
   end
 end

@@ -9,19 +9,18 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }
   end
 
-
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     if current_user.administrator?
-      flash[:notice] = "管理者ユーザーとしてログインしました。"
+      flash[:notice] = '管理者ユーザーとしてログインしました。'
       administrator_admins_path
-    else 
+    else
       root_path
     end
-  end 
+  end
 
   private
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
-
 end

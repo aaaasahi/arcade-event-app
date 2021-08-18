@@ -1,21 +1,18 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   PER_PAGE = 5
   EVENT_LIMIT = 8
-  
+
   def index
     @events = Event.with_attached_eyecatch.latest.limit(EVENT_LIMIT)
-    
   end
 
   def show
-    begin
-      @event = Event.find(params[:id])
-      @comment = Comment.new
-      @comments = @event.comments.includes(:user)
-    rescue
-      redirect_to new_event_path, notice: '存在しないイベントです。イベントを作成しましょう!'
-    end
+    @event = Event.find(params[:id])
+    @comment = Comment.new
+    @comments = @event.comments.includes(user: [profile: { avatar_attachment: :blob }])
+  rescue StandardError
+    redirect_to new_event_path, notice: '存在しないイベントです。イベントを作成しましょう!'
   end
 
   def new
@@ -30,7 +27,7 @@ class EventsController < ApplicationController
       @event.save_event_tag(tag_list)
     end
 
-    if @event.save 
+    if @event.save
       redirect_to events_path, notice: '作成しました'
     else
       flash.now[:error] = '作成に失敗しました'
@@ -69,29 +66,25 @@ class EventsController < ApplicationController
     @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true).includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE)
 
-    #キーワード
-    if params[:search].present?
-      @events = Event.key_search(params["q"]).includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE)
-    end
-
-
+    # キーワード
+    @events = Event.key_search(params['q']).includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE) if params[:search].present?
 
     # ソート
-  if params[:new]
-    @events = Event.latest.includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE)
-  elsif params[:old]
-    @events = Event.includes(:tags, :tagmaps).with_attached_eyecatch.old.page(params[:page]).per(PER_PAGE)
-  elsif params[:join]
-    events = Event.includes(:tags, :tagmaps).with_attached_eyecatch.join_count
-    @events = Kaminari.paginate_array(events).page(params[:page]).per(PER_PAGE)
-  end
+    if params[:new]
+      @events = Event.latest.includes(:tags, :tagmaps).with_attached_eyecatch.page(params[:page]).per(PER_PAGE)
+    elsif params[:old]
+      @events = Event.includes(:tags, :tagmaps).with_attached_eyecatch.old.page(params[:page]).per(PER_PAGE)
+    elsif params[:join]
+      events = Event.includes(:tags, :tagmaps).with_attached_eyecatch.join_count
+      @events = Kaminari.paginate_array(events).page(params[:page]).per(PER_PAGE)
+    end
 
     # タグ
     if params[:tag_id].present?
       @tag = Tag.find(params[:tag_id])
       @events = @tag.events.includes(:tags, :tagmaps).with_attached_eyecatch.order(created_at: :desc).page(params[:page]).per(PER_PAGE)
     end
-    
+
     @tag_lists = Tag.all
   end
 
@@ -100,5 +93,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :text, :store, :address, :start_time, :eyecatch, :category_id)
   end
-
 end

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   devise_for :users,
-    controllers: { 
-      registrations: 'users/registrations',
-      passwords: "users/passwords"
-    }
+             controllers: {
+               registrations: 'users/registrations',
+               passwords: 'users/passwords'
+             }
   devise_scope :user do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
 
   namespace :administrator do
@@ -16,30 +16,35 @@ Rails.application.routes.draw do
   end
 
   root 'events#index'
-  scope "(:locale)" do
+  
+  scope '(:locale)' do
     get 'events/search', to: 'events#search'
   end
   get 'events/search/sort_new', to: 'events#search', as: 'sort_new'
   get 'events/search/sort_old', to: 'events#search', as: 'sort_old'
   get 'events/search/sort_join', to: 'events#search', as: 'sort_join'
-  
-  resources :events do
-    resources :comments, only: [:new, :create]
 
-    resource :clip, only: [:show, :create, :destroy]
-    resource :join, only: [:show, :create, :destroy]
+  resources :events do
+    resources :comments, only: %i[new create]
+  end
+
+  namespace :api, defaults: {format: :json} do
+    scope '/events/:event_id' do
+      resource :clip, only: %i[show create destroy]
+      resource :join, only: %i[show create destroy]
+    end
   end
 
   resources :accounts, only: [:show]
   get '/accounts/:id/unsubscribe' => 'accounts#unsubscribe', as: 'unsubscribe'
   patch '/accounts/:id/withdrawal' => 'accounts#withdrawal', as: 'withdrawal'
 
-  resource :profile, only: [:show, :edit, :update]
+  resource :profile, only: %i[show edit update]
 
   resources :clip_events, only: [:index]
   resources :join_events, only: [:index]
   resources :calendars, only: [:index]
-  resources :notifications, only: [:index, :update]
+  resources :notifications, only: %i[index update]
   resources :messages, only: [:create]
-  resources :rooms, only: [:create, :index, :show]
+  resources :rooms, only: %i[create index show]
 end
