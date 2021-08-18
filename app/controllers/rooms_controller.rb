@@ -17,14 +17,12 @@ class RoomsController < ApplicationController
   end
 
   def show
-    begin
-      @room = Room.find(params[:id])
-      @messages = @room.messages.includes(:user)
-      @message = Message.new
-      @entries = @room.entries
-      @another = @entries.where.not(user_id: current_user.id).first
-    rescue
-      redirect_to rooms_path, notice: '存在しない部屋です。'
-    end
+    @room = Room.find(params[:id])
+    @messages = @room.messages.includes(:user)
+    @message = Message.new
+    @entries = @room.entries
+    @another = @entries.where.not(user_id: current_user.id).first
+  rescue StandardError
+    redirect_to rooms_path, notice: '存在しない部屋です。'
   end
 end

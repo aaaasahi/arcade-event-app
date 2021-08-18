@@ -21,5 +21,4 @@ class JoinsController < ApplicationController
     join.destroy!
     render json: { status: 'ok' }
   end
-
 end

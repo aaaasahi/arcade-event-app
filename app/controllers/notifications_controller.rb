@@ -7,9 +7,7 @@ class NotificationsController < ApplicationController
   end
 
   def update
-    notification = Notification.find(params[:id]) 
-    if notification.update(checked: true) 
-      redirect_to notifications_path
-    end
+    notification = Notification.find(params[:id])
+    redirect_to notifications_path if notification.update(checked: true)
   end
 end

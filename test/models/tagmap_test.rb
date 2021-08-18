@@ -18,7 +18,7 @@
 #  fk_rails_...  (event_id => events.id)
 #  fk_rails_...  (tag_id => tags.id)
 #
-require "test_helper"
+require 'test_helper'
 
 class TagmapTest < ActiveSupport::TestCase
   # test "the truth" do

@@ -21,10 +21,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
 
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
 
@@ -43,7 +43,7 @@ class User < ApplicationRecord
 
   delegate :gender, :introduction, :age_cal, to: :profile, allow_nil: true
 
-  #パスワードなしで変更可能
+  # パスワードなしで変更可能
   def update_without_current_password(params, *options)
     if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:password)
@@ -54,9 +54,9 @@ class User < ApplicationRecord
     result
   end
 
-  #ゲストユーザー
+  # ゲストユーザー
   def self.guest
-    find_or_create_by!(email: "guest@example.com") do |user|
+    find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
     end
   end
@@ -73,7 +73,7 @@ class User < ApplicationRecord
     profile || build_profile
   end
 
-  #退会処理
+  # 退会処理
   def active_for_authentication?
     super && (is_valid == true)
   end

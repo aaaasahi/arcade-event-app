@@ -9,8 +9,8 @@
 # https://github.com/mileszs/wicked_pdf/blob/master/README.md
 
 WickedPdf.config = {
-  layout: "pdf",
-  page_size: "A4",
-  orientation: "Portrait",
+  layout: 'pdf',
+  page_size: 'A4',
+  orientation: 'Portrait',
   encoding: 'UTF-8'
 }

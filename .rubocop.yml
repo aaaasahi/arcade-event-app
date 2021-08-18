@@ -13,6 +13,9 @@ AllCops:
     - "node_modules/**/*"
     - "tmp/**/*"
     - "vendor/**/*"
+Rails/FilePath:
+  Exclude:
+    - "config/environments/development.rb"
 
 # 日本語のコメントを許可
 Style/AsciiComments:

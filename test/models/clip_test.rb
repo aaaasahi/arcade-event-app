@@ -18,7 +18,7 @@
 #  fk_rails_...  (event_id => events.id)
 #  fk_rails_...  (user_id => users.id)
 #
-require "test_helper"
+require 'test_helper'
 
 class ClipTest < ActiveSupport::TestCase
   # test "the truth" do
