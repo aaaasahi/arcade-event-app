@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
     current_entries.includes(:room).each do |entry|
       my_room_id << entry.room.id
     end
-    @another_entries = Entry.includes(:room, user: {profile: :avatar_attachment}).where(room_id: my_room_id).where.not(user_id: current_user.id)
+    @another_entries = Entry.includes(:room, user: [profile: { avatar_attachment: :blob }]).where(room_id: my_room_id).where.not(user_id: current_user.id)
   end
 
   def show

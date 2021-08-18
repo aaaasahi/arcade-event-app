@@ -12,7 +12,8 @@ class EventsController < ApplicationController
     begin
       @event = Event.find(params[:id])
       @comment = Comment.new
-      @comments = @event.comments.includes(:user)
+      @comments = @event.comments.includes(user: [profile: { avatar_attachment: :blob }])
+
     rescue
       redirect_to new_event_path, notice: '存在しないイベントです。イベントを作成しましょう!'
     end
