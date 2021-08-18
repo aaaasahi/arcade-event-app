@@ -42,14 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#event-show').data()
   const eventId = dataset.eventId
 
-  axios.get(`/events/${eventId}/clip`)
+  axios.get(`/api/events/${eventId}/clip`)
     .then((response) => {
       console.log(response)
       const hasClipped = response.data.hasClipped
       handleClipDisplay(hasClipped)
     })
 
-    axios.get(`/events/${eventId}/join`)
+    axios.get(`/api/events/${eventId}/join`)
     .then((response) => {
       console.log(response)
       const hasJoined = response.data.hasJoined

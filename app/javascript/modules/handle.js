@@ -3,7 +3,7 @@ import axios from 'modules/axios'
 
 const InactiveClipEvent = (eventId) => {
   $('.inactive-clip').on('click', () => {
-    axios.post(`/events/${eventId}/clip`)
+    axios.post(`/api/events/${eventId}/clip`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $('.active-clip').removeClass('hidden')
@@ -20,7 +20,7 @@ const InactiveClipEvent = (eventId) => {
 
 const ActiveClipEvent = (eventId) => {
   $('.active-clip').on('click', () => {
-    axios.delete(`/events/${eventId}/clip`)
+    axios.delete(`/api/events/${eventId}/clip`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $('.active-clip').addClass('hidden')
@@ -37,7 +37,7 @@ const ActiveClipEvent = (eventId) => {
 
 const InActiveJoinEvent = (eventId) => {
   $('.inactive-join').on('click', () => {
-    axios.post(`/events/${eventId}/join`)
+    axios.post(`/api/events/${eventId}/join`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $('.active-join').removeClass('hidden')
@@ -54,7 +54,7 @@ const InActiveJoinEvent = (eventId) => {
 
 const ActiveJoinEvent = (eventId) => {
   $('.active-join').on('click', () => {
-    axios.delete(`/events/${eventId}/join`)
+    axios.delete(`/api/events/${eventId}/join`)
       .then((response) => {
         if (response.data.status === 'ok') {
           $('.active-join').addClass('hidden')

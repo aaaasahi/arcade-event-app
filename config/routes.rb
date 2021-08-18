@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   root 'events#index'
+  
   scope '(:locale)' do
     get 'events/search', to: 'events#search'
   end
@@ -25,9 +26,13 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :comments, only: %i[new create]
+  end
 
-    resource :clip, only: %i[show create destroy]
-    resource :join, only: %i[show create destroy]
+  namespace :api, defaults: {format: :json} do
+    scope '/events/:event_id' do
+      resource :clip, only: %i[show create destroy]
+      resource :join, only: %i[show create destroy]
+    end
   end
 
   resources :accounts, only: [:show]
