@@ -81,7 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: arcade_event_production
+  database: arcade_event_app_production
   username: postgres
   password: <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:hostname] %>
