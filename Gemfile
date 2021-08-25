@@ -41,6 +41,8 @@ gem 'simple_calendar', '~> 2.0'
 gem 'whenever', require: false
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+gem 'aws-sdk-s3', require: false
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
