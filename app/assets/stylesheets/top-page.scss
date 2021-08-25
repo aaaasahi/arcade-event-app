@@ -1,5 +1,8 @@
 .main-visual {
-  background: image-url("louie-castro-garcia-UitmwXNMHiE-unsplash.jpg") no-repeat center center / cover;
+  background-image: image-url("louie-castro-garcia-UitmwXNMHiE-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 600px;
   width: 100%;
   position: relative;
