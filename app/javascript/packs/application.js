@@ -22,6 +22,10 @@ import {
 Rails.start()
 ActiveStorage.start()
 
+require("trix")
+require("@rails/actiontext")
+
+
 const handleClipDisplay = (hasClipped) => {
   if (hasClipped) {
     $('.active-clip').removeClass('hidden')
@@ -66,5 +70,3 @@ document.addEventListener('DOMContentLoaded', () => {
   InActiveJoinEvent(eventId)
   ActiveJoinEvent(eventId)
 })
-require("trix")
-require("@rails/actiontext")

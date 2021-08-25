@@ -1,3 +1,4 @@
+@import "./actiontext.scss";
 @import "simple_calendar";
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
@@ -9,8 +10,6 @@
 @import 'profile';
 @import 'calendar';
 @import 'chat';
-@import 'actiontext';
-@import 'trix/dist/trix.css';
 @import 'breadcrumb';
 @import 'top-page';
 @import 'notice';
