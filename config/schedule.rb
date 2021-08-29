@@ -8,9 +8,9 @@ rails_env = ENV['RAILS_ENV'] || :production
 set :environment, rails_env
 set :output, 'log/cron.log'
 
-#every 1.day, at: '8:00 am' do
-#  rake 'admin_report:mail_admin_report'
-#end
+every 1.minutes do
+  AdminMailer.report.deliver_now
+end
 
 every 1.days, at: '10:00 pm' do
   rake 'close_event:close_event'
