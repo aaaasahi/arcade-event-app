@@ -12,6 +12,6 @@ set :output, 'log/cron.log'
 #  rake 'admin_report:mail_admin_report'
 #end
 
-every 1.minutes do
+every 1.days, at: '10:00 pm' do
   rake 'close_event:close_event'
 end
