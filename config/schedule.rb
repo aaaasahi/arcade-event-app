@@ -8,7 +8,7 @@ rails_env = ENV['RAILS_ENV'] || :production
 set :environment, rails_env
 set :output, 'log/cron.log'
 
-every 1.minutes do
+every 1.days, at: '10:00 pm' do
   AdminMailer.report.deliver_now
 end
 
