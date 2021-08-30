@@ -5,6 +5,6 @@ class AdminMailer < ApplicationMailer
 
     @events_post_count = Event.count
     @events_post_yesterday = Event.yesterday
-    mail(to: 'f-asahi_admin@example.com', subject: '【定期連絡】集計結果')
+    mail(to: Rails.application.credentials.gmail[:email], subject: '【定期連絡】集計結果')
   end
 end
