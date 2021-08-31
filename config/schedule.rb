@@ -13,5 +13,5 @@ every 1.days, at: '10:00 pm' do
 end
 
 every 1.days, at: '10:00 pm' do
-  rake 'close_event:close_event'
+  Event.where('start_time < ?', Date.today).where(status: false).update(status: true)
 end
