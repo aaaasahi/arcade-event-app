@@ -8,10 +8,10 @@ rails_env = ENV['RAILS_ENV'] || :production
 set :environment, rails_env
 set :output, 'log/cron.log'
 
-every 1.days, at: '10:00 pm' do
-  AdminMailer.report.deliver_now
+every 1.minutes do
+  rake 'admin_report:mail_admin_report'
 end
 
-every 1.days, at: '10:00 pm' do
-  Event.where('start_time < ?', Date.today).where(status: false).update(status: true)
-end
+#every 1.days, at: '10:00 pm' do
+#  Event.where('start_time < ?', Date.today).where(status: false).update(status: true)
+#end
