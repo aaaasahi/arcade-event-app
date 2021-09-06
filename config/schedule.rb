@@ -6,12 +6,12 @@
 require File.expand_path("#{File.dirname(__FILE__)}/environment")
 rails_env = ENV['RAILS_ENV'] || :production
 set :environment, rails_env
-set :output, 'log/cron.log'
+set :output, "#{Rails.root}/log/cron.log"
 
 every 1.days, at: '10:00 pm' do
-  AdminMailer.report.deliver_now
+  rake 'admin_report:mail_admin_report'
 end
 
-every 1.days, at: '10:00 pm' do
-  Event.where('start_time < ?', Date.today).where(status: false).update(status: true)
+every 6.hours do
+  rake 'close_event:close_event'
 end
