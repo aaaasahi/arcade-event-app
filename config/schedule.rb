@@ -8,6 +8,7 @@ rails_env = ENV['RAILS_ENV'] || :production
 set :environment, rails_env
 set :output, "#{Rails.root}/log/cron.log"
 
+
 every 1.days, at: '9:00 pm' do
   rake 'admin_report:mail_admin_report'
 end
