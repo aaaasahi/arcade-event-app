@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   root 'events#index'
+  resources :guide_posts, only: [:index]
   
   scope '(:locale)' do
     get 'events/search', to: 'events#search'

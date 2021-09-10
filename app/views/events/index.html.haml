@@ -41,7 +41,7 @@
               %p= I18n.t('top-page.create-lead3')
             .service__button.mt-5
               .btn.btn-danger 
-                = link_to I18n.t('top-page.now-create'),new_event_path, class:'service-button'
+                = link_to 'イベントの主催方法ガイド', guide_posts_path, class:'service-button'
       .col-12.col-md-6.col-lg-6
         .card
           .card-body
@@ -54,8 +54,6 @@
             .service__button.mt-5
               .btn.btn-warning
                 = link_to I18n.t('top-page.now-search'),events_search_path, class:'service-button'
-
-
 
 
 
