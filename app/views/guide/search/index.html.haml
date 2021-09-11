@@ -1,6 +1,8 @@
 .container  
+  - breadcrumb :guide_search
+  = breadcrumbs separator: " &rsaquo; "
   .title
-    %h2.guide-title イベントを見つけよう！
+    %h2.guide-title イベントを探そう！
 
 .guide-bg.p-4.mt-3.mb-5
   .container
@@ -51,17 +53,17 @@
 
 
 .container
-  %h4.text-center.mb-5.mt-5 投稿者に質問等ある場合
+  %h4.text-center.mb-5.mt-5 主催者に質問等ある場合
   .row.mb-5.text-center
     .col-12.col-lg-6.mb-5
-      %p イベント情報ページの投稿者のアイコンを押してユーザーページへ
+      %p イベント情報ページの主催者のアイコンを押してユーザーページへ
       = image_tag 'guide/guide-dm1.png', class: 'guide-image'
     .col-12.col-lg-6
       %p ユーザーページ右のメッセッージボタンを押してメッセージページへ
       = image_tag 'guide/guide-dm2.png', class: 'guide-image'
   .row.mb-5.text-center
     .col-12.col-lg-6.mb-5
-      %p メッセージページから投稿者にメッセージが送れるよ！
+      %p メッセージページから主催者にメッセージが送れるよ！
       = image_tag 'guide/guide-dm3.png', class: 'guide-image'
     .col-12.col-lg-6
       %p 過去のメッセージ履歴はマイページから見れるよ！
