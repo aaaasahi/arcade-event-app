@@ -1,0 +1,26 @@
+en:
+  guide:
+    post:
+      title: "Let's hold an event!"
+      login:
+        title: "How to log in"
+        guide1: "Press the login button on the upper right to move to the login page"
+        guide2: "Enter the required information and log in!"
+      signup:
+        title: "How to sign up"
+        guide1: "Press the green button to move to the sign up page"
+        guide2: "Enter the required information and sign up!"
+      create:
+        title: "How to create an event"
+        guide1: "After logging in, press the event creation button"
+        guide2: "Transition to the event creation page"
+        guide3: "Enter the event information"
+        guide4: "Let's create an event!"
+      map:
+        title: "Map display"
+        guide1: "If you enter the address"
+        guide2: "The MAP will be displayed!"
+      tag:
+        title: "Tagging"
+        guide1: "If you enter the tag"
+        guide2: "Tags are displayed and you can search!"
