@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     end
 
     if @event.save
-      redirect_to events_path, notice: '作成しました'
+      redirect_to event_path(@event), notice: '作成しました'
     else
       flash.now[:error] = '作成に失敗しました'
       render :new
