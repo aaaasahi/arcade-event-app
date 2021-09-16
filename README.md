@@ -1,4 +1,8 @@
 # アケイベ
+<img width="1440" alt="スクリーンショット 2021-09-16 12 52 00" src="https://user-images.githubusercontent.com/69437267/133546736-56d395cb-da53-4900-a251-8a766e057b57.png">
+
+
+# URL
 [https://arcade-event.com/](https://arcade-event.com/)
 
 ログインページのゲストユーザーボタンからゲストユーザーとしてログイン可能です。
@@ -119,7 +123,8 @@ Qiita記事一覧、
 - RSpecを使用して、100件以上のテストコード
 - 実際のWebサービスを想定し本番環境にAWSを採用
 
-# アプリの使い方
+# 実際のアプリの様子
+
 
 # 機能一覧
 ## ユーザー機能一覧
