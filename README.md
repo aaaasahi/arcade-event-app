@@ -98,7 +98,7 @@ Qiita記事一覧、
 この経験から、未知の機能に対して自ら問題を定義して解決するための試行錯誤とやり遂げる経験を得ました。
 
 この時の様子をQiitaにもまとめました。
-[イベントclose機能を作ってみた(論理削除)](https://qiita.com/aaaasahi_17/items/c9a011b085ecc076bca1)
+- [イベントclose機能を作ってみた(論理削除)](https://qiita.com/aaaasahi_17/items/c9a011b085ecc076bca1)
 
 ### action text 検索問題
 
@@ -109,11 +109,11 @@ Qiita記事一覧、
 この経験から不具合に対しては現状を把握すること、gemではなく自作で作る適応力を得ました。
 
 この時の様子をQiitaにもまとめました。
-[Action Textとransackの相性が悪くて困った](https://qiita.com/aaaasahi_17/items/d2fafec5e16de980a03d)
+- [Action Textとransackの相性が悪くて困った](https://qiita.com/aaaasahi_17/items/d2fafec5e16de980a03d)
 
 ## その他工夫したこと
 
-- 機能数
+- 豊富な機能数
 - 大手のイベントアプリを参考に直感でわかるUI/UX
 - Rubocopを導入してコードの品質を担保
 - RSpecを使用して、100件以上のテストコード
