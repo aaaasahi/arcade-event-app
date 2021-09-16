@@ -57,22 +57,23 @@ password : admin1017
 
 ### 小さく作りgithubのリポジトリとして残すまたQiitaにも投稿
 
-各機能を実装する際、ただ実装して終わりではなく、機能ごとにgithubにリポジトリを作りドキュメント化することで 記憶ではなく記録に残るようにしました。
+各機能を実装する際、ただ実装して終わりではなく、機能ごとにGitHubにリポジトリを作りドキュメント化することで記憶ではなく記録に残るようにしました。
 
-GitHubにリポジトリとして残すことで次回同じ機能を実装することがあった場合その機能を高速に実装することができます。このようにドキュメンテーション力を活かして知識を積み上げていけることが私の強みです。
+GitHubにリポジトリとして残すことで次回同じ機能を実装する際その機能を前回より早く実装することができます。
 
 GitHubリポジトリ一覧、
 - [タグ機能](https://github.com/aaaasahi/rails-search-app)
 - [Google Map APIを使用したMAP表示](https://github.com/aaaasahi/g-map-api-sample-app)
 - [DM機能](https://github.com/aaaasahi/dm-function-app)
 
-Qiitaに投稿するということは自分の言葉で噛み砕きまとめなければならないので、その結果より深く理解することができました。
+Qiitaに投稿することは実装内容を自分の言葉で整理し誰が読んでもわかるように書かなくてはなりません。その結果内容を深く理解することができました。
 
 Qiita記事一覧、
 - [[Rails] DM機能を解説する](https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116)
 - [[Rails] 投稿した住所をGoogle Map APIを使ってMapで表示する](https://qiita.com/aaaasahi_17/items/8784ce1517c58510f0b8)
 - [ActionMailer、Rakeタスク、wheneverで作るメール自動配信機能](https://qiita.com/aaaasahi_17/items/fb19d295ae2ea699ccca)
 - [[Rails] オリジナルの管理者機能を作る 管理者画面編](https://qiita.com/aaaasahi_17/items/fbd5cdcdc2a1f1591d8b)
+
 
 ### 言語切り替え
 
@@ -99,7 +100,7 @@ Qiita記事一覧、
     - そのメソッドをrakeタスクに登録
     - rakeタスクを定期実行する
 
-この経験から、未知の機能に対して自ら問題を定義して解決するための試行錯誤とやり遂げる経験を得ました。
+この経験から、未知の機能に対して自ら要件を定義し分解して解決するための試行錯誤とやり遂げる経験を得ました。
 
 この時の様子をQiitaにもまとめました。
 - [イベントclose機能を作ってみた(論理削除)](https://qiita.com/aaaasahi_17/items/c9a011b085ecc076bca1)
@@ -110,7 +111,7 @@ Qiita記事一覧、
 
 なぜ動かないのかという現状を把握した上でSQLの内部結合を用いてaction textの内容でも検索できるように検索機能を自作しました。
 
-この経験から不具合に対しては現状を把握すること、gemではなく自作で作る適応力を得ました。
+この経験から不具合に対しては現状を把握すること、gemではなく自作で作る対応力と実装力を得ました。
 
 この時の様子をQiitaにもまとめました。
 - [Action Textとransackの相性が悪くて困った](https://qiita.com/aaaasahi_17/items/d2fafec5e16de980a03d)
