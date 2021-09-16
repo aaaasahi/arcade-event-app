@@ -57,18 +57,20 @@ password : admin1017
 
 GitHubにリポジトリとして残すことで次回同じ機能を実装することがあった場合その機能を高速に実装することができます。このようにドキュメンテーション力を活かして知識を積み上げていけることが私の強みです。
 
+GitHubリポジトリ一覧、
 - [タグ機能](https://github.com/aaaasahi/rails-search-app)
 - [Google Map APIを使用したMAP表示](https://github.com/aaaasahi/g-map-api-sample-app)
 - [DM機能](https://github.com/aaaasahi/dm-function-app)
 
 Qiitaに投稿するということは自分の言葉で噛み砕きまとめなければならないので、その結果より深く理解することができました。
 
+Qiita記事一覧、
 - [[Rails] DM機能を解説する](https://qiita.com/aaaasahi_17/items/9e7f344488c720aaf116)
 - [[Rails] 投稿した住所をGoogle Map APIを使ってMapで表示する](https://qiita.com/aaaasahi_17/items/8784ce1517c58510f0b8)
 - [ActionMailer、Rakeタスク、wheneverで作るメール自動配信機能](https://qiita.com/aaaasahi_17/items/fb19d295ae2ea699ccca)
 - [[Rails] オリジナルの管理者機能を作る 管理者画面編](https://qiita.com/aaaasahi_17/items/fbd5cdcdc2a1f1591d8b)
 
-### 多言語化
+### 言語切り替え
 
 ゲームセンターで働いていた際、お客様として日本だけでなく海外の方もよく来店されることがあったので海外の方でもこのサービスを使ってもらえるようページ下の言語ボタンを押すことでほぼ全てのページで多言語化に対応しています。
 
@@ -115,11 +117,53 @@ Qiitaに投稿するということは自分の言葉で噛み砕きまとめな
 - 大手のイベントアプリを参考に直感でわかるUI/UX
 - Rubocopを導入してコードの品質を担保
 - RSpecを使用して、100件以上のテストコード
-- 本番環境にAWSを採用
+- 実際のWebサービスを想定し本番環境にAWSを採用
 
 # アプリの使い方
 
 # 機能一覧
+## ユーザー機能一覧
+- 新規登録、ログイン機能(devise)
+- ゲストログイン機能
+
+## 管理者機能一覧
+- Chart
+- PDF
+- Mail
+
+## イベント機能一覧
+- イベント投稿機能
+  - 画像投稿機能
+  - 画像プレビュー機能
+  - カテゴリ投稿機能
+  - 住所投稿によるMAP表示機能
+  - タグ投稿機能
+- イベント詳細機能
+  - コメント機能
+  - 参加機能(Ajax)
+  - クリップ機能(Ajax)
+- イベント編集、削除機能
+- カレンダー機能
+- パンクズ機能
+
+検索機能一覧
+- キーワード検索
+- カテゴリ検索
+- タグ検索
+- ソート機能
+- ページネーション機能
+
+マイページ機能一覧
+- 投稿イベント一覧機能
+- 参加イベント一覧機能
+- クリップイベント一覧機能
+- DM機能
+- 
+
+その他
+- 通知機能
+- イベントClose機能
+- 言語切り替え機能
 
 # 使用技術
 
@@ -131,3 +175,5 @@ Qiitaに投稿するということは自分の言葉で噛み砕きまとめな
 - ソースコード管理：GitHub
 
 # ER図
+<img width="998" alt="arcade-eventER図" src="https://user-images.githubusercontent.com/69437267/133543618-e13c51c6-c3e0-407b-8f38-d5f49c801492.png">
+
