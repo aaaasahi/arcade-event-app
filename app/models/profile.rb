@@ -22,4 +22,13 @@ class Profile < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :introduction, length: { maximum: 300 }
+  validate :birthday_cannot_be_in_the_future
+
+  def birthday_cannot_be_in_the_future
+    if age.present? && age > Date.today
+      errors.add(:base, '0歳以下の年齢を設定することはできません。')
+    end
+  end
+
+
 end
