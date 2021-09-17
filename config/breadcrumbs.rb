@@ -87,12 +87,12 @@ crumb :profile_unsubscribe do |user|
   parent :profile_top, user
 end
 
-crumb :guide_post do 
+crumb :guide_post do
   link 'イベント主催ガイド', guide_posts_path
   parent :root
 end
 
-crumb :guide_search do 
+crumb :guide_search do
   link 'イベント検索ガイド', guide_search_index_path
   parent :root
 end
