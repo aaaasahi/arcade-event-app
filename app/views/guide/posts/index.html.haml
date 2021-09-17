@@ -2,65 +2,65 @@
   - breadcrumb :guide_post
   = breadcrumbs separator: " &rsaquo; "
   .title
-    %h2.guide-title イベントを主催しよう!
+    %h2.guide-title= I18n.t('guide.post.title')
 
 .guide-bg.p-4.mt-3.mb-5
   .container
     .guide_post.text-center
-      %h4.text-center.mb-5.mt-5 ログイン方法
+      %h4.text-center.mb-5.mt-5= I18n.t('guide.post.login.title')
       .row.mb-5.text-center
         .col-12.col-lg-6.mb-5
-          %p 右上のログインボタンを押してログインページへ
+          %p= I18n.t('guide.post.login.guide1')
           = image_tag 'guide/guide-login1.png', class: 'guide-image'
         .col-12.col-lg-6
-          %p 必要情報を入力してログインしよう！
+          %p= I18n.t('guide.post.login.guide2')
           = image_tag 'guide/guide-login2.png', class: 'guide-image'
 
 .container
-  %h4.text-center.mb-5.mt-5 新規登録方法
+  %h4.text-center.mb-5.mt-5= I18n.t('guide.post.signup.title')
   .row.mb-5.text-center
     .col-12.col-lg-6.mb-5
-      %p ログインページの以下のボタンを押して新規登録ページへ
+      %p= I18n.t('guide.post.signup.guide1')
       = image_tag 'guide/guide-signup2.png', class: 'guide-image'
     .col-12.col-lg-6
-      %p 必要情報を入力して新規登録しよう！
+      %p= I18n.t('guide.post.signup.guide2')
       = image_tag 'guide/guide-signup1.png', class: 'guide-image'
 
 .guide-bg.p-4.mt-5.mb-5
   .container
-    %h4.text-center.mt-5.mb-5 イベント作成
+    %h4.text-center.mt-5.mb-5= I18n.t('guide.post.create.title')
     .row.mb-5.text-center
       .col-12.col-lg-6.mb-5
-        %p ログインできたら上にあるイベント作成ボタンを押して
+        %p= I18n.t('guide.post.create.guide1')
         = image_tag 'guide/guide-post1.png', class: 'guide-image'
       .col-12.col-lg-6
-        %p イベント作成ページへ
+        %p= I18n.t('guide.post.create.guide2')
         = image_tag 'guide/guide-post2.png', class: 'guide-image'
     .row.mb-5.text-center
       .col-12.col-lg-6.mb-5
-        %p 開催したいイベントの情報を入力して
+        %p= I18n.t('guide.post.create.guide3')
         = image_tag 'guide/guide-post3.png', class: 'guide-image'
       .col-12.col-lg-6
-        %p イベントを作成しよう！
+        %p= I18n.t('guide.post.create.guide4')
         = image_tag 'guide/guide-post4.png', class: 'guide-image'
 
 .container
-  %h4.text-center.mb-5.mt-5 便利な機能(MAP表示)
+  %h4.text-center.mb-5.mt-5= I18n.t('guide.post.map.title')
   .row.mb-5.text-center
     .col-12.col-lg-6.mb-5
-      %p 住所を入力すると
+      %p= I18n.t('guide.post.map.guide1')
       = image_tag 'guide/guide-map1.png', class: 'guide-image'
     .col-12.col-lg-6
-      %p イベント詳細ページでMAPが表示されるよ！
+      %p= I18n.t('guide.post.map.guide2')
       = image_tag 'guide/guide-map2.png', class: 'guide-image'
 
 .guide-bg.p-4.mt-5.mb-5
   .container
-    %h4.text-center.mb-5.mt-5 便利な機能(タグ付け)
+    %h4.text-center.mb-5.mt-5= I18n.t('guide.post.tag.title')
     .row.mb-5.text-center
       .col-12.col-lg-6.mb-5
-        %p タグを入力すると
+        %p= I18n.t('guide.post.tag.guide1')
         = image_tag 'guide/guide-tag1.png', class: 'guide-image'
       .col-12.col-lg-6
-        %p 検索ページにタグが表示され検索されやすくなるよ！
+        %p= I18n.t('guide.post.tag.guide2')
         = image_tag 'guide/guide-tag2.png', class: 'guide-image'
