@@ -42,7 +42,7 @@ class Event < ApplicationRecord
   validates :text, presence: true
   validates :store, length: { maximum: 50 }
   validates :address, length: { maximum: 50 }
-  #validate :day_after_today
+  validate :day_after_today
 
   # 参加通知
   def create_notification_join!(current_user)
@@ -62,9 +62,9 @@ class Event < ApplicationRecord
   end
 
   # 日付
-  #def day_after_today
-  #  errors.add(:base, '開催日程は今日より前の日は指定できません') if start_time.present? && start_time < Date.today
-  #end
+  def day_after_today
+    errors.add(:base, '開催日程は今日より前の日は指定できません') if start_time.present? && start_time < Date.today
+  end
 
   # タグ作成
   def save_event_tag(tags)

@@ -41,6 +41,7 @@ en:
       clip-now: "Clipping"
       clip-list: "Clip List"
       event-show: "Event Details"
+      close: "Done"
       edit: "Edit"
       delete: "Delete"
       join: "Participation"
