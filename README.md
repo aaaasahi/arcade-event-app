@@ -5,7 +5,7 @@
 # URL
 [https://arcade-event.com/](https://arcade-event.com/)
 
-ログインページのゲストユーザーボタンからゲストユーザーとしてログイン可能です。
+ログインページの閲覧用ボタンからゲストユーザーとしてログイン可能です。
 
 ### Admin User
 
