@@ -33,7 +33,7 @@
           .tag 
             %p.tag-title= I18n.t('events.search.tag')
             - @tag_lists.each do |list|
-              = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1'
+              = link_to list.tag_name, events_search_path(tag_id: list.id), class:'border border-dark rounded p-1 d-inline-block mb-1'
     .right-content.col-12.col-lg-9.mt-4
       .sort-container
         %ul.sort
