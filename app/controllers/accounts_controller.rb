@@ -33,9 +33,14 @@ class AccountsController < ApplicationController
 
   def withdrawal
     @user = User.find(params[:id])
+    if @user.email == 'guest@example.com'
+      flash[:error] = 'ゲストユーザーは退会できません'
+      redirect_to root_path
+    else 
     @user.update(is_valid: false)
     reset_session
     flash[:notice] = '退会処理を実行しました。'
     redirect_to root_path
+    end
   end
 end
