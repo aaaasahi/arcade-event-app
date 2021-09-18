@@ -28,7 +28,7 @@
           - else
             .text-center
               - if @event.status?
-                .btn.btn-danger.btn-lg.close-button 終了
+                .btn.btn-danger.btn-lg.close-button= I18n.t('events.show.close')
               - else
                 .btn.btn-primary.btn-lg.hidden.active-join= I18n.t('events.show.join-now')
                 .btn.btn-outline-primary.btn-lg.hidden.inactive-join= I18n.t('events.show.join')
