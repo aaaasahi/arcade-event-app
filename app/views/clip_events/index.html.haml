@@ -4,3 +4,6 @@
   .profile-title.mt-5
     %h4= I18n.t('profiles.clip-event')
   = render 'commons/events', events: @events
+  - if @events.present?
+    .page.mt-3
+      = paginate @events,theme: 'twitter-bootstrap-4'
