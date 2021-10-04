@@ -18,6 +18,18 @@ password : admin1017
 # アプリ概要
 **コロナ渦で消えゆくゲームセンターを救いたい!** という気持ちで作成したゲームセンター開催限定のイベント投稿型サービスです。
 
+# 使用技術
+
+- 言語：Ruby (3.0.0)
+- フレームワーク：Ruby on Rails (6.1.3)
+- フロントエンド：HTML/Scss/JavaScript
+- DB：PostgreSQL
+- インフラ：AWS (VPC | RDS | EC2 | S3 | Route53 | ACM| ALB）
+- ソースコード管理：GitHub
+
+# ER図
+<img width="998" alt="arcade-eventER図" src="https://user-images.githubusercontent.com/69437267/133543618-e13c51c6-c3e0-407b-8f38-d5f49c801492.png">
+
 # 作成した背景
 ### ゲームセンター を救いたいという想い
 
@@ -186,17 +198,6 @@ Qiita記事一覧、
 ### 管理者
 ![Read me管理者](https://user-images.githubusercontent.com/69437267/133865988-f3b2564b-b099-4836-82bc-a022af6d72fb.gif)
 
-# 使用技術
-
-- 言語：Ruby (3.0.0)
-- フレームワーク：Ruby on Rails (6.1.3)
-- フロントエンド：HTML/Scss/JavaScript
-- DB：PostgreSQL
-- インフラ：AWS (VPC | RDS | EC2 | S3 | Route53 | ACM| ALB）
-- ソースコード管理：GitHub
-
-# ER図
-<img width="998" alt="arcade-eventER図" src="https://user-images.githubusercontent.com/69437267/133543618-e13c51c6-c3e0-407b-8f38-d5f49c801492.png">
 
 # 今後追加したい機能
 - 迷惑ユーザー、投稿に対して管理者が削除する機能
