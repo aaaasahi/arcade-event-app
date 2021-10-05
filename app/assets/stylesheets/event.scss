@@ -69,6 +69,7 @@
       padding: 5px;
       border-radius: 5px;
       color:black;
+      cursor: pointer;
     }
     &__icon:hover {
       background-color:#c0c0c0;
@@ -86,6 +87,7 @@
       border-radius: 5px;
       color:white;
       background-color:#c0c0c0;
+      cursor: pointer;
     }
     &__active:hover {
       opacity: 0.5;
