@@ -48,3 +48,6 @@ en:
         guide2: "Press the message button to go to the message page"
         guide3: "You can send a message to the organizer!"
         guide4: "You can see past messages from My Page!"
+    list:
+      post: "Event holding guide"
+      search: "Event Search Guide"

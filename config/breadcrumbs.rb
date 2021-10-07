@@ -88,11 +88,11 @@ crumb :profile_unsubscribe do |user|
 end
 
 crumb :guide_post do
-  link 'イベント主催ガイド', guide_posts_path
+  link I18n.t('guide.list.post'), guide_posts_path
   parent :root
 end
 
 crumb :guide_search do
-  link 'イベント検索ガイド', guide_search_index_path
+  link I18n.t('guide.list.search'), guide_search_index_path
   parent :root
 end
