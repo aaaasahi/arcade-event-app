@@ -9,7 +9,7 @@ module Users
 
     def reject_user
       @user = User.find(params[:id])
-      redirect_to new_user_registration if @user && (@user.valid_password?(params[:user][:password]) && (@user.is_valid == true))
+      redirect_to new_user_registration if @user && (@user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == true))
     end
   end
 end
