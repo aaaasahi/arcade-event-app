@@ -12,8 +12,8 @@
               = @event.name
             .clip
               - if user_signed_in?
-                .clip__active.hidden.active-clip= I18n.t('events.show.clip')
-                .clip__icon.hidden.inactive-clip= I18n.t('events.show.clip-now')
+                .clip__active.hidden.active-clip= I18n.t('events.show.clip-now')
+                .clip__icon.hidden.inactive-clip= I18n.t('events.show.clip')
           .text-title= I18n.t('events.show.event-show')
           .card-text.mb-5
             = @event.text
