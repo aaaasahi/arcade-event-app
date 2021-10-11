@@ -37,7 +37,7 @@ ja:
       tag: "タグ ※(半角で区切るとタグになります。 例: 音ゲー 初心者)"
       post: "作成する"
     show:
-      clip: "クリップ"
+      clip: "クリップする"
       clip-now: "クリップ中"
       clip-list: "クリップ一覧"
       event-show: "イベント詳細"
