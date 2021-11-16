@@ -32,7 +32,9 @@ password : admin1017
 
 # ER図とインフラ図
 <img width="998" alt="arcade-eventER図" src="https://user-images.githubusercontent.com/69437267/133543618-e13c51c6-c3e0-407b-8f38-d5f49c801492.png">
-![AWSインフラ図](https://user-images.githubusercontent.com/69437267/141937910-e111aef4-9bd6-43df-b4f9-28cfa8bce61e.png)
+
+![AWSインフラ図](https://user-images.githubusercontent.com/69437267/141938070-7c8a7dfd-033b-4836-b366-4e1b5ce67ad9.png)
+
 
 # 作成した背景
 ### ゲームセンター を救いたいという想い
