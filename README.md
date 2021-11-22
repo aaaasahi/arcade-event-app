@@ -1,7 +1,8 @@
 # アケイベ
 <img width="1440" alt="スクリーンショット 2021-09-16 12 52 00" src="https://user-images.githubusercontent.com/69437267/133546736-56d395cb-da53-4900-a251-8a766e057b57.png">
 
-### スライドにもまとめたのでお時間なければこちらをご覧ください。
+# スライド
+### 具体的な開発背景等をスライドにまとめたのでよければこちらも合わせてご覧ください。
 [アケイベ スライド](https://docs.google.com/presentation/d/18fyzhQ3pXZ0OO8MxOfhOE99tOMwcsH4t76XqyY-kWac/edit?usp=sharing)
 
 
