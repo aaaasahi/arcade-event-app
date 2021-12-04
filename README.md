@@ -124,17 +124,6 @@ Qiita記事一覧、
 この時の様子をQiitaにもまとめました。
 - [イベントclose機能を作ってみた(論理削除)](https://qiita.com/aaaasahi_17/items/c9a011b085ecc076bca1)
 
-### Action Textの内容で検索できない問題
-
-イベント投稿のエディターとしてaction text、検索機能としてgem ransackを使用していたのですがAction Textとransackの相性が悪くAction Textで投稿した内容で検索ができないという不具合が発生しました。
-
-なぜ動かないのかという現状を把握した上でSQLの内部結合を用いてAction Textの内容でも検索できるように検索機能を自作しました。
-
-この経験から不具合に対しては現状を把握すること、gemではなく自作で作る対応力と実装力を得ました。
-
-この時の様子をQiitaにもまとめました。
-- [Action Textとransackの相性が悪くて困った](https://qiita.com/aaaasahi_17/items/d2fafec5e16de980a03d)
-
 ## その他工夫したこと
 
 - 20以上の機能数
