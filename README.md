@@ -32,7 +32,8 @@ password : admin1017
 - ソースコード管理：GitHub
 
 # ER図とインフラ図
-<img width="998" alt="arcade-eventER図" src="https://user-images.githubusercontent.com/69437267/133543618-e13c51c6-c3e0-407b-8f38-d5f49c801492.png">
+<img width="996" alt="スクリーンショット 2021-12-06 15 52 11" src="https://user-images.githubusercontent.com/69437267/144800988-38972228-9eb1-40f5-aa4d-bf9076329156.png">
+
 
 ![AWSインフラ図](https://user-images.githubusercontent.com/69437267/141938070-7c8a7dfd-033b-4836-b366-4e1b5ce67ad9.png)
 
