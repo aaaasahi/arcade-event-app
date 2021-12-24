@@ -8,8 +8,7 @@
 
 # URL
 <del>https://arcade-event.com/</del>
-
-ログインページの閲覧用ボタンからゲストユーザーとしてログイン可能です。
+現在は公開していません
 
 ### Admin User
 
