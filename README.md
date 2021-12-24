@@ -7,7 +7,7 @@
 
 
 # URL
-[https://arcade-event.com/](https://arcade-event.com/)
+[~~https://arcade-event.com/](https://arcade-event.com/)
 
 ログインページの閲覧用ボタンからゲストユーザーとしてログイン可能です。
 
